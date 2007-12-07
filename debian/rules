@@ -1,0 +1,55 @@
+#!/usr/bin/make -f
+# -*- mode: makefile; coding: utf-8 -*-
+# Copyright © 2007 Jonas Smedegaard <dr@jones.dk>
+
+include debian/cdbs/1/rules/buildcore.mk
+include /usr/share/cdbs/1/class/autotools.mk
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/rules/patchsys-quilt.mk
+include debian/cdbs/1/rules/copyright-check.mk
+include debian/cdbs/1/rules/buildinfo.mk
+include debian/cdbs/1/rules/upstream-tarball.mk
+
+# Update this checksum when new releases occur, to catch silent server side file content forges
+DEB_UPSTREAM_TARBALL_MD5 = 9b449edb011c934ca97009e7e0566d22
+
+DEB_UPSTREAM_URL = http://switch.dl.sourceforge.net/sourceforge/srtp
+DEB_UPSTREAM_TARBALL_EXTENSION = tgz
+DEB_UPSTREAM_TARBALL_SRCDIR = $(DEB_UPSTREAM_PACKAGE)
+
+DEB_UPSTREAM_REPACKAGE_TAG = dfsg
+DEB_UPSTREAM_REPACKAGE_DELIMITER = ~
+DEB_UPSTREAM_REPACKAGE_EXCLUDE = CVS .cvsignore doc/rfc*.txt doc/draft*.txt doc/*.pdf
+
+DEB_CONFIGURE_EXTRA_FLAGS = --disable-stdout --enable-syslog
+ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
+DEB_CONFIGURE_EXTRA_FLAGS += --enable-debug
+else
+DEB_CONFIGURE_EXTRA_FLAGS += --disable-debug
+endif
+
+CFLAGS += -D_REENTRANT
+
+DEB_MAKE_CLEAN_TARGET = superclean
+DEB_MAKE_CHECK_TARGET = runtest
+
+DEB_INSTALL_DOCS_srtp-docs += doc/*.txt doc/*.pdf
+DEB_COMPRESS_EXCLUDE += .pdf
+build/srtp-docs::
+	$(DEB_MAKE_INVOKE) libsrtpdoc
+
+clean::
+	rm -f doc/*.pdf
+
+# Make executable a shell script applied by patch 0001.
+post-patches::
+	chmod +x test/rtpw_test.sh
+
+# Needed by upstream build
+CDBS_BUILD_DEPENDS := $(CDBS_BUILD_DEPENDS), doxygen, texlive-latex-recommended, texlive-fonts-recommended
+
+# Needed by upstream build tests
+CDBS_BUILD_DEPENDS := $(CDBS_BUILD_DEPENDS), procps, miscfiles
+
+# Fix double cdbs build-dependencies
+CDBS_BUILD_DEPENDS := $(shell echo '$(CDBS_BUILD_DEPENDS)' | sed -e '/\bcdbs (>= 0.4.39)/ s/ *,* *\bcdbs (>= \(0.4.23-1.1\|0.4.27-1\)) *,* */, /g' -e 's/^ *, *//' -e 's/ *, *$$//')

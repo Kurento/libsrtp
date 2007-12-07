@@ -1,0 +1,55 @@
+Source: srtp
+Priority: optional
+Maintainer: Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>
+Uploaders: Jonas Smedegaard <dr@jones.dk>
+Build-Depends: autotools-dev, debhelper (>= 4.2.0), quilt, patchutils (>= 0.2.25), dh-buildinfo, cdbs (>= 0.4.39), doxygen, texlive-latex-recommended, texlive-fonts-recommended, procps, miscfiles
+Standards-Version: 3.7.3
+Section: libs
+Vcs-Svn: svn://svn.debian.org/pkg-voip/srtp/trunk
+Vcs-Browser: http://svn.debian.org/wsvn/pkg-voip/srtp/trunk
+Homepage: http://srtp.sourceforge.net/srtp.html
+
+Package: libsrtp1-dev
+Section: devel
+Depends: ${devlibs:Depends}
+Provides: libsrtp-dev
+Conflicts: libsrtp-dev
+Architecture: any
+Description: Secure RTP (SRTP) and UST Reference Implementations - development files
+ SRTP is a security profile for RTP that adds confidentiality, message
+ authentication, and replay protection to that protocol. It is specified
+ in RFC 3711.
+ .
+ LibSRTP provides an implementation of the Secure Real-time Transport
+ Protocol (SRTP), the Universal Security Transform (UST), and a
+ supporting cryptographic kernel.
+ .
+ This package contains the development headers and static libraries.
+
+Package: srtp-docs
+Section: doc
+Architecture: all
+Description: Secure RTP (SRTP) and UST Reference Implementations - documentation
+ SRTP is a security profile for RTP that adds confidentiality, message
+ authentication, and replay protection to that protocol. It is specified
+ in RFC 3711.
+ .
+ LibSRTP provides an implementation of the Secure Real-time Transport
+ Protocol (SRTP), the Universal Security Transform (UST), and a
+ supporting cryptographic kernel.
+ .
+ This package contains API documentation.
+
+Package: srtp-utils
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: Secure RTP (SRTP) and UST Reference Implementations - utilities
+ SRTP is a security profile for RTP that adds confidentiality, message
+ authentication, and replay protection to that protocol. It is specified
+ in RFC 3711.
+ .
+ LibSRTP provides an implementation of the Secure Real-time Transport
+ Protocol (SRTP), the Universal Security Transform (UST), and a
+ supporting cryptographic kernel.
+ .
+ This package contains a few simple binaries using libsrtp.

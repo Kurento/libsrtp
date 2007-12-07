@@ -1,0 +1,10 @@
+Copyright (C) 2003 Free Software Foundation, Inc.
+Copyright (c) 2001-2005 Cisco Systems, Inc.  All rights reserved.
+Copyright (c) 2001-2006 Cisco Systems, Inc.
+Copyright (c) 2001-2006, Cisco Systems, Inc.
+Copyright 1991 by the Massachusetts Institute of Technology
+Copyright(c) 2001-2006 Cisco Systems, Inc.
+Copyright(c) 2001-2006, Cisco Systems, Inc.
+Copyright(c) 2005 Ingate Systems AB
+\copyright 2001-2005 by David A. McGrew, Cisco Systems, Inc.
+sed 's/(c) 2001-2005/(c) 2001-2006/' $x > $x.tmp;

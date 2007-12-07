@@ -1,0 +1,59 @@
+This is libSRTP packaged for Debian GNU systems.
+
+Upstream source: http://srtp.sourceforge.net/download.html
+
+Upstream author: David A. McGrew <mcgrew@cisco.com>
+
+Files: debian/*
+Copyright: © 2005 Mikael Magnusson <mikma@users.sourceforge.net>
+	   © 2007 Jonas Smedegaard <dr@jones.dk>
+	   © 2007 Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>
+License: GPL-2+
+ The Debian packaging information is under the GPL, version 2 or later.
+
+Files: *
+Copyright: © 2001-2006, Cisco Systems, Inc.
+License: BSD-3
+  Copyright (c) 2001-2006, Cisco Systems, Inc.
+  All rights reserved.
+ .
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+ .
+    Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ .
+    Redistributions in binary form must reproduce the above
+    copyright notice, this list of conditions and the following
+    disclaimer in the documentation and/or other materials provided
+    with the distribution.
+ .
+    Neither the name of the Cisco Systems, Inc. nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+Files: crypto/rng/rand_linux_kernel.c, crypto/include/kernel-compat.h
+Copyright: © 2005, Ingate Systems AB
+License: BSD-3
+  Copyright(c) 2005 Ingate Systems AB
+  All rights reserved.
+ .
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+ .
+    Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ .
+    Redistributions in binary form must reproduce the above
+    copyright notice, this list of conditions and the following
+    disclaimer in the documentation and/or other materials provided
+    with the distribution.
+ .
+    Neither the name of the author(s) nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+On Debian systems, the complete text of the GNU General Public License
+can be found in file "/usr/share/common-licenses/GPL".
