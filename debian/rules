@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 # -*- mode: makefile; coding: utf-8 -*-
-# Copyright © 2007 Jonas Smedegaard <dr@jones.dk>
+# Copyright © 2007-2008 Jonas Smedegaard <dr@jones.dk>
 
 include /usr/share/cdbs/1/class/autotools.mk
 include /usr/share/cdbs/1/rules/debhelper.mk
@@ -16,8 +16,6 @@ DEB_UPSTREAM_URL = http://switch.dl.sourceforge.net/sourceforge/srtp
 DEB_UPSTREAM_TARBALL_EXTENSION = tgz
 DEB_UPSTREAM_TARBALL_SRCDIR = $(DEB_UPSTREAM_PACKAGE)
 
-DEB_UPSTREAM_REPACKAGE_TAG = dfsg
-DEB_UPSTREAM_REPACKAGE_DELIMITER = ~
 DEB_UPSTREAM_REPACKAGE_EXCLUDE = CVS .cvsignore doc/rfc*.txt doc/draft*.txt doc/*.pdf
 
 DEB_CONFIGURE_EXTRA_FLAGS = --disable-stdout --enable-syslog
