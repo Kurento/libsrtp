@@ -10,7 +10,7 @@ Vcs-Browser: http://svn.debian.org/wsvn/pkg-voip/srtp/trunk
 Homepage: http://srtp.sourceforge.net/srtp.html
 
 Package: libsrtp1-dev
-Section: devel
+Section: libdevel
 Depends: ${devlibs:Depends}
 Provides: libsrtp-dev
 Conflicts: libsrtp-dev
