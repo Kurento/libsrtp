@@ -3,6 +3,15 @@ srtp (1.4.4~dfsg-2) UNRELEASED; urgency=low
   [ Jonas Smedegaard ]
   * Add patch 1003 to avoid the symbol "mips" clashing with builtin
     symbol on MIPS GCC compiler. Closes: bug#439976.
+  * Update local cdbs snippets:
+    + Major improvements to copyright-check, including new versioned
+      build-dependency on devscripts.  Update debian/copyright_hints.
+    + Various improvements to update-tarball.mk.
+    + Drop buildcore.mk wrapper (set DEB_AUTO_UPDATE_DEBIAN_CONTROL
+      manually when needed instead)
+    + Update debian/README.cdbs-tweaks.
+  * Semi-auto-update debian/control to apply changes contained in the above:
+    DEB_AUTO_UPDATE_DEBIAN_CONTROL=yes fakeroot debian/rules clean
 
   [ Victor Seva ]
   * Add patch 1004 to add verbose to make runtest. Make FTBFS easier
