@@ -5,8 +5,8 @@ Uploaders: Jonas Smedegaard <dr@jones.dk>
 Build-Depends: @cdbs@
 Standards-Version: 3.7.3
 Section: libs
-Vcs-Svn: svn://svn.debian.org/pkg-voip/srtp/trunk
-Vcs-Browser: http://svn.debian.org/wsvn/pkg-voip/srtp/trunk
+Vcs-Git: git://git.debian.org/git/collab-maint/srtp.git
+Vcs-Browser: http://git.debian.org/?p=collab-maint/srtp.git;a=summary
 Homepage: http://srtp.sourceforge.net/srtp.html
 
 Package: libsrtp1-dev

@@ -3,6 +3,7 @@ srtp (1.4.4~dfsg-2) UNRELEASED; urgency=low
   [ Jonas Smedegaard ]
   * Add patch 1003 to avoid the symbol "mips" clashing with builtin
     symbol on MIPS GCC compiler. Closes: bug#439976.
+  * Packaging moved to collab-maint Git at Alioth. Update VCS-* hints.
   * Update local cdbs snippets:
     + Major improvements to copyright-check, including new versioned
       build-dependency on devscripts.  Update debian/copyright_hints.
