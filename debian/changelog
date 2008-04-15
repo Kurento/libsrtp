@@ -1,4 +1,4 @@
-srtp (1.4.4~dfsg-2) UNRELEASED; urgency=low
+srtp (1.4.4~dfsg-2) unstable; urgency=low
 
   [ Jonas Smedegaard ]
   * Add patch 1003 to avoid the symbol "mips" clashing with builtin
@@ -22,7 +22,7 @@ srtp (1.4.4~dfsg-2) UNRELEASED; urgency=low
   * Add patch 1004 to add verbose to make runtest. Make FTBFS easier
     to debug. (Closes: #460534)
 
- -- Jonas Smedegaard <dr@jones.dk>  Sat, 29 Dec 2007 18:02:07 +0100
+ -- Jonas Smedegaard <dr@jones.dk>  Tue, 15 Apr 2008 17:48:39 +0200
 
 srtp (1.4.4~dfsg-1) unstable; urgency=low
 
