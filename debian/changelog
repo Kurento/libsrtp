@@ -1,3 +1,15 @@
+srtp (1.4.4~dfsg-2) UNRELEASED; urgency=low
+
+  [ Jonas Smedegaard ]
+  * Add patch 1003 to avoid the symbol "mips" clashing with builtin
+    symbol on MIPS GCC compiler. Closes: bug#439976.
+
+  [ Victor Seva ]
+  * Add patch 1004 to add verbose to make runtest. Make FTBFS easier
+    to debug. (Closes: #460534)
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sat, 29 Dec 2007 18:02:07 +0100
+
 srtp (1.4.4~dfsg-1) unstable; urgency=low
 
   * New upstream release.
