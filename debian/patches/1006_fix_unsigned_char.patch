@@ -1,0 +1,36 @@
+diff -ur srtp-1.4.4~dfsg.orig/test/dtls_srtp_driver.c srtp-1.4.4~dfsg/test/dtls_srtp_driver.c
+--- srtp-1.4.4~dfsg.orig/test/dtls_srtp_driver.c	2006-07-17 21:41:22.000000000 +0100
++++ srtp-1.4.4~dfsg/test/dtls_srtp_driver.c	2008-03-11 15:55:22.000000000 +0000
+@@ -63,7 +63,7 @@
+ int
+ main(int argc, char *argv[]) {
+   unsigned do_list_mods      = 0;
+-  char q;
++  int q;
+   err_status_t err;
+ 
+   printf("dtls_srtp_driver\n");
+diff -ur srtp-1.4.4~dfsg.orig/test/rdbx_driver.c srtp-1.4.4~dfsg/test/rdbx_driver.c
+--- srtp-1.4.4~dfsg.orig/test/rdbx_driver.c	2006-07-17 21:41:22.000000000 +0100
++++ srtp-1.4.4~dfsg/test/rdbx_driver.c	2008-03-11 15:54:25.000000000 +0000
+@@ -70,7 +70,7 @@
+ main (int argc, char *argv[]) {
+   double rate;
+   err_status_t status;
+-  char q;
++  int q;
+   unsigned do_timing_test = 0;
+   unsigned do_validation = 0;
+ 
+diff -ur srtp-1.4.4~dfsg.orig/test/srtp_driver.c srtp-1.4.4~dfsg/test/srtp_driver.c
+--- srtp-1.4.4~dfsg.orig/test/srtp_driver.c	2006-09-18 14:41:35.000000000 +0100
++++ srtp-1.4.4~dfsg/test/srtp_driver.c	2008-03-11 15:54:37.000000000 +0000
+@@ -138,7 +138,7 @@
+ 
+ int
+ main (int argc, char *argv[]) {
+-  char q;
++  int q;
+   unsigned do_timing_test    = 0;
+   unsigned do_rejection_test = 0;
+   unsigned do_codec_timing   = 0;

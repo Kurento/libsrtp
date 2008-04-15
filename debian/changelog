@@ -3,6 +3,10 @@ srtp (1.4.4~dfsg-2) UNRELEASED; urgency=low
   [ Jonas Smedegaard ]
   * Add patch 1003 to avoid the symbol "mips" clashing with builtin
     symbol on MIPS GCC compiler. Closes: bug#439976.
+  * Add patch 1005 to fix tests by restricting to 32bit alignment.
+    Closes: bug#470505, thanks to Martin Guy.
+  * Add patch 1006 to fix unsigned chars in test driver. Closes:
+    bug#470506, thanks to Martin Guy.
   * Packaging moved to collab-maint Git at Alioth. Update VCS-* hints.
   * Update local cdbs snippets:
     + Major improvements to copyright-check, including new versioned
