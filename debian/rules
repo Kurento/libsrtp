@@ -33,10 +33,12 @@ DEB_MAKE_CHECK_TARGET = runtest
 DEB_INSTALL_DOCS_srtp-docs += doc/*.txt doc/*.pdf
 DEB_COMPRESS_EXCLUDE += .pdf
 build/srtp-docs::
-	$(DEB_MAKE_INVOKE) libsrtpdoc
+	[ -f debian/stamp-make-docs ] || $(DEB_MAKE_INVOKE) libsrtpdoc
+	touch debian/stamp-make-docs
 
 clean::
 	rm -f doc/*.pdf
+	rm -f debian/stamp-make-docs
 
 # Make executable a shell script applied by patch 0001.
 post-patches::

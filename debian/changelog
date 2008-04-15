@@ -8,6 +8,7 @@ srtp (1.4.4~dfsg-2) unstable; urgency=low
   * Add patch 1006 to fix unsigned chars in test driver. Closes:
     bug#470506, thanks to Martin Guy.
   * Packaging moved to collab-maint Git at Alioth. Update VCS-* hints.
+  * Make sure docs is built only once.
   * Update local cdbs snippets:
     + Major improvements to copyright-check, including new versioned
       build-dependency on devscripts.  Update debian/copyright_hints.
