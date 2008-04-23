@@ -1,3 +1,10 @@
+srtp (1.4.4~dfsg-3) UNRELEASED; urgency=low
+
+  * Update cdbs tweaks:
+    + Strip any non-printable characters in copyright-check.mk.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Wed, 23 Apr 2008 11:12:49 +0200
+
 srtp (1.4.4~dfsg-2) unstable; urgency=low
 
   [ Jonas Smedegaard ]
