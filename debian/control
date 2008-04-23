@@ -2,11 +2,11 @@ Source: srtp
 Priority: optional
 Maintainer: Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>
 Uploaders: Jonas Smedegaard <dr@jones.dk>
-Build-Depends: autotools-dev, debhelper (>= 4.2.0), quilt, patchutils (>= 0.2.25), devscripts (>= 2.10.7), dh-buildinfo, cdbs (>= 0.4.39), doxygen, texlive-latex-recommended, texlive-fonts-recommended, procps, miscfiles
+Build-Depends: autotools-dev, debhelper (>= 5.0.44), quilt, patchutils (>= 0.2.25), devscripts (>= 2.10.7), dh-buildinfo, cdbs (>= 0.4.39), doxygen, texlive-latex-recommended, texlive-fonts-recommended, procps, miscfiles
 Standards-Version: 3.7.3
 Section: libs
-Vcs-Svn: svn://svn.debian.org/pkg-voip/srtp/trunk
-Vcs-Browser: http://svn.debian.org/wsvn/pkg-voip/srtp/trunk
+Vcs-Git: git://git.debian.org/git/collab-maint/srtp.git
+Vcs-Browser: http://git.debian.org/?p=collab-maint/srtp.git;a=summary
 Homepage: http://srtp.sourceforge.net/srtp.html
 
 Package: libsrtp1-dev

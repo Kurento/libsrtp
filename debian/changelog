@@ -2,6 +2,9 @@ srtp (1.4.4~dfsg-3) UNRELEASED; urgency=low
 
   * Update cdbs tweaks:
     + Strip any non-printable characters in copyright-check.mk.
+  * Bump debhelper compatibility level to 6 (was 4).
+  * Semi-auto-update debian/control due to above changes:
+    DEB_AUTO_UPDATE_DEBIAN_CONTROL=yes fakeroot debian/rules clean
 
  -- Jonas Smedegaard <dr@jones.dk>  Wed, 23 Apr 2008 11:12:49 +0200
 
