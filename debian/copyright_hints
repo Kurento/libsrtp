@@ -1,4 +1,4 @@
-BSD (3 clause) [HOLDERS AND CONTRIBUTORS / HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT / notice, this list of conditions and the following / 2001-2006, Cisco Systems, Inc]: crypto/cipher/aes.c
+BSD-3 [HOLDERS AND CONTRIBUTORS / HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT / 2001-2006, Cisco Systems, Inc]: crypto/cipher/aes.c
 	crypto/cipher/aes_cbc.c
 	crypto/cipher/aes_icm.c
 	crypto/cipher/cipher.c
@@ -17,6 +17,7 @@ BSD (3 clause) [HOLDERS AND CONTRIBUTORS / HOLDERS OR CONTRIBUTORS BE LIABLE FOR
 	crypto/include/null_auth.h
 	crypto/include/null_cipher.h
 	crypto/include/sha1.h
+	crypto/include/stat.h
 	crypto/math/gf2_8.c
 	crypto/replay/rdb.c
 	crypto/replay/rdbx.c
@@ -67,42 +68,41 @@ BSD (3 clause) [HOLDERS AND CONTRIBUTORS / HOLDERS OR CONTRIBUTORS BE LIABLE FOR
 	test/rtp.c
 	test/rtpw_test.sh
 	undos.sh
-BSD (3 clause) [HOLDERS AND CONTRIBUTORS / HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT / 2001-2006 Cisco Systems, Inc / notice, this list of conditions and the following]: LICENSE
+BSD-3 [HOLDERS AND CONTRIBUTORS / HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT / 2001-2006 Cisco Systems, Inc]: LICENSE
+	crypto/hash/hmac.c
 	crypto/include/alloc.h
+	crypto/include/crypto_kernel.h
 	crypto/include/crypto_math.h
 	crypto/include/cryptoalg.h
 	crypto/include/key.h
+	crypto/include/rand_source.h
 	crypto/kernel/alloc.c
+	crypto/kernel/crypto_kernel.c
+	crypto/kernel/err.c
 	crypto/kernel/key.c
 	crypto/math/datatypes.c
 	crypto/math/math.c
+	crypto/rng/ctr_prng.c
+	crypto/rng/prng.c
+	crypto/rng/rand_source.c
 	crypto/test/env.c
+	crypto/test/kernel_driver.c
 	include/getopt_s.h
 	include/rtp_priv.h
 	include/srtp_priv.h
+	tables/aes_tables.c
 	test/dtls_srtp_driver.c
 	test/getopt_s.c
-BSD (3 clause) [HOLDERS AND CONTRIBUTORS / HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT / notice, this list of conditions and the following]: crypto/hash/hmac.c
-	crypto/include/crypto_kernel.h
-	crypto/include/kernel_compat.h
-	crypto/include/rand_source.h
-	crypto/include/stat.h
-	crypto/kernel/crypto_kernel.c
-	crypto/kernel/err.c
-	crypto/rng/ctr_prng.c
-	crypto/rng/prng.c
-	crypto/rng/rand_linux_kernel.c
-	crypto/rng/rand_source.c
-	crypto/test/kernel_driver.c
-	tables/aes_tables.c
 *No copyright* GENERATED FILE []: config.hw
 	doc/Doxyfile
 	doc/crypto_kernel.txt
 	doc/header.template
 	timing
-BSD (3 clause) GENERATED FILE [HOLDERS AND CONTRIBUTORS / HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT / notice, this list of conditions and the following]: crypto/include/crypto_types.h
+BSD-3 GENERATED FILE [HOLDERS AND CONTRIBUTORS / HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT / 2001-2006 Cisco Systems, Inc]: crypto/include/crypto_types.h
 	crypto/test/rand_gen.c
-BSD (3 clause) [2001-2005 Cisco Systems, Inc. All rights reserved / HOLDERS AND CONTRIBUTORS / HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT / notice, this list of conditions and the following]: doc/intro.txt
+BSD-3 [HOLDERS AND CONTRIBUTORS / 2005 Ingate Systems AB / HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT]: crypto/include/kernel_compat.h
+	crypto/rng/rand_linux_kernel.c
+BSD-3 [2001-2005 Cisco Systems, Inc. All rights reserved / HOLDERS AND CONTRIBUTORS / HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT]: doc/intro.txt
 GENERATED FILE [2003 Free Software Foundation, Inc]: configure
-UNKNOWN [dates in files]: update.sh
-UNKNOWN [notice appear in all copies and that both that / 1991 by the Massachusetts Institute of Technology / notice and this permission notice appear in supporting]: install-sh
+UNKNOWN [1991 by the Massachusetts Institute of Technology]: install-sh
+UNKNOWN [dates in files / 2001-2005/ 2001-2006/' $x > $x.tmp;]: update.sh

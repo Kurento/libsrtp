@@ -1,12 +1,18 @@
-srtp (1.4.4~dfsg-3) UNRELEASED; urgency=low
+srtp (1.4.4~dfsg-3) unstable; urgency=medium
 
   * Update cdbs tweaks:
     + Strip any non-printable characters in copyright-check.mk.
+    + Relax copyright-check.mk to only warn about its discoveries.
+      Closes: bug#487070, thanks to Lucas Nussbaum.
+    + Correct abbreviation of BSD licenses in copyright-check.mk.
+    + Update dependency cleanup to strip cdbs 0.4.27 (not 0.4.27-1).
+  * Update debian/copyright-hints.
   * Bump debhelper compatibility level to 6 (was 4).
   * Semi-auto-update debian/control due to above changes:
     DEB_AUTO_UPDATE_DEBIAN_CONTROL=yes fakeroot debian/rules clean
+  * Raise urgency to medium due to FTBFS bugfix.
 
- -- Jonas Smedegaard <dr@jones.dk>  Wed, 23 Apr 2008 11:12:49 +0200
+ -- Jonas Smedegaard <dr@jones.dk>  Sun, 29 jun 2008 17:16:16 +0200
 
 srtp (1.4.4~dfsg-2) unstable; urgency=low
 
