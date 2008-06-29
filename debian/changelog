@@ -1,4 +1,4 @@
-srtp (1.4.4~dfsg-3) unstable; urgency=medium
+srtp (1.4.4~dfsg-3) unstable; urgency=low
 
   * Update cdbs tweaks:
     + Strip any non-printable characters in copyright-check.mk.
@@ -10,7 +10,6 @@ srtp (1.4.4~dfsg-3) unstable; urgency=medium
   * Bump debhelper compatibility level to 6 (was 4).
   * Semi-auto-update debian/control due to above changes:
     DEB_AUTO_UPDATE_DEBIAN_CONTROL=yes fakeroot debian/rules clean
-  * Raise urgency to medium due to FTBFS bugfix.
 
  -- Jonas Smedegaard <dr@jones.dk>  Sun, 29 jun 2008 17:16:16 +0200
 
