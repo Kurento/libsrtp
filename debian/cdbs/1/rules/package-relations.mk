@@ -28,6 +28,7 @@ include $(_cdbs_rules_path)/buildcore.mk$(_cdbs_makefile_suffix)
 
 # Merge build-dependencies on same packages
 # TODO: rewrite (in perl, probably) to be more generic
+CDBS_BUILD_DEPENDS := $(shell echo '$(CDBS_BUILD_DEPENDS)' | sed -e '/\bcdbs (>= 0.4.53)/ s/\bcdbs *\(,\|(>= \(0.4.23-1.1\|0.4.27\|0.4.39\|0.4.43\))\)/, /g')
 CDBS_BUILD_DEPENDS := $(shell echo '$(CDBS_BUILD_DEPENDS)' | sed -e '/\bcdbs (>= 0.4.43)/ s/\bcdbs *\(,\|(>= \(0.4.23-1.1\|0.4.27\|0.4.39\))\)/, /g')
 CDBS_BUILD_DEPENDS := $(shell echo '$(CDBS_BUILD_DEPENDS)' | sed -e '/\bcdbs (>= 0.4.39)/ s/\bcdbs *\(,\|(>= \(0.4.23-1.1\|0.4.27\))\)/, /g')
 CDBS_BUILD_DEPENDS := $(shell echo '$(CDBS_BUILD_DEPENDS)' | sed -e '/\bcdbs (>= 0.4.27)/ s/\bcdbs *\(,\|(>= \(0.4.23-1.1\))\)/, /g')
