@@ -26,7 +26,7 @@ _cdbs_rules_upstream_tarball := 1
 
 include $(_cdbs_rules_path)/buildvars.mk$(_cdbs_makefile_suffix)
 
-CDBS_BUILD_DEPENDS := $(CDBS_BUILD_DEPENDS), cdbs (>= 0.4.39)
+CDBS_BUILD_DEPENDS := $(CDBS_BUILD_DEPENDS), cdbs
 
 # Prefix for upstream location of all upstream tarballs (mandatory!)
 #DEB_UPSTREAM_URL = 
