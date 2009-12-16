@@ -36,6 +36,9 @@ DEB_COPYRIGHT_CHECK_REGEX = .*
 #DEB_COPYRIGHT_CHECK_IGNORE_REGEX = ^(debian/.*|(.*/)?config\.(guess|sub|rpath)(\..*)?)$
 DEB_COPYRIGHT_CHECK_IGNORE_REGEX = ^debian/(changelog|copyright(|_hints|_newhints))$
 
+# number of lines from the top of each file to investigate
+DEB_COPYRIGHT_CHECK_PARSELINES = 99999
+
 pre-build:: debian/stamp-copyright-check
 
 debian/stamp-copyright-check:
@@ -46,7 +49,7 @@ debian/stamp-copyright-check:
 # Perl in shell in make requires extra care:
 #  * Single-quoting ('...') protects against shell expansion
 #  * Double-dollar ($$) expands to plain dollar ($) in make
-	@licensecheck -c '$(DEB_COPYRIGHT_CHECK_REGEX)' -r --copyright -i '$(DEB_COPYRIGHT_CHECK_IGNORE_REGEX)' * \
+	@licensecheck -c '$(DEB_COPYRIGHT_CHECK_REGEX)' -r --copyright -i '$(DEB_COPYRIGHT_CHECK_IGNORE_REGEX)' -l '$(DEB_COPYRIGHT_CHECK_PARSELINES)' * \
 		| LC_ALL=C perl -e \
 	'print "Format: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?op=file&rev=REVISION\n";'\
 	'print "Name: Untrusted draft - double-check copyrights yourself!\n\n";'\
