@@ -29,13 +29,13 @@ include $(_cdbs_rules_path)/buildcore.mk$(_cdbs_makefile_suffix)
 # Merge build-dependencies on same packages
 # TODO: rewrite (in perl, probably) to be more generic
 CDBS_BUILD_DEPENDS := $(shell echo '$(CDBS_BUILD_DEPENDS)' | sed -e '/\bcdbs (>= 0.4.53)/ s/\bcdbs *\(,\|(>= \(0.4.23-1.1\|0.4.27\|0.4.39\|0.4.43\))\)/, /g')
-CDBS_BUILD_DEPENDS := $(shell echo '$(CDBS_BUILD_DEPENDS)' | sed -e 's/\bcdbs *\(,\|(>= \(0.4.23-1.1\|0.4.27\|0.4.39\|0.4.43\))\)/cdbs, /')
-CDBS_BUILD_DEPENDS := $(shell echo '$(CDBS_BUILD_DEPENDS)' | sed -e 's/\bcdbs *\((>= \(0.4.23-1.1\|0.4.27\|0.4.39\|0.4.43\))\)/, /g')
+CDBS_BUILD_DEPENDS := $(shell echo '$(CDBS_BUILD_DEPENDS)' | sed -e 's/\bcdbs *\(,\|(>= \(0.4.23-1.1\|0.4.27\|0.4.39\|0.4.43\))\)/cdbs, /g')
+CDBS_BUILD_DEPENDS := $(shell echo '$(CDBS_BUILD_DEPENDS)' | sed -e 's/\(\bcdbs,.*\), *cdbs *,/\1, /g')
 CDBS_BUILD_DEPENDS := $(shell echo '$(CDBS_BUILD_DEPENDS)' | sed -e '/\bdebhelper (>= 7.0.1)/ s/\bdebhelper *\(,\|(>= \(4.1.60\|4.2.0\|4.2.21\|4.2.28\|5\|5.0.37.2\|5.0.44\|6\))\)/, /g')
 CDBS_BUILD_DEPENDS := $(shell echo '$(CDBS_BUILD_DEPENDS)' | sed -e '/\bdebhelper (>= 6)/ s/\bdebhelper *\(,\|(>= \(4.1.60\|4.2.0\|4.2.21\|4.2.28\|5\|5.0.37.2\|5.0.44\))\)/, /g')
 CDBS_BUILD_DEPENDS := $(shell echo '$(CDBS_BUILD_DEPENDS)' | sed -e '/\bdebhelper (>= 5.0.44)/ s/\bdebhelper *\(,\|(>= \(4.1.60\|4.2.0\|4.2.21\|4.2.28\|5\|5.0.37.2\))\)/, /g')
-CDBS_BUILD_DEPENDS := $(shell echo '$(CDBS_BUILD_DEPENDS)' | sed -e 's/\bdebhelper *\(,\|(>= \(4.1.60\|4.2.0\|4.2.21\|4.2.28\|5\|5.0.37.2\))\)/debhelper, /')
-CDBS_BUILD_DEPENDS := $(shell echo '$(CDBS_BUILD_DEPENDS)' | sed -e 's/\bdebhelper *\((>= \(4.1.60\|4.2.0\|4.2.21\|4.2.28\|5\|5.0.37.2\))\)/, /g')
+CDBS_BUILD_DEPENDS := $(shell echo '$(CDBS_BUILD_DEPENDS)' | sed -e 's/\bdebhelper *\(,\|(>= \(4.1.60\|4.2.0\|4.2.21\|4.2.28\|5\|5.0.37.2\))\)/debhelper, /g')
+CDBS_BUILD_DEPENDS := $(shell echo '$(CDBS_BUILD_DEPENDS)' | sed -e 's/\(\bdebhelper,.*\), *debhelper *,/\1, /g')
 
 # TODO: Move these to buildcore.mk
 cdbs_curvar = $(or $($(1)_$(cdbs_curpkg)),$($1))
