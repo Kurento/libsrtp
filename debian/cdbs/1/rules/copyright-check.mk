@@ -76,19 +76,23 @@ debian/stamp-copyright-check:
 	'	$$file->{copyright} =~ s/\b(\d{4})\s+([\S^\d])/$$1, $$2/g;'\
 	'	$$file->{copyright} =~ s/^\W*\s+\/\s+//g;'\
 	'	$$file->{copyright} =~ s/\s+\/\s+\W*$$//;'\
-	'	$$file->{copyright} =~ s/\s+\/\s+/\n\t/g;'\
-	'	$$pattern = "$$file->{license} [$$file->{copyright}]";'\
+	'	@ownerlines = split /(?:\s+\/|\Z)\s*/, $$file->{copyright};'\
+	'	@owners = grep {/[^\s\d,].*$$/} @ownerlines;'\
+	'	$$pattern = join ("\n", $$file->{license}, sort @owners);'\
 	'	push @{ $$patternfiles{"$$pattern"} }, $$file->{name};'\
+	'	push @{ $$patternownerlines{"$$pattern"} }, @ownerlines;'\
+	'	$$patternlicense{"$$pattern"} = $$file->{license};'\
 	'};'\
 	'foreach $$pattern ( sort {'\
 	'			@{$$patternfiles{$$b}} <=> @{$$patternfiles{$$a}}'\
 	'			||'\
 	'			$$a cmp $$b'\
 	'		} keys %patternfiles ) {'\
-	'	($$license, $$copyright) = $$pattern =~ /(.*) \[(.*)\]/s;'\
+	'	$$ownerline_prev = "dummy text";'\
+	'	@ownerlines_unique = grep($$_ ne $$prev && (($$prev) = $$_), sort @{ $$patternownerlines{$$pattern} });'\
 	'	print "Files: ", join("\n\t", sort @{ $$patternfiles{$$pattern} }), "\n";'\
-	'	print "Copyright: $$copyright\n";'\
-	'	print "License: $$license\n\n";'\
+	'	print "Copyright: ", join("\n\t", @ownerlines_unique), "\n";'\
+	'	print "License: $$patternlicense{$$pattern}\n\n";'\
 	'};'\
 		> debian/copyright_newhints
 	@patterncount="`cat debian/copyright_newhints | sed 's/^[^:]*://' | LANG=C sort -u | grep . -c -`"; \
