@@ -69,8 +69,8 @@ debian/stamp-copyright-check:
 	'	$$file->{license} =~ s/\s+\(v([^)]+) or later\)/-$$1+/;'\
 	'	$$file->{license} =~ s/\s+\(v([^)]+)\)/-$$1/;'\
 	'	$$file->{license} =~ s/\s*(\*No copyright\*)\s*// and $$file->{copyright} = $$1;'\
-	'	$$file->{license} =~ s/^\s*(GENERATED FILE)/UNKNOWN ($$1)/;'\
-	'	$$file->{license} =~ s/\s+(GENERATED FILE)/ ($$1)/;'\
+	'	$$file->{license} =~ s/^\s*(GENERATED FILE)/UNKNOWN/;'\
+	'	$$file->{license} =~ s/\s+(GENERATED FILE)//;'\
 	'	$$file->{copyright} =~ s/(?<=(\b\d{4}))(?{$$y=$$^N})\s*[,-]\s*((??{$$y+1}))\b/-$$2/g;'\
 	'	$$file->{copyright} =~ s/(?<=\b\d{4})\s*-\s*\d{4}(?=\s*-\s*(\d{4})\b)//g;'\
 	'	$$file->{copyright} =~ s/\b(\d{4})\s+([\S^\d])/$$1, $$2/g;'\
