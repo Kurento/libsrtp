@@ -43,7 +43,7 @@ pre-build:: debian/stamp-copyright-check
 
 debian/stamp-copyright-check:
 	@echo 'Scanning upstream source for new/changed copyright notices...'
-	@echo licensecheck -c '$(DEB_COPYRIGHT_CHECK_REGEX)' -r --copyright -i '$(DEB_COPYRIGHT_CHECK_IGNORE_REGEX)' * \
+	@echo licensecheck -c '$(DEB_COPYRIGHT_CHECK_REGEX)' -r --copyright -i '$(DEB_COPYRIGHT_CHECK_IGNORE_REGEX)' -l '$(DEB_COPYRIGHT_CHECK_PARSELINES)' * \
 		"| some-output-filtering..."
 
 # Perl in shell in make requires extra care:
