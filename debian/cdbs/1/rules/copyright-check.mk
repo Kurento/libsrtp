@@ -74,11 +74,14 @@ debian/stamp-copyright-check:
 	'	$$file->{copyright} =~ s/(?<=(\b\d{4}))(?{$$y=$$^N})\s*[,-]\s*((??{$$y+1}))\b/-$$2/g;'\
 	'	$$file->{copyright} =~ s/(?<=\b\d{4})\s*-\s*\d{4}(?=\s*-\s*(\d{4})\b)//g;'\
 	'	$$file->{copyright} =~ s/\b(\d{4})\s+([\S^\d])/$$1, $$2/g;'\
-	'	$$file->{copyright} =~ s/^\W*\s+\/\s+//g;'\
-	'	$$file->{copyright} =~ s/\s+\/\s+\W*$$//;'\
-	'	@ownerlines = split /(?:\s+\/|\Z)\s*/, $$file->{copyright};'\
-	'	@owners = grep {/[^\s\d,].*$$/} @ownerlines;'\
-	'	$$pattern = join ("\n", $$file->{license}, sort @owners);'\
+	'	my @ownerlines = grep {/\w\w/} split /\s\/\s/, $$file->{copyright};'\
+	'	my %owneryears;'\
+	'	for $$ownerline ( @ownerlines ) {'\
+	'		my ($$owneryear, $$owner) = split /(?=\s)/, $$ownerline, 2;'\
+	'		push @{ $$owneryears{"$$owner"} }, $$owneryear;'\
+	'	};'\
+	'	my @owners = sort keys %owneryears;'\
+	'	my $$pattern = join ("\n", $$file->{license}, @owners);'\
 	'	push @{ $$patternfiles{"$$pattern"} }, $$file->{name};'\
 	'	push @{ $$patternownerlines{"$$pattern"} }, @ownerlines;'\
 	'	$$patternlicense{"$$pattern"} = $$file->{license};'\
