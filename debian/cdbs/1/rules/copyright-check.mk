@@ -73,11 +73,11 @@ debian/stamp-copyright-check:
 	'	$$file->{license} =~ s/\s+(GENERATED FILE)//;'\
 	'	$$file->{copyright} =~ s/(?<=(\b\d{4}))(?{$$y=$$^N})\s*[,-]\s*((??{$$y+1}))\b/-$$2/g;'\
 	'	$$file->{copyright} =~ s/(?<=\b\d{4})\s*-\s*\d{4}(?=\s*-\s*(\d{4})\b)//g;'\
-	'	$$file->{copyright} =~ s/\b(\d{4})\s+([\S^\d])/$$1, $$2/g;'\
+	'	$$file->{copyright} =~ s/\b(\d{4}),?\s+([\S^\d])/$$1, $$2/g;'\
 	'	my @ownerlines = grep {/\w\w/} split /\s\/\s/, $$file->{copyright};'\
-	'	my %owneryears;'\
+	'	my %owneryears = ();'\
 	'	for $$ownerline ( @ownerlines ) {'\
-	'		my ($$owneryear, $$owner) = split /(?=\s)/, $$ownerline, 2;'\
+	'		my ($$owneryear, $$owner) = $$ownerline =~ /^([\d-,\s]*?)\s*(.*)/;'\
 	'		push @{ $$owneryears{"$$owner"} }, $$owneryear;'\
 	'	};'\
 	'	my @owners = sort keys %owneryears;'\
@@ -91,7 +91,7 @@ debian/stamp-copyright-check:
 	'			||'\
 	'			$$a cmp $$b'\
 	'		} keys %patternfiles ) {'\
-	'	$$ownerline_prev = "dummy text";'\
+	'	my $$prev;'\
 	'	@ownerlines_unique = grep($$_ ne $$prev && (($$prev) = $$_), sort @{ $$patternownerlines{$$pattern} });'\
 	'	print "Files: ", join("\n\t", sort @{ $$patternfiles{$$pattern} }), "\n";'\
 	'	print "Copyright: ", join("\n\t", @ownerlines_unique), "\n";'\
