@@ -54,7 +54,6 @@ debian/stamp-copyright-check:
 	'print "Format: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?op=file&rev=REVISION\n";'\
 	'print "Name: Untrusted draft - double-check copyrights yourself!\n\n";'\
 	'$$n=0; while (<>) {'\
-	'	s/[^[:print:]]//g;'\
 	'	if (/^([^:\s][^:]+):[\s]+(\S.*?)\s*$$/) {'\
 	'		$$files[$$n]{name}=$$1;'\
 	'		$$files[$$n]{license}=$$2;'\
@@ -105,7 +104,7 @@ debian/stamp-copyright-check:
 		if [ -n "$$newstrings" ]; then \
 			echo "$(if $(DEB_COPYRIGHT_CHECK_STRICT),ERROR,WARNING): The following new or changed copyright notices discovered:"; \
 			echo; \
-			echo "$$newstrings"; \
+			echo "$$newstrings" | cat -v; \
 			echo; \
 			echo "To fix the situation please do the following:"; \
 			echo "  1) Investigate the above changes and update debian/copyright as needed"; \
