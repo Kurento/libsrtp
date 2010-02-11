@@ -1,5 +1,5 @@
 # -*- mode: makefile; coding: utf-8 -*-
-# Copyright © 2005-2008 Jonas Smedegaard <dr@jones.dk>
+# Copyright © 2005-2010 Jonas Smedegaard <dr@jones.dk>
 # Description: Check for changes to copyright notices in source
 #
 # This program is free software; you can redistribute it and/or
