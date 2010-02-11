@@ -76,7 +76,7 @@ debian/stamp-copyright-check:
 	'	my @ownerlines = grep {/\w\w/} split /\s\/\s/, $$file->{copyright};'\
 	'	my %owneryears = ();'\
 	'	for $$ownerline ( @ownerlines ) {'\
-	'		my ($$owneryear, $$owner) = $$ownerline =~ /^([\d-,\s]*?)\s*(.*)/;'\
+	'		my ($$owneryear, $$owner) = $$ownerline =~ /^([\d-,\s]*)\s*+(.*)/;'\
 	'		push @{ $$owneryears{"$$owner"} }, $$owneryear;'\
 	'	};'\
 	'	my @owners = sort keys %owneryears;'\
