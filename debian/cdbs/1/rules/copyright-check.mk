@@ -100,11 +100,11 @@ debian/stamp-copyright-check:
 	@patterncount="`cat debian/copyright_newhints | sed 's/^[^:]*://' | LANG=C sort -u | grep . -c -`"; \
 		echo "Found $$patterncount different copyright and licensing combinations."
 	@if [ ! -f debian/copyright_hints ]; then touch debian/copyright_hints; fi
-	@newstrings=`diff -u debian/copyright_hints debian/copyright_newhints | sed '1,2d' | egrep '^\+' - | sed 's/^\+//'`; \
+	@newstrings=`diff -a -u debian/copyright_hints debian/copyright_newhints | sed '1,2d' | egrep -a '^\+' - | sed 's/^\+//'`; \
 		if [ -n "$$newstrings" ]; then \
 			echo "$(if $(DEB_COPYRIGHT_CHECK_STRICT),ERROR,WARNING): The following new or changed copyright notices discovered:"; \
 			echo; \
-			echo "$$newstrings" | cat -v; \
+			echo "$$newstrings" | perl -pe 's/[^[:print:][:space:]]//g'; \
 			echo; \
 			echo "To fix the situation please do the following:"; \
 			echo "  1) Investigate the above changes and update debian/copyright as needed"; \
