@@ -29,15 +29,15 @@ include $(_cdbs_rules_path)/buildcore.mk$(_cdbs_makefile_suffix)
 CDBS_BUILD_DEPENDS := $(CDBS_BUILD_DEPENDS), devscripts (>= 2.10.7)
 
 # Set to yes to fail on changed/new hints are found
-#DEB_COPYRIGHT_CHECK_STRICT := yes
+#DEB_COPYRIGHT_CHECK_STRICT = yes
 
 # Single regular expression for files to include or ignore
-DEB_COPYRIGHT_CHECK_REGEX = .*
-#DEB_COPYRIGHT_CHECK_IGNORE_REGEX = ^(debian/.*|(.*/)?config\.(guess|sub|rpath)(\..*)?)$
-DEB_COPYRIGHT_CHECK_IGNORE_REGEX = ^debian/(changelog|copyright(|_hints|_newhints))$
+DEB_COPYRIGHT_CHECK_REGEX ?= .*
+#DEB_COPYRIGHT_CHECK_IGNORE_REGEX ?= ^(debian/.*|(.*/)?config\.(guess|sub|rpath)(\..*)?)$
+DEB_COPYRIGHT_CHECK_IGNORE_REGEX ?= ^debian/(changelog|copyright(|_hints|_newhints))$
 
 # number of lines from the top of each file to investigate
-DEB_COPYRIGHT_CHECK_PARSELINES = 99999
+DEB_COPYRIGHT_CHECK_PARSELINES ?= 99999
 
 pre-build:: debian/stamp-copyright-check
 
