@@ -64,25 +64,31 @@ debian/stamp-copyright-check:
 	'	/^$$/ and $$n++;'\
 	'};'\
 	'foreach $$file (@files) {'\
+	'	$$file->{license} =~ s/\s*\(unversioned\/unknown version\)//;'\
 	'	$$file->{license} =~ s/\s*\(with incorrect FSF address\)//;'\
 	'	$$file->{license} =~ s/\s+\(v([^)]+) or later\)/-$$1+/;'\
 	'	$$file->{license} =~ s/\s+\(v([^)]+)\)/-$$1/;'\
 	'	$$file->{license} =~ s/\s*(\*No copyright\*)\s*// and $$file->{copyright} = $$1;'\
 	'	$$file->{license} =~ s/^\s*(GENERATED FILE)/UNKNOWN/;'\
 	'	$$file->{license} =~ s/\s+(GENERATED FILE)//;'\
+	'	$$file->{copyright} =~ s/^&copy;\s*//;'\
 	'	$$file->{copyright} =~ s/(?<=(\b\d{4}))(?{$$y=$$^N})\s*[,-]\s*((??{$$y+1}))\b/-$$2/g;'\
 	'	$$file->{copyright} =~ s/(?<=\b\d{4})\s*-\s*\d{4}(?=\s*-\s*(\d{4})\b)//g;'\
 	'	$$file->{copyright} =~ s/\b(\d{4}),?\s+([\S^\d])/$$1, $$2/g;'\
 	'	my @ownerlines = grep {/\w\w/} split /\s\/\s/, $$file->{copyright};'\
+	'	my @ownerlines_clean = ();'\
 	'	my %owneryears = ();'\
 	'	for $$ownerline ( @ownerlines ) {'\
 	'		my ($$owneryear, $$owner) = $$ownerline =~ /^([\d-,\s]*)\s*+(.*)/;'\
+	'		$$owner =~ s/^by\s+//;'\
+	'		$$owner =~ s/,?\s+All Rights Reserved\.?//gi;'\
+	'		push @ownerlines_clean, "$$owneryear$$owner";'\
 	'		push @{ $$owneryears{"$$owner"} }, $$owneryear;'\
 	'	};'\
 	'	my @owners = sort keys %owneryears;'\
 	'	my $$pattern = join ("\n", $$file->{license}, @owners);'\
 	'	push @{ $$patternfiles{"$$pattern"} }, $$file->{name};'\
-	'	push @{ $$patternownerlines{"$$pattern"} }, @ownerlines;'\
+	'	push @{ $$patternownerlines{"$$pattern"} }, @ownerlines_clean;'\
 	'	$$patternlicense{"$$pattern"} = $$file->{license};'\
 	'};'\
 	'foreach $$pattern ( sort {'\
