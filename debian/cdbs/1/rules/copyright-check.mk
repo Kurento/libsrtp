@@ -131,6 +131,7 @@ debian/stamp-copyright-check:
 	touch $@
 
 clean::
+	$(if $(DEB_COPYRIGHT_CHECK_STRICT),:,rm -f debian/copyright_newhints)
 	rm -f debian/stamp-copyright-check
 
 endif
