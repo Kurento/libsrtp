@@ -1,7 +1,6 @@
 Source: srtp
 Priority: optional
-Maintainer: Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>
-Uploaders: Jonas Smedegaard <dr@jones.dk>
+Maintainer: Jonas Smedegaard <dr@jones.dk>
 Build-Depends: @cdbs@
 Standards-Version: 3.7.3
 Section: libs
