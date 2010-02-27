@@ -1,3 +1,35 @@
+srtp (1.4.4~dfsg-4) UNRELEASED; urgency=low
+
+  * Add README.source.  Drop custom hints about CDBS.
+  * Update local CDBS snippets:
+    + Consistently use underscore (not dash) in variables.
+    + Bump copyright years.
+    + package-relations.mk:
+      - Merge mixture of versioned and unversioned dependencies
+      - Use unversioned dependencies when satisfied in oldstable
+      - Improve whitespace cleanup
+      - Rewrite and silence applying dependencies
+      - Handle cdbs 0.4.53 dependency (needed when using debhelper v7)
+    + upstream-tarball.mk:
+      - Implement fail-source-not-repackaged rule
+      - Depend unversioned on cdbs (the needed 0.4.39 is in oldstable)
+      - Preserve bzip2 tarballs with source format '3.0 (quilt)'.
+    + copyright-check.mk:
+      - Only warn by default, to not FTBFS. Closes: bug#487070, thanks
+        to Lucas Nussbaum.
+      - Adjust to closer match new proposed copyright format
+      - Ignore no files by default
+      - More aggressive scanning (check top 99999 lines, not just 60)
+      - Simplify more licensing notices and preserve non-ASCII chars
+      - Group hints by sorted owner list (ignoring years)
+      - Limit console output both horisontally and vertically
+      - Use rev123 of draft DEP5 for hints file
+    + Add and use new local package-relations.mk to resolve, cleanup and
+      apply CDBS-declared (build-)dependencies.
+  * Add git-buildpackage config, enabling pristine-tar and signed tags.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sat, 27 Feb 2010 22:16:02 +0100
+
 srtp (1.4.4~dfsg-3) unstable; urgency=low
 
   * Update cdbs tweaks:
