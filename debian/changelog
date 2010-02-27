@@ -27,6 +27,9 @@ srtp (1.4.4~dfsg-4) UNRELEASED; urgency=low
     + Add and use new local package-relations.mk to resolve, cleanup and
       apply CDBS-declared (build-)dependencies.
   * Add git-buildpackage config, enabling pristine-tar and signed tags.
+  * Rewrite copyright file using draft DEP5 rev. 135 format.
+  * Fix tighten build-dependency on debhelper to at least 6.
+  * Relax build-dependency on cdbs to be unversioned.
 
  -- Jonas Smedegaard <dr@jones.dk>  Sat, 27 Feb 2010 22:16:02 +0100
 
