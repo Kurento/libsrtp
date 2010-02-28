@@ -10,7 +10,7 @@ Homepage: http://srtp.sourceforge.net/srtp.html
 
 Package: libsrtp1-dev
 Section: libdevel
-Depends: ${devlibs:Depends}
+Depends: ${devlibs:Depends}, ${misc:Depends}
 Provides: libsrtp-dev
 Conflicts: libsrtp-dev
 Architecture: any
@@ -27,6 +27,7 @@ Description: Secure RTP (SRTP) and UST Reference Implementations - development f
 
 Package: srtp-docs
 Section: doc
+Depends: ${misc:Depends}
 Architecture: all
 Description: Secure RTP (SRTP) and UST Reference Implementations - documentation
  SRTP is a security profile for RTP that adds confidentiality, message
@@ -41,7 +42,7 @@ Description: Secure RTP (SRTP) and UST Reference Implementations - documentation
 
 Package: srtp-utils
 Architecture: any
-Depends: ${shlibs:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Secure RTP (SRTP) and UST Reference Implementations - utilities
  SRTP is a security profile for RTP that adds confidentiality, message
  authentication, and replay protection to that protocol. It is specified
