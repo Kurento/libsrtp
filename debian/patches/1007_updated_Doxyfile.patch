@@ -1,7 +1,10 @@
-diff --git a/doc/Doxyfile b/doc/Doxyfile
-index c6e6a6d..697ef26 100644
---- a/doc/Doxyfile
-+++ b/doc/Doxyfile
+Description: Update Doxyfile as requested by doxygen
+Author: Jonas Smedegaard <dr@jones.dk>
+Last-Update: 2010-02-28
+Index: srtp/doc/Doxyfile
+===================================================================
+--- srtp.orig/doc/Doxyfile
++++ srtp/doc/Doxyfile
 @@ -1,4 +1,4 @@
 -# Doxyfile 1.3-rc3
 +# Doxyfile 1.6.2-20100208
@@ -27,7 +30,7 @@ index c6e6a6d..697ef26 100644
  # The PROJECT_NAME tag is a single word (or a sequence of words surrounded 
  # by quotes) that should identify the project.
  
-@@ -32,17 +40,258 @@ PROJECT_NUMBER         = 1.3.22
+@@ -32,17 +40,258 @@
  
  OUTPUT_DIRECTORY       = 
  
@@ -290,7 +293,7 @@ index c6e6a6d..697ef26 100644
  # If the EXTRACT_ALL tag is set to YES doxygen will assume all entities in 
  # documentation are documented, even if no documentation was available. 
  # Private class members and static file members will be hidden unless 
-@@ -66,6 +315,21 @@ EXTRACT_STATIC         = NO
+@@ -66,6 +315,21 @@
  
  EXTRACT_LOCAL_CLASSES  = YES
  
@@ -312,7 +315,7 @@ index c6e6a6d..697ef26 100644
  # If the HIDE_UNDOC_MEMBERS tag is set to YES, Doxygen will hide all 
  # undocumented members of documented classes, files or namespaces. 
  # If set to NO (the default) these members will be included in the 
-@@ -76,7 +340,7 @@ HIDE_UNDOC_MEMBERS     = YES
+@@ -76,7 +340,7 @@
  
  # If the HIDE_UNDOC_CLASSES tag is set to YES, Doxygen will hide all 
  # undocumented classes that are normally visible in the class hierarchy. 
@@ -321,7 +324,7 @@ index c6e6a6d..697ef26 100644
  # overviews. This option has no effect if EXTRACT_ALL is enabled.
  
  HIDE_UNDOC_CLASSES     = NO
-@@ -95,47 +359,6 @@ HIDE_FRIEND_COMPOUNDS  = NO
+@@ -95,47 +359,6 @@
  
  HIDE_IN_BODY_DOCS      = NO
  
@@ -369,7 +372,7 @@ index c6e6a6d..697ef26 100644
  # The INTERNAL_DOCS tag determines if documentation 
  # that is typed after a \internal command is included. If the tag is set 
  # to NO (the default) then the documentation will be excluded. 
-@@ -144,65 +367,30 @@ STRIP_FROM_PATH        =
+@@ -144,65 +367,30 @@
  INTERNAL_DOCS          = NO
  
  # If the CASE_SENSE_NAMES tag is set to NO then Doxygen will only generate 
@@ -412,12 +415,12 @@ index c6e6a6d..697ef26 100644
 -# comment as the brief description. If set to NO, the JavaDoc 
 -# comments  will behave just like the Qt-style comments (thus requiring an 
 -# explict @brief command for a brief description.
+-
+-JAVADOC_AUTOBRIEF      = NO
 +# If the FORCE_LOCAL_INCLUDES tag is set to YES then Doxygen
 +# will list include files with double quotes in the documentation
 +# rather than with sharp brackets.
  
--JAVADOC_AUTOBRIEF      = NO
--
 -# The MULTILINE_CPP_IS_BRIEF tag can be set to YES to make Doxygen 
 -# treat a multi-line C++ special comment block (i.e. a block of //! or /// 
 -# comments) as a brief description. This used to be the default behaviour. 
@@ -442,7 +445,7 @@ index c6e6a6d..697ef26 100644
  
  # If the INLINE_INFO tag is set to YES (the default) then a tag [inline] 
  # is inserted in the documentation for inline members.
-@@ -216,17 +404,32 @@ INLINE_INFO            = YES
+@@ -216,17 +404,32 @@
  
  SORT_MEMBER_DOCS       = YES
  
@@ -483,7 +486,7 @@ index c6e6a6d..697ef26 100644
  
  # The GENERATE_TODOLIST tag can be used to enable (YES) or 
  # disable (NO) the todo list. This list is created by putting \todo 
-@@ -252,22 +455,13 @@ GENERATE_BUGLIST       = YES
+@@ -252,22 +455,13 @@
  
  GENERATE_DEPRECATEDLIST= YES
  
@@ -507,7 +510,7 @@ index c6e6a6d..697ef26 100644
  # the documentation. If the initializer consists of more lines than specified 
  # here it will be hidden. Use a value of 0 to hide initializers completely. 
  # The appearance of the initializer of individual variables and defines in the 
-@@ -276,26 +470,50 @@ ENABLED_SECTIONS       =
+@@ -276,26 +470,50 @@
  
  MAX_INITIALIZER_LINES  = 30
  
@@ -572,7 +575,7 @@ index c6e6a6d..697ef26 100644
  #---------------------------------------------------------------------------
  # configuration options related to warning and progress messages
  #---------------------------------------------------------------------------
-@@ -324,10 +542,20 @@ WARN_IF_UNDOCUMENTED   = YES
+@@ -324,10 +542,20 @@
  
  WARN_IF_DOC_ERROR      = YES
  
@@ -594,7 +597,7 @@ index c6e6a6d..697ef26 100644
  
  WARN_FORMAT            = "$file:$line: $text"
  
-@@ -346,14 +574,27 @@ WARN_LOGFILE           =
+@@ -346,14 +574,27 @@
  # directories like "/usr/src/myproject". Separate the files or directories 
  # with spaces.
  
@@ -625,7 +628,7 @@ index c6e6a6d..697ef26 100644
  
  FILE_PATTERNS          = 
  
-@@ -369,17 +610,28 @@ RECURSIVE              = NO
+@@ -369,17 +610,28 @@
  
  EXCLUDE                = 
  
@@ -657,7 +660,7 @@ index c6e6a6d..697ef26 100644
  # The EXAMPLE_PATH tag can be used to specify one or more files or 
  # directories that contain example code fragments that are included (see 
  # the \include command).
-@@ -412,9 +664,22 @@ IMAGE_PATH             =
+@@ -412,9 +664,22 @@
  # is the value of the INPUT_FILTER tag, and <input-file> is the name of an 
  # input file. Doxygen will then use the output that the filter program writes 
  # to standard output.
@@ -680,7 +683,7 @@ index c6e6a6d..697ef26 100644
  # If the FILTER_SOURCE_FILES tag is set to YES, the input filter (if set using 
  # INPUT_FILTER) will be used to filter the input files when producing source 
  # files to browse (i.e. when SOURCE_BROWSER is set to YES).
-@@ -427,6 +692,8 @@ FILTER_SOURCE_FILES    = NO
+@@ -427,6 +692,8 @@
  
  # If the SOURCE_BROWSER tag is set to YES then a list of source files will 
  # be generated. Documented entities will be cross-referenced with these sources.
@@ -689,7 +692,7 @@ index c6e6a6d..697ef26 100644
  
  SOURCE_BROWSER         = NO
  
-@@ -441,18 +708,40 @@ INLINE_SOURCES         = NO
+@@ -441,18 +708,40 @@
  
  STRIP_CODE_COMMENTS    = YES
  
@@ -732,7 +735,7 @@ index c6e6a6d..697ef26 100644
  #---------------------------------------------------------------------------
  # configuration options related to the alphabetical class index
  #---------------------------------------------------------------------------
-@@ -509,22 +798,64 @@ HTML_HEADER            =
+@@ -509,22 +798,64 @@
  
  HTML_FOOTER            = 
  
@@ -800,7 +803,7 @@ index c6e6a6d..697ef26 100644
  # of the generated HTML documentation.
  
  GENERATE_HTMLHELP      = NO
-@@ -532,14 +863,14 @@ GENERATE_HTMLHELP      = NO
+@@ -532,14 +863,14 @@
  # If the GENERATE_HTMLHELP tag is set to YES, the CHM_FILE tag can 
  # be used to specify the file name of the resulting .chm file. You 
  # can add a path in front of the file if the result should not be 
@@ -818,7 +821,7 @@ index c6e6a6d..697ef26 100644
  
  HHC_LOCATION           = 
  
-@@ -549,6 +880,12 @@ HHC_LOCATION           =
+@@ -549,6 +880,12 @@
  
  GENERATE_CHI           = NO
  
@@ -831,7 +834,7 @@ index c6e6a6d..697ef26 100644
  # If the GENERATE_HTMLHELP tag is set to YES, the BINARY_TOC flag 
  # controls whether a binary table of contents is generated (YES) or a 
  # normal table of contents (NO) in the .chm file.
-@@ -556,10 +893,75 @@ GENERATE_CHI           = NO
+@@ -556,10 +893,75 @@
  BINARY_TOC             = NO
  
  # The TOC_EXPAND flag can be set to YES to add extra items for group members 
@@ -908,7 +911,7 @@ index c6e6a6d..697ef26 100644
  # The DISABLE_INDEX tag can be used to turn on/off the condensed index at 
  # top of each HTML page. The value NO (the default) enables the index and 
  # the value YES disables it.
-@@ -571,21 +973,48 @@ DISABLE_INDEX          = NO
+@@ -571,21 +973,48 @@
  
  ENUM_VALUES_PER_LINE   = 4
  
@@ -962,7 +965,7 @@ index c6e6a6d..697ef26 100644
  #---------------------------------------------------------------------------
  # configuration options related to the LaTeX output
  #---------------------------------------------------------------------------
-@@ -603,6 +1032,9 @@ LATEX_OUTPUT           = latex
+@@ -603,6 +1032,9 @@
  
  # The LATEX_CMD_NAME tag can be used to specify the LaTeX command name to be 
  # invoked. If left blank `latex' will be used as the default command name.
@@ -972,7 +975,7 @@ index c6e6a6d..697ef26 100644
  
  LATEX_CMD_NAME         = latex
  
-@@ -656,12 +1088,22 @@ USE_PDFLATEX           = YES
+@@ -656,12 +1088,22 @@
  
  LATEX_BATCHMODE        = NO
  
@@ -996,7 +999,7 @@ index c6e6a6d..697ef26 100644
  # other RTF readers or editors.
  
  GENERATE_RTF           = NO
-@@ -688,7 +1130,7 @@ COMPACT_RTF            = NO
+@@ -688,7 +1130,7 @@
  RTF_HYPERLINKS         = NO
  
  # Load stylesheet definitions from file. Syntax is similar to doxygen's 
@@ -1005,7 +1008,7 @@ index c6e6a6d..697ef26 100644
  # replacements, missing definitions are set to their default value.
  
  RTF_STYLESHEET_FILE    = 
-@@ -732,12 +1174,16 @@ MAN_LINKS              = NO
+@@ -732,12 +1174,16 @@
  
  # If the GENERATE_XML tag is set to YES Doxygen will 
  # generate an XML file that captures the structure of 
@@ -1025,7 +1028,7 @@ index c6e6a6d..697ef26 100644
  # The XML_SCHEMA tag can be used to specify an XML schema, 
  # which can be used by a validating XML parser to check the 
  # syntax of the XML files.
-@@ -750,6 +1196,13 @@ XML_SCHEMA             =
+@@ -750,6 +1196,13 @@
  
  XML_DTD                = 
  
@@ -1039,7 +1042,7 @@ index c6e6a6d..697ef26 100644
  #---------------------------------------------------------------------------
  # configuration options for the AutoGen Definitions output
  #---------------------------------------------------------------------------
-@@ -781,8 +1234,10 @@ GENERATE_PERLMOD       = NO
+@@ -781,8 +1234,10 @@
  PERLMOD_LATEX          = NO
  
  # If the PERLMOD_PRETTY tag is set to YES the Perl module output will be 
@@ -1052,7 +1055,7 @@ index c6e6a6d..697ef26 100644
  # tag is set to NO the size of the Perl module output will be much smaller 
  # and Perl will parse it just the same.
  
-@@ -814,7 +1269,7 @@ MACRO_EXPANSION        = NO
+@@ -814,7 +1269,7 @@
  
  # If the EXPAND_ONLY_PREDEF and MACRO_EXPANSION tags are both set to YES 
  # then the macro expansion is limited to the macros specified with the 
@@ -1061,7 +1064,7 @@ index c6e6a6d..697ef26 100644
  
  EXPAND_ONLY_PREDEF     = NO
  
-@@ -840,7 +1295,9 @@ INCLUDE_FILE_PATTERNS  =
+@@ -840,7 +1295,9 @@
  # are defined before the preprocessor is started (similar to the -D option of 
  # gcc). The argument of the tag is a list of macros of the form: name 
  # or name=definition (no spaces). If the definition and the = are 
@@ -1072,7 +1075,7 @@ index c6e6a6d..697ef26 100644
  
  PREDEFINED             = 
  
-@@ -854,16 +1311,31 @@ EXPAND_AS_DEFINED      =
+@@ -854,16 +1311,31 @@
  # If the SKIP_FUNCTION_MACROS tag is set to YES (the default) then 
  # doxygen's preprocessor will remove all function-like macros that are alone 
  # on a line, have an all uppercase name, and do not end with a semicolon. Such 
@@ -1108,7 +1111,7 @@ index c6e6a6d..697ef26 100644
  
  TAGFILES               = 
  
-@@ -894,13 +1366,23 @@ PERL_PATH              = /usr/bin/perl
+@@ -894,13 +1366,23 @@
  #---------------------------------------------------------------------------
  
  # If the CLASS_DIAGRAMS tag is set to YES (the default) Doxygen will 
@@ -1136,7 +1139,7 @@ index c6e6a6d..697ef26 100644
  # If set to YES, the inheritance and collaboration graphs will hide 
  # inheritance and usage relations if the target is undocumented 
  # or is not a class.
-@@ -914,6 +1396,29 @@ HIDE_UNDOC_RELATIONS   = YES
+@@ -914,6 +1396,29 @@
  
  HAVE_DOT               = NO
  
@@ -1166,7 +1169,7 @@ index c6e6a6d..697ef26 100644
  # If the CLASS_GRAPH and HAVE_DOT tags are set to YES then doxygen 
  # will generate a graph for each documented class showing the direct and 
  # indirect inheritance relations. Setting this tag to YES will force the 
-@@ -928,6 +1433,17 @@ CLASS_GRAPH            = YES
+@@ -928,6 +1433,17 @@
  
  COLLABORATION_GRAPH    = YES
  
@@ -1184,7 +1187,7 @@ index c6e6a6d..697ef26 100644
  # If set to YES, the inheritance and collaboration graphs will show the 
  # relations between templates and their instances.
  
-@@ -947,11 +1463,34 @@ INCLUDE_GRAPH          = YES
+@@ -947,11 +1463,34 @@
  
  INCLUDED_BY_GRAPH      = YES
  
@@ -1219,7 +1222,7 @@ index c6e6a6d..697ef26 100644
  # The DOT_IMAGE_FORMAT tag can be used to set the image format of the images 
  # generated by dot. Possible values are png, jpg, or gif
  # If left blank png will be used.
-@@ -959,7 +1498,7 @@ GRAPHICAL_HIERARCHY    = YES
+@@ -959,7 +1498,7 @@
  DOT_IMAGE_FORMAT       = png
  
  # The tag DOT_PATH can be used to specify the path where the dot tool can be 
@@ -1228,11 +1231,19 @@ index c6e6a6d..697ef26 100644
  
  DOT_PATH               = 
  
-@@ -969,21 +1508,40 @@ DOT_PATH               =
+@@ -969,21 +1508,40 @@
  
  DOTFILE_DIRS           = 
  
 -# The MAX_DOT_GRAPH_WIDTH tag can be used to set the maximum allowed width 
+-# (in pixels) of the graphs generated by dot. If a graph becomes larger than 
+-# this value, doxygen will try to truncate the graph, so that it fits within 
+-# the specified constraint. Beware that most browsers cannot cope with very 
+-# large images.
+-
+-MAX_DOT_GRAPH_WIDTH    = 1024
+-
+-# The MAX_DOT_GRAPH_HEIGHT tag can be used to set the maximum allows height 
 -# (in pixels) of the graphs generated by dot. If a graph becomes larger than 
 -# this value, doxygen will try to truncate the graph, so that it fits within 
 -# the specified constraint. Beware that most browsers cannot cope with very 
@@ -1244,15 +1255,9 @@ index c6e6a6d..697ef26 100644
 +# number of direct children of the root node in a graph is already larger than
 +# DOT_GRAPH_MAX_NODES then the graph will not be shown at all. Also note
 +# that the size of a graph can be further restricted by MAX_DOT_GRAPH_DEPTH.
- 
--MAX_DOT_GRAPH_WIDTH    = 1024
++
 +DOT_GRAPH_MAX_NODES    = 50
- 
--# The MAX_DOT_GRAPH_HEIGHT tag can be used to set the maximum allows height 
--# (in pixels) of the graphs generated by dot. If a graph becomes larger than 
--# this value, doxygen will try to truncate the graph, so that it fits within 
--# the specified constraint. Beware that most browsers cannot cope with very 
--# large images.
++
 +# The MAX_DOT_GRAPH_DEPTH tag can be used to set the maximum depth of the
 +# graphs generated by dot. A depth value of 3 means that only nodes reachable
 +# from the root by following a path via at most 3 edges will be shown. Nodes
@@ -1260,8 +1265,7 @@ index c6e6a6d..697ef26 100644
 +# option to 1 or 2 may greatly reduce the computation time needed for large
 +# code bases. Also note that the size of a graph can be further restricted by
 +# DOT_GRAPH_MAX_NODES. Using a depth of 0 means no depth restriction.
- 
--MAX_DOT_GRAPH_HEIGHT   = 1024
++
 +MAX_DOT_GRAPH_DEPTH    = 0
 +
 +# Set the DOT_TRANSPARENT tag to YES to generate images with a transparent
@@ -1276,12 +1280,13 @@ index c6e6a6d..697ef26 100644
 +# files in one run (i.e. multiple -o and -T options on the command line). This
 +# makes dot run faster, but since only newer versions of dot (>1.8.10)
 +# support this, this feature is disabled by default.
-+
+ 
+-MAX_DOT_GRAPH_HEIGHT   = 1024
 +DOT_MULTI_TARGETS      = YES
  
  # If the GENERATE_LEGEND tag is set to YES (the default) Doxygen will 
  # generate a legend page explaining the meaning of the various boxes and 
-@@ -992,51 +1550,7 @@ MAX_DOT_GRAPH_HEIGHT   = 1024
+@@ -992,51 +1550,7 @@
  GENERATE_LEGEND        = YES
  
  # If the DOT_CLEANUP tag is set to YES (the default) Doxygen will 

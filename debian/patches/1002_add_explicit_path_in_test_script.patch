@@ -1,6 +1,10 @@
-diff -ruNp srtp-1.4.2.dfsg.orig/test/rtpw_test.sh srtp-1.4.2.dfsg/test/rtpw_test.sh
---- srtp-1.4.2.dfsg.orig/test/rtpw_test.sh	2007-09-03 00:11:15.000000000 +0200
-+++ srtp-1.4.2.dfsg/test/rtpw_test.sh	2007-09-03 00:15:37.000000000 +0200
+Description: Use explicit path to rtpw binary in test script
+Author: Jonas Smedegaard <dr@jones.dk>
+Last-Update: 2010-02-28
+Index: srtp/test/rtpw_test.sh
+===================================================================
+--- srtp.orig/test/rtpw_test.sh
++++ srtp/test/rtpw_test.sh
 @@ -4,7 +4,7 @@
  # 
  # tests the rtpw sender and receiver functions

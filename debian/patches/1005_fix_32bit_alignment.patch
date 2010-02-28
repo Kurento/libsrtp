@@ -1,5 +1,13 @@
---- srtp-1.4.4~dfsg.orig/test/srtp_driver.c	2006-09-18 14:41:35.000000000 +0100
-+++ srtp-1.4.4~dfsg/test/srtp_driver.c	2008-03-11 17:08:32.000000000 +0000
+Description: Fix 32bit alignment
+Author: "Martin Guy" <martinwguy@yahoo.it>
+Origin: vendor, http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=5;bug=470505
+Bug: http://sourceforge.net/tracker/index.php?func=detail&aid=1912057&group_id=38894&atid=423799
+Bug-Debian: http://bugs.debian.org/470505
+Last-Update: 2010-02-28
+Index: srtp/test/srtp_driver.c
+===================================================================
+--- srtp.orig/test/srtp_driver.c
++++ srtp/test/srtp_driver.c
 @@ -1129,7 +1129,6 @@
   * These packets were made with the default SRTP policy.
   */

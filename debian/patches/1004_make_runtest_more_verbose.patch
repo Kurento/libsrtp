@@ -1,6 +1,13 @@
---- a/Makefile.in
-+++ b/Makefile.in
-@@ -19,14 +19,14 @@ all: test 
+Description: Avoid runtest silencing its output
+Author: Victor Seva <linuxmaniac@torreviejawireless.org>
+Origin: vendor, http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=10;bug=460534
+Bug-Debian: http://bugs.debian.org/460534
+Last-Update: 2010-02-28
+Index: srtp/Makefile.in
+===================================================================
+--- srtp.orig/Makefile.in
++++ srtp/Makefile.in
+@@ -19,14 +19,14 @@
  
  runtest: build_table_apps test
  	@echo "running libsrtp test applications..."
@@ -23,9 +30,11 @@
  	@echo "libsrtp test applications passed."
  	$(MAKE) -C crypto runtest
  
---- a/crypto/Makefile.in
-+++ b/crypto/Makefile.in
-@@ -56,12 +56,12 @@ runtest: libcryptomodule.a $(testapp)
+Index: srtp/crypto/Makefile.in
+===================================================================
+--- srtp.orig/crypto/Makefile.in
++++ srtp/crypto/Makefile.in
+@@ -56,12 +56,12 @@
  	test/env$(EXE) # print out information on the build environment
  	@echo "running libcryptomodule test applications..."
  	test `test/aes_calc $k $p` = $c
