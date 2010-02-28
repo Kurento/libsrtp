@@ -4,3 +4,4 @@
 1004_make_runtest_more_verbose.patch
 1005_fix_32bit_alignment.patch
 1006_fix_unsigned_char.patch
+1007_updated_Doxyfile.patch
