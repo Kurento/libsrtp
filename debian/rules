@@ -18,7 +18,6 @@
 
 include /usr/share/cdbs/1/class/autotools.mk
 include /usr/share/cdbs/1/rules/debhelper.mk
-include /usr/share/cdbs/1/rules/patchsys-quilt.mk
 include debian/cdbs/1/rules/copyright-check.mk
 include debian/cdbs/1/rules/buildinfo.mk
 include debian/cdbs/1/rules/upstream-tarball.mk
