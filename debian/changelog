@@ -1,5 +1,7 @@
-srtp (1.4.4~dfsg-4) UNRELEASED; urgency=low
+srtp (1.4.4~dfsg-4) unstable; urgency=low
 
+  * Maintain package alone again (VOIP team clearly don't care: recently
+    dropped the package from Debian with only few days notice).
   * Add README.source.  Drop custom hints about CDBS.
   * Update local CDBS snippets:
     + Consistently use underscore (not dash) in variables.
@@ -15,8 +17,6 @@ srtp (1.4.4~dfsg-4) UNRELEASED; urgency=low
       - Depend unversioned on cdbs (the needed 0.4.39 is in oldstable)
       - Preserve bzip2 tarballs with source format '3.0 (quilt)'.
     + copyright-check.mk:
-      - Only warn by default, to not FTBFS. Closes: bug#487070, thanks
-        to Lucas Nussbaum.
       - Adjust to closer match new proposed copyright format
       - Ignore no files by default
       - More aggressive scanning (check top 99999 lines, not just 60)
@@ -30,8 +30,19 @@ srtp (1.4.4~dfsg-4) UNRELEASED; urgency=low
   * Rewrite copyright file using draft DEP5 rev. 135 format.
   * Fix tighten build-dependency on debhelper to at least 6.
   * Relax build-dependency on cdbs to be unversioned.
+  * Use source format '3.0 "quilt"'. Stop including patchsys-quilt.mk.
+    Stop build-depending on quilt or patchutils.
+  * Bump Standards-Version to 3.8.4.
+  * Have all packages depend on ${misc:Depends}, thanks to lintian.
+  * Add proper license header to debian/rules.
+  * Put aside stray upstream-shipped automade files during build.
+  * Add patch 1007 updating Doxyfile, as requested by doxygen.
+  * Refresh patches and add DEP3 proposed headers.
+  * Fix comment out non-existing *.so from debhelper install file.
+  * Rename libsrtp1-dev → libsrtp0-dev: Old number was wrongly resolved
+    from major version. Have new package conflict/replace old one.
 
- -- Jonas Smedegaard <dr@jones.dk>  Sat, 27 Feb 2010 22:16:02 +0100
+ -- Jonas Smedegaard <dr@jones.dk>  Sun, 28 Feb 2010 03:08:52 +0100
 
 srtp (1.4.4~dfsg-3) unstable; urgency=low
 

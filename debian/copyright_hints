@@ -98,15 +98,17 @@ Files: ./CHANGES,
 	./debian/control,
 	./debian/control.in,
 	./debian/gbp.conf,
-	./debian/libsrtp1-dev.install,
+	./debian/libsrtp0-dev.install,
 	./debian/patches/1001_negative_valued_char_must_be_signed.patch,
 	./debian/patches/1002_add_explicit_path_in_test_script.patch,
 	./debian/patches/1003_fix_mips_namespace_collision.patch,
 	./debian/patches/1004_make_runtest_more_verbose.patch,
 	./debian/patches/1005_fix_32bit_alignment.patch,
 	./debian/patches/1006_fix_unsigned_char.patch,
+	./debian/patches/1007_updated_Doxyfile.patch,
 	./debian/patches/README,
 	./debian/patches/series,
+	./debian/source/format,
 	./debian/srtp-utils.install,
 	./debian/srtp-utils.links,
 	./debian/watch,
@@ -130,9 +132,11 @@ License: UNKNOWN
 
 Files: ./debian/cdbs/1/rules/buildinfo.mk,
 	./debian/cdbs/1/rules/package-relations.mk,
-	./debian/cdbs/1/rules/upstream-tarball.mk
+	./debian/cdbs/1/rules/upstream-tarball.mk,
+	./debian/rules
 Copyright: 2004-2007, Jonas Smedegaard <dr@jones.dk>
 	2007-2008, Jonas Smedegaard <dr@jones.dk>
+	2007-2008,2010, Jonas Smedegaard <dr@jones.dk>
 	2008, Jonas Smedegaard <dr@jones.dk>
 License: GPL
  FIXME
@@ -196,11 +200,6 @@ License: UNKNOWN
 
 Files: ./doc/header.template
 Copyright: 2001-2005, David A. McGrew, Cisco Systems, Inc
-License: UNKNOWN
- FIXME
-
-Files: ./debian/rules
-Copyright: 2007-2008, Jonas Smedegaard <dr@jones.dk>
 License: UNKNOWN
  FIXME
 

@@ -1,19 +1,19 @@
 Source: srtp
 Priority: optional
-Maintainer: Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>
-Uploaders: Jonas Smedegaard <dr@jones.dk>
-Build-Depends: autotools-dev, debhelper (>= 6), quilt, patchutils (>= 0.2.25), devscripts (>= 2.10.7), dh-buildinfo, cdbs, doxygen, texlive-latex-recommended, texlive-fonts-recommended, procps, miscfiles
-Standards-Version: 3.7.3
+Maintainer: Jonas Smedegaard <dr@jones.dk>
+Build-Depends: autotools-dev, debhelper (>= 6), devscripts (>= 2.10.7), dh-buildinfo, cdbs, doxygen, texlive-latex-recommended, texlive-fonts-recommended, procps, miscfiles
+Standards-Version: 3.8.4
 Section: libs
 Vcs-Git: git://git.debian.org/git/collab-maint/srtp.git
 Vcs-Browser: http://git.debian.org/?p=collab-maint/srtp.git;a=summary
 Homepage: http://srtp.sourceforge.net/srtp.html
 
-Package: libsrtp1-dev
+Package: libsrtp0-dev
 Section: libdevel
-Depends: ${devlibs:Depends}
+Depends: ${devlibs:Depends}, ${misc:Depends}
 Provides: libsrtp-dev
-Conflicts: libsrtp-dev
+Conflicts: libsrtp-dev, libsrtp1-dev (<= 1.4.4)
+Replaces: libsrtp1-dev (<= 1.4.4)
 Architecture: any
 Description: Secure RTP (SRTP) and UST Reference Implementations - development files
  SRTP is a security profile for RTP that adds confidentiality, message
@@ -28,6 +28,7 @@ Description: Secure RTP (SRTP) and UST Reference Implementations - development f
 
 Package: srtp-docs
 Section: doc
+Depends: ${misc:Depends}
 Architecture: all
 Description: Secure RTP (SRTP) and UST Reference Implementations - documentation
  SRTP is a security profile for RTP that adds confidentiality, message
@@ -42,7 +43,7 @@ Description: Secure RTP (SRTP) and UST Reference Implementations - documentation
 
 Package: srtp-utils
 Architecture: any
-Depends: ${shlibs:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Secure RTP (SRTP) and UST Reference Implementations - utilities
  SRTP is a security profile for RTP that adds confidentiality, message
  authentication, and replay protection to that protocol. It is specified
