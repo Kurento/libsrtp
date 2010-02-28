@@ -8,11 +8,12 @@ Vcs-Git: git://git.debian.org/git/collab-maint/srtp.git
 Vcs-Browser: http://git.debian.org/?p=collab-maint/srtp.git;a=summary
 Homepage: http://srtp.sourceforge.net/srtp.html
 
-Package: libsrtp1-dev
+Package: libsrtp0-dev
 Section: libdevel
 Depends: ${devlibs:Depends}, ${misc:Depends}
 Provides: libsrtp-dev
-Conflicts: libsrtp-dev
+Conflicts: libsrtp-dev, libsrtp1-dev (<= 1.4.4)
+Replaces: libsrtp1-dev (<= 1.4.4)
 Architecture: any
 Description: Secure RTP (SRTP) and UST Reference Implementations - development files
  SRTP is a security profile for RTP that adds confidentiality, message
