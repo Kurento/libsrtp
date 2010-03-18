@@ -72,10 +72,10 @@ post-patches::
 	chmod +x test/rtpw_test.sh
 
 # Needed by upstream build
-CDBS_BUILD_DEPENDS := $(CDBS_BUILD_DEPENDS), doxygen, texlive-latex-recommended, texlive-fonts-recommended
+CDBS_BUILD_DEPENDS += , doxygen, texlive-latex-recommended, texlive-fonts-recommended
 
 # Needed by upstream build tests
-CDBS_BUILD_DEPENDS := $(CDBS_BUILD_DEPENDS), procps, miscfiles
+CDBS_BUILD_DEPENDS += , procps, miscfiles
 
 # Resolve, cleanup and apply CDBS-declared dependencies
 include debian/cdbs/1/rules/package-relations.mk
