@@ -3,10 +3,8 @@ Author: Thiemo Seufer <ths@networkno.de>
 Origin: vendor, http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=24;bug=439976
 Bug-Debian: http://bugs.debian.org/439976
 Last-Update: 2010-02-28
-Index: srtp/test/srtp_driver.c
-===================================================================
---- srtp.orig/test/srtp_driver.c
-+++ srtp/test/srtp_driver.c
+--- a/test/srtp_driver.c
++++ b/test/srtp_driver.c
 @@ -314,7 +314,7 @@
    if (do_codec_timing) {
      srtp_policy_t policy;

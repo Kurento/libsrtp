@@ -3,10 +3,8 @@ Author: Victor Seva <linuxmaniac@torreviejawireless.org>
 Origin: vendor, http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=10;bug=460534
 Bug-Debian: http://bugs.debian.org/460534
 Last-Update: 2010-02-28
-Index: srtp/Makefile.in
-===================================================================
---- srtp.orig/Makefile.in
-+++ srtp/Makefile.in
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -19,14 +19,14 @@
  
  runtest: build_table_apps test
@@ -30,10 +28,8 @@ Index: srtp/Makefile.in
  	@echo "libsrtp test applications passed."
  	$(MAKE) -C crypto runtest
  
-Index: srtp/crypto/Makefile.in
-===================================================================
---- srtp.orig/crypto/Makefile.in
-+++ srtp/crypto/Makefile.in
+--- a/crypto/Makefile.in
++++ b/crypto/Makefile.in
 @@ -56,12 +56,12 @@
  	test/env$(EXE) # print out information on the build environment
  	@echo "running libcryptomodule test applications..."

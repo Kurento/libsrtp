@@ -1,10 +1,8 @@
 Description: Update Doxyfile as requested by doxygen
 Author: Jonas Smedegaard <dr@jones.dk>
 Last-Update: 2010-02-28
-Index: srtp/doc/Doxyfile
-===================================================================
---- srtp.orig/doc/Doxyfile
-+++ srtp/doc/Doxyfile
+--- a/doc/Doxyfile
++++ b/doc/Doxyfile
 @@ -1,4 +1,4 @@
 -# Doxyfile 1.3-rc3
 +# Doxyfile 1.6.2-20100208
