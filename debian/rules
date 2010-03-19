@@ -71,11 +71,21 @@ clean::
 post-patches::
 	chmod +x test/rtpw_test.sh
 
+# Let d-shlibs calculate development package dependencies
+#  and handle shared library install
+binary-post-install/libsrtp0::
+	d-shlibmove --commit \
+		--movedev "debian/tmp/usr/include/srtp/*" usr/include/srtp/ \
+		debian/tmp/usr/lib/libsrtp.so
+
 # Needed by upstream build
 CDBS_BUILD_DEPENDS += , doxygen, texlive-latex-recommended, texlive-fonts-recommended
 
 # Needed by upstream build tests
 CDBS_BUILD_DEPENDS += , procps, miscfiles
+
+# Needed for our packaging
+CDBS_BUILD_DEPENDS += , d-shlibs
 
 # Resolve, cleanup and apply CDBS-declared dependencies
 include debian/cdbs/1/rules/package-relations.mk

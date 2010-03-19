@@ -10,7 +10,7 @@ Homepage: http://srtp.sourceforge.net/srtp.html
 
 Package: libsrtp0-dev
 Section: libdevel
-Depends: ${devlibs:Depends}, ${misc:Depends}
+Depends: ${devlibs:Depends}, ${misc:Depends}, libsrtp0 (= ${binary:Version})
 Provides: libsrtp-dev
 Conflicts: libsrtp-dev, libsrtp1-dev (<= 1.4.4)
 Replaces: libsrtp1-dev (<= 1.4.4)
@@ -25,6 +25,22 @@ Description: Secure RTP (SRTP) and UST Reference Implementations - development f
  supporting cryptographic kernel.
  .
  This package contains the development headers and static libraries.
+
+Package: libsrtp0
+Section: libs
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Suggests: srtp-utils
+Architecture: any
+Description: Secure RTP (SRTP) and UST Reference Implementations - shared library
+ SRTP is a security profile for RTP that adds confidentiality, message
+ authentication, and replay protection to that protocol. It is specified
+ in RFC 3711.
+ .
+ LibSRTP provides an implementation of the Secure Real-time Transport
+ Protocol (SRTP), the Universal Security Transform (UST), and a
+ supporting cryptographic kernel.
+ .
+ This package contains the shared libraries.
 
 Package: srtp-docs
 Section: doc
