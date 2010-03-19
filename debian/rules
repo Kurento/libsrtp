@@ -67,7 +67,7 @@ clean::
 	rm -f doc/*.pdf
 	rm -f debian/stamp-make-docs
 
-# Make executable a shell script applied by patch 0001.
+# Ensure test script is executable
 post-patches::
 	chmod +x test/rtpw_test.sh
 
