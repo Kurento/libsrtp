@@ -98,7 +98,6 @@ Files: ./CHANGES,
 	./debian/control,
 	./debian/control.in,
 	./debian/gbp.conf,
-	./debian/libsrtp0-dev.install,
 	./debian/patches/1001_negative_valued_char_must_be_signed.patch,
 	./debian/patches/1002_add_explicit_path_in_test_script.patch,
 	./debian/patches/1003_fix_mips_namespace_collision.patch,
@@ -106,6 +105,7 @@ Files: ./CHANGES,
 	./debian/patches/1005_fix_32bit_alignment.patch,
 	./debian/patches/1006_fix_unsigned_char.patch,
 	./debian/patches/1007_updated_Doxyfile.patch,
+	./debian/patches/1008_shared-lib.patch,
 	./debian/patches/README,
 	./debian/patches/series,
 	./debian/source/format,
@@ -128,17 +128,6 @@ Files: ./CHANGES,
 	./undos.sh
 Copyright: *No copyright*
 License: UNKNOWN
- FIXME
-
-Files: ./debian/cdbs/1/rules/buildinfo.mk,
-	./debian/cdbs/1/rules/package-relations.mk,
-	./debian/cdbs/1/rules/upstream-tarball.mk,
-	./debian/rules
-Copyright: 2004-2007, Jonas Smedegaard <dr@jones.dk>
-	2007-2008, Jonas Smedegaard <dr@jones.dk>
-	2007-2008,2010, Jonas Smedegaard <dr@jones.dk>
-	2008, Jonas Smedegaard <dr@jones.dk>
-License: GPL
  FIXME
 
 Files: ./crypto/include/kernel_compat.h,
@@ -180,8 +169,8 @@ Copyright: 2001-2005, Cisco Systems, Inc.
 License: BSD (3 clause)
  FIXME
 
-Files: ./debian/cdbs/1/rules/copyright-check.mk
-Copyright: 
+Files: ./debian/rules
+Copyright: 2007-2008,2010, Jonas Smedegaard <dr@jones.dk>
 License: GPL
  FIXME
 

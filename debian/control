@@ -1,7 +1,7 @@
 Source: srtp
 Priority: optional
 Maintainer: Jonas Smedegaard <dr@jones.dk>
-Build-Depends: autotools-dev, debhelper (>= 6), devscripts (>= 2.10.7), dh-buildinfo, cdbs, doxygen, texlive-latex-recommended, texlive-fonts-recommended, procps, miscfiles
+Build-Depends: cdbs, autotools-dev, debhelper (>= 6), doxygen, texlive-latex-recommended, texlive-fonts-recommended, procps, miscfiles, d-shlibs
 Standards-Version: 3.8.4
 Section: libs
 Vcs-Git: git://git.debian.org/git/collab-maint/srtp.git
@@ -10,11 +10,11 @@ Homepage: http://srtp.sourceforge.net/srtp.html
 
 Package: libsrtp0-dev
 Section: libdevel
-Depends: ${devlibs:Depends}, ${misc:Depends}
+Depends: ${devlibs:Depends}, ${misc:Depends}, libsrtp0 (= ${binary:Version})
 Provides: libsrtp-dev
 Conflicts: libsrtp-dev, libsrtp1-dev (<= 1.4.4)
 Replaces: libsrtp1-dev (<= 1.4.4)
-Architecture: any
+Architecture: alpha amd64 armel hppa i386 mips mipsel powerpc s390
 Description: Secure RTP (SRTP) and UST Reference Implementations - development files
  SRTP is a security profile for RTP that adds confidentiality, message
  authentication, and replay protection to that protocol. It is specified
@@ -25,6 +25,22 @@ Description: Secure RTP (SRTP) and UST Reference Implementations - development f
  supporting cryptographic kernel.
  .
  This package contains the development headers and static libraries.
+
+Package: libsrtp0
+Section: libs
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Suggests: srtp-utils
+Architecture: alpha amd64 armel hppa i386 mips mipsel powerpc s390
+Description: Secure RTP (SRTP) and UST Reference Implementations - shared library
+ SRTP is a security profile for RTP that adds confidentiality, message
+ authentication, and replay protection to that protocol. It is specified
+ in RFC 3711.
+ .
+ LibSRTP provides an implementation of the Secure Real-time Transport
+ Protocol (SRTP), the Universal Security Transform (UST), and a
+ supporting cryptographic kernel.
+ .
+ This package contains the shared libraries.
 
 Package: srtp-docs
 Section: doc
@@ -42,7 +58,7 @@ Description: Secure RTP (SRTP) and UST Reference Implementations - documentation
  This package contains API documentation.
 
 Package: srtp-utils
-Architecture: any
+Architecture: alpha amd64 armel hppa i386 mips mipsel powerpc s390
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Secure RTP (SRTP) and UST Reference Implementations - utilities
  SRTP is a security profile for RTP that adds confidentiality, message

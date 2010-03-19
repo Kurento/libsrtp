@@ -1,3 +1,18 @@
+srtp (1.4.4~dfsg-5) unstable; urgency=low
+
+  * Add patch 1008 from Gentoo to hack build routines into compiling
+    shared library.
+  * Refresh patches.
+  * Add new binary package libsrtp0. Install library-related files and
+    resolve dependencies using d-shlibs. Build-depend on d-shlibs.
+  * Drop local CDBS snippets (included in main cdbs package now). Stop
+    build-depending on devscripts or dh-buildinfo (only needed when in
+    DEB_MAINTAINER_MODE).
+  * Limit packaging to architectures known to succeed testsuite.
+  * Adjust a year in copyright file.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Fri, 19 Mar 2010 01:50:22 +0100
+
 srtp (1.4.4~dfsg-4) unstable; urgency=low
 
   * Maintain package alone again (VOIP team clearly don't care: recently
