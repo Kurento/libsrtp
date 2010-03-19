@@ -4,6 +4,15 @@ Origin: http://sources.gentoo.org/viewcvs.py/gentoo-x86/net-libs/libsrtp/files/l
 Last-Update: 2010-03-19
 --- a/Makefile.in
 +++ b/Makefile.in
+@@ -15,7 +15,7 @@
+ 
+ .PHONY: all test build_table_apps
+ 
+-all: test 
++all: libsrtp.so test
+ 
+ runtest: build_table_apps test
+ 	@echo "running libsrtp test applications..."
 @@ -67,7 +67,7 @@
  # implicit rules for object files and test apps
  
@@ -35,3 +44,12 @@ Last-Update: 2010-03-19
  
  uninstall:
  	rm -rf $(DESTDIR)$(includedir)/srtp
+@@ -204,7 +212,7 @@
+ 
+ clean:
+ 	rm -rf $(cryptobj) $(srtpobj) $(cryptomath) TAGS \
+-        libcryptomath.a libsrtp.a core *.core test/core
++        libcryptomath.a libsrtp.a libsrtp.so.0.0 core *.core test/core
+ 	for a in * */* */*/*; do			\
+               if [ -f "$$a~" ] ; then rm -f $$a~; fi;	\
+         done;
