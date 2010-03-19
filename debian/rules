@@ -18,9 +18,11 @@
 
 include /usr/share/cdbs/1/class/autotools.mk
 include /usr/share/cdbs/1/rules/debhelper.mk
-include debian/cdbs/1/rules/copyright-check.mk
-include debian/cdbs/1/rules/buildinfo.mk
-include debian/cdbs/1/rules/upstream-tarball.mk
+include /usr/share/cdbs/1/rules/utils.mk
+-include /usr/share/cdbs/1/rules/upstream-tarball.mk
+
+# suppress optional build-dependencies
+CDBS_BUILD_DEPENDS_upstream-tarball =
 
 # Update this checksum when new releases occur, to catch silent server side file content forges
 DEB_UPSTREAM_TARBALL_MD5 = 9b449edb011c934ca97009e7e0566d22
@@ -86,6 +88,3 @@ CDBS_BUILD_DEPENDS += , procps, miscfiles
 
 # Needed for our packaging
 CDBS_BUILD_DEPENDS += , d-shlibs
-
-# Resolve, cleanup and apply CDBS-declared dependencies
-include debian/cdbs/1/rules/package-relations.mk
