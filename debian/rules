@@ -44,6 +44,9 @@ CFLAGS += -D_REENTRANT
 CFLAGS += $(HARDENING_CFLAGS)
 LDFLAGS += $(HARDENING_LDFLAGS)
 
+# Reapply default strong optimizations unless noopt in DEB_BUILD_OPTIONS
+CFLAGS += $(if $(filter noopt,$(DEB_BUILD_OPTIONS))-O0,-O4 -fexpensive-optimizations -funroll-loops)
+
 DEB_MAKE_CLEAN_TARGET = superclean
 DEB_MAKE_CHECK_TARGET = runtest
 
