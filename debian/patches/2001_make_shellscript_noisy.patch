@@ -1,0 +1,14 @@
+Description: Enable debugging in regression test shell script
+Author: Jonas Smedegaard <dr@jones.dk>
+Last-Update: 2011-05-25
+--- a/test/rtpw_test.sh
++++ b/test/rtpw_test.sh
+@@ -4,6 +4,8 @@
+ # 
+ # tests the rtpw sender and receiver functions
+ 
++set -x
++
+ RTPW=./rtpw
+ DEST_PORT=9999
+ DURATION=3
