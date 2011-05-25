@@ -28,7 +28,7 @@ DEB_UPSTREAM_URL = http://switch.dl.sourceforge.net/sourceforge/srtp
 DEB_UPSTREAM_TARBALL_EXTENSION = tgz
 DEB_UPSTREAM_TARBALL_SRCDIR = $(DEB_UPSTREAM_PACKAGE)
 
-DEB_UPSTREAM_REPACKAGE_EXCLUDE = CVS .cvsignore doc/rfc*.txt doc/draft*.txt doc/*.pdf
+DEB_UPSTREAM_REPACKAGE_EXCLUDES = ./CVS .cvsignore ./doc/rfc*.txt ./doc/draft*.txt ./doc/*.pdf
 
 DEB_CONFIGURE_EXTRA_FLAGS = --disable-stdout --enable-syslog
 ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
