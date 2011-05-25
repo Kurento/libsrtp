@@ -89,7 +89,7 @@ binary-post-install/libsrtp0::
 		debian/tmp/usr/lib/libsrtp.so
 
 # Needed by upstream build
-CDBS_BUILD_DEPENDS += , doxygen-latex | doxygen, doxygen-latex | texlive-latex-recommended
+CDBS_BUILD_DEPENDS += , doxygen-latex | doxygen, doxygen-latex | texlive-latex-recommended, texlive-fonts-recommended
 
 # Needed by upstream build tests
 CDBS_BUILD_DEPENDS += , procps, psmisc, miscfiles
