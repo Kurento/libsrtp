@@ -18,7 +18,7 @@ Last-Update: 2011-05-25
  # will get rid of them.
  
 -killall rtpw 2&>/dev/null
-+killall -q rtpw
++killall -q rtpw || true
  
  if test -x $RTPW; then
  
