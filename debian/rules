@@ -81,7 +81,7 @@ binary-post-install/libsrtp0::
 CDBS_BUILD_DEPENDS += , doxygen, texlive-latex-recommended, texlive-fonts-recommended
 
 # Needed by upstream build tests
-CDBS_BUILD_DEPENDS += , procps, miscfiles
+CDBS_BUILD_DEPENDS += , procps, psmisc, miscfiles
 
 # Needed for our packaging
 CDBS_BUILD_DEPENDS += , d-shlibs
