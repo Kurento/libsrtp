@@ -6,4 +6,5 @@
 1006_fix_unsigned_char.patch
 1007_updated_Doxyfile.patch
 1008_shared-lib.patch
+1009_fix_use_format_argument.patch
 2001_make_shellscript_noisy.patch
