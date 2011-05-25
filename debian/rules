@@ -44,6 +44,9 @@ CFLAGS += -D_REENTRANT
 CFLAGS += $(HARDENING_CFLAGS)
 LDFLAGS += $(HARDENING_LDFLAGS)
 
+# ...except this, causing "relocation [...]; recompile with -fPIC" failure
+DEB_BUILD_HARDENING_PIE:=0
+
 # Reapply default strong optimizations unless noopt in DEB_BUILD_OPTIONS
 CFLAGS += $(if $(filter noopt,$(DEB_BUILD_OPTIONS))-O0,-O4 -fexpensive-optimizations -funroll-loops)
 
