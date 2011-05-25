@@ -1,3 +1,32 @@
+srtp (1.4.4~dfsg-7) unstable; urgency=low
+
+  * Play nice with git-buildpackage:
+    + Add dpkg-source local-options hints.
+    + Git-ignore quilt .pc dir.
+  * Add patch 2001 to make regression test shell script more noisy, and
+    fail on error.
+    Closes: bug#621489. Thanks to Moritz Muehlenhoff and Matt Kraai, and
+    to Tzafrir Cohen for friendly poking :-)
+  * Update copyright file:
+    + Rewrite using draft 174 of DEP-5 format.
+    + Rewrap license fields at 72 chars, and shorten comments.
+  * Bump policy compliance to standards-version 3.9.2.
+  * Modernize tarball repackaging:
+    + Use DEB_UPSTREAM_REPACKAGE_EXCLUDES (not obsolete
+      DEB_UPSTREAM_REPACKAGE_EXCLUDE).
+  * Fix build-depend on psmisc: provides killall needed for regression
+    test script.
+  * Build-depend on doxygen-latex, only as fallback on doxygen and
+    texlive-latex-recommended to ease backporting.
+  * Build-depend on and use hardening-includes, except
+    DEB_BUILD_HARDENING_PIE causing "relocation [...]; recompile with
+    -fPIC" failure.
+  * Reapply default strong optimizations unless DEB_BUILD_OPTIONS
+    contains noopt.
+  * Add patch 1009 to fix use format argument in fprint.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Thu, 26 May 2011 01:56:54 +0200
+
 srtp (1.4.4~dfsg-6) unstable; urgency=low
 
   * Add patch 1008 from Gentoo to hack build routines into compiling

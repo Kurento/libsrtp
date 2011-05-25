@@ -3,16 +3,18 @@ Priority: optional
 Maintainer: Jonas Smedegaard <dr@jones.dk>
 Build-Depends: autotools-dev,
  debhelper (>= 6),
- devscripts (>= 2.10.7~),
  dh-buildinfo,
+ devscripts (>= 2.10.7~),
  cdbs (>= 0.4.70~),
- doxygen,
- texlive-latex-recommended,
+ doxygen-latex | doxygen,
+ doxygen-latex | texlive-latex-recommended,
  texlive-fonts-recommended,
  procps,
+ psmisc,
  miscfiles,
- d-shlibs
-Standards-Version: 3.8.4
+ d-shlibs,
+ hardening-includes
+Standards-Version: 3.9.2
 Section: libs
 Vcs-Git: git://git.debian.org/git/collab-maint/srtp.git
 Vcs-Browser: http://git.debian.org/?p=collab-maint/srtp.git;a=summary
