@@ -16,7 +16,7 @@ Last-Update: 2010-02-28
 -	test/roc_driver$(EXE) -v >/dev/null
 -	test/replay_driver$(EXE) -v >/dev/null
 -	test/dtls_srtp_driver$(EXE) >/dev/null
--	cd test; ./rtpw_test.sh >/dev/null	
+-	cd test; $(abspath $(srcdir))/test/rtpw_test.sh >/dev/null	
 +	crypto/test/cipher_driver$(EXE) -v
 +	crypto/test/kernel_driver$(EXE) -v
 +	test/rdbx_driver$(EXE) -v
@@ -24,16 +24,16 @@ Last-Update: 2010-02-28
 +	test/roc_driver$(EXE) -v
 +	test/replay_driver$(EXE) -v
 +	test/dtls_srtp_driver$(EXE)
-+	cd test; ./rtpw_test.sh
++	cd test; $(abspath $(srcdir))/test/rtpw_test.sh
  	@echo "libsrtp test applications passed."
  	$(MAKE) -C crypto runtest
  
 --- a/crypto/Makefile.in
 +++ b/crypto/Makefile.in
-@@ -56,12 +56,12 @@
- 	test/env$(EXE) # print out information on the build environment
+@@ -63,12 +63,12 @@
  	@echo "running libcryptomodule test applications..."
- 	test `test/aes_calc $k $p` = $c
+ 	test `test/aes_calc $(k128) $(p128)` = $(c128)
+ 	test `test/aes_calc $(k256) $(p256)` = $(c256)
 -	test/cipher_driver$(EXE) -v >/dev/null
 -	test/datatypes_driver$(EXE) -v >/dev/null
 -	test/stat_driver$(EXE) >/dev/null
