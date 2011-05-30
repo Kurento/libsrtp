@@ -57,12 +57,12 @@ CFLAGS += $(if $(filter noopt,$(DEB_BUILD_OPTIONS))-O0,-O4 -fexpensive-optimizat
 DEB_MAKE_CLEAN_TARGET = superclean
 DEB_MAKE_CHECK_TARGET = runtest
 
-# put aside stray upstream-shipped automade files during build
-upstreamtmpfiles = doc/Makefile crypto/Makefile
+# preserve (and restore) upstream-shipped files tampered with
+upstreamtmpfiles = doc/Makefile crypto/Makefile doc/Doxyfile
 pre-build:: debian/stamp-upstreamtmpstuff
 debian/stamp-upstreamtmpstuff: debian/stamp-copyright-check
 	for file in $(upstreamtmpfiles); do \
-		[ ! -e $$file ] || [ -e $$file.upstream ] || mv $$file $$file.upstream; \
+		[ ! -e $$file ] || cp -np $$file $$file.upstream; \
 	done
 	touch $@
 clean::
