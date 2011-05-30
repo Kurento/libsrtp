@@ -51,12 +51,14 @@ Files: LICENSE
  crypto/test/kernel_driver.c
  crypto/test/rand_gen.c
  crypto/test/sha1_driver.c
+ include/ekt.h
  include/getopt_s.h
  include/rtp.h
  include/rtp_priv.h
  include/srtp.h
  include/srtp_priv.h
  include/ut_sim.h
+ srtp/ekt.c
  srtp/srtp.c
  tables/aes_tables.c
  test/dtls_srtp_driver.c
@@ -66,7 +68,8 @@ Files: LICENSE
  test/roc_driver.c
  test/rtpw.c
  test/srtp_driver.c
-Copyright: 2001-2006, Cisco Systems, Inc
+Copyright: 2001-2005, Cisco Systems, Inc
+ 2001-2006, Cisco Systems, Inc
  HOLDERS AND CONTRIBUTORS
  HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT
 License: BSD (3 clause)
@@ -81,7 +84,6 @@ Files: CHANGES
  config.hw
  config_in.h
  configure.in
- crypto/Makefile
  crypto/Makefile.in
  crypto/VERSION
  crypto/ae_xfm/xfm.c
@@ -101,13 +103,10 @@ Files: CHANGES
  debian/control
  debian/control.in
  debian/gbp.conf
- debian/patches/1001_negative_valued_char_must_be_signed.patch
- debian/patches/1002_add_explicit_path_in_test_script.patch
  debian/patches/1003_fix_mips_namespace_collision.patch
  debian/patches/1004_make_runtest_more_verbose.patch
- debian/patches/1005_fix_32bit_alignment.patch
- debian/patches/1006_fix_unsigned_char.patch
- debian/patches/1007_updated_Doxyfile.patch
+ debian/patches/1005_fix_data_alignment.patch
+ debian/patches/1007_update_Doxyfile.patch
  debian/patches/1008_shared-lib.patch
  debian/patches/2001_make_shellscript_noisy.patch
  debian/patches/README
@@ -118,11 +117,12 @@ Files: CHANGES
  debian/srtp-utils.links
  debian/watch
  doc/Doxyfile
- doc/Makefile
  doc/Makefile.in
  doc/crypto_kernel.txt
  doc/references.txt
+ install-win.bat
  srtp.def
+ srtp.sln
  srtp.vcproj
  srtp7.sln
  srtp7.vcproj

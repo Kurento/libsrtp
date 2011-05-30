@@ -1,3 +1,18 @@
+srtp (1.4.4+20100615~dfsg-1) unstable; urgency=low
+
+  * Snapshot of newer upstream CVS code.
+  * Add notes on stripped sources to copyright file.
+  * Update patches:
+    + Drop patches 1001, 1002, 1006, 1009: Obsolete.
+    + Adjust patch 1005 to align by 4 (not 32 - the alignment is
+      suspected to be bytes not bits).
+    + Simplify patch 1007 to invoke 'doxygen -u' (not patch Doxyfile),
+      and extend it to modernize header template.
+    + Unfuzz patches.
+  * Modernize Doxygen header template.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Tue, 31 May 2011 00:39:59 +0200
+
 srtp (1.4.4~dfsg-7) unstable; urgency=low
 
   * Play nice with git-buildpackage:
