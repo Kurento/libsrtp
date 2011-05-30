@@ -31,6 +31,9 @@ DEB_UPSTREAM_TARBALL_SRCDIR = $(DEB_UPSTREAM_PACKAGE)
 
 DEB_UPSTREAM_REPACKAGE_EXCLUDES = ./CVS .cvsignore ./doc/rfc*.txt ./doc/draft*.txt ./doc/*.pdf
 
+# Needed by upstream build tests
+CDBS_BUILD_DEPENDS += , procps, psmisc, miscfiles
+
 DEB_CONFIGURE_EXTRA_FLAGS = --disable-stdout --enable-syslog
 ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
 DEB_CONFIGURE_EXTRA_FLAGS += --enable-debug
@@ -41,6 +44,7 @@ endif
 CFLAGS += -D_REENTRANT
 
 # Tighten security - more info at http://wiki.debian.org/Hardening
+CDBS_BUILD_DEPENDS += , hardening-includes
 CFLAGS += $(HARDENING_CFLAGS)
 LDFLAGS += $(HARDENING_LDFLAGS)
 
@@ -52,12 +56,6 @@ CFLAGS += $(if $(filter noopt,$(DEB_BUILD_OPTIONS))-O0,-O4 -fexpensive-optimizat
 
 DEB_MAKE_CLEAN_TARGET = superclean
 DEB_MAKE_CHECK_TARGET = runtest
-
-DEB_INSTALL_DOCS_srtp-docs += doc/*.txt doc/*.pdf
-DEB_COMPRESS_EXCLUDE += .pdf
-build/srtp-docs::
-	[ -f debian/stamp-make-docs ] || $(DEB_MAKE_INVOKE) libsrtpdoc
-	touch debian/stamp-make-docs
 
 # put aside stray upstream-shipped automade files during build
 upstreamtmpfiles = doc/Makefile crypto/Makefile
@@ -73,6 +71,13 @@ clean::
 	done
 	rm -f debian/stamp-upstreamtmpstuff
 
+# generate (and cleanup) documentation
+CDBS_BUILD_DEPENDS += , doxygen-latex | doxygen, doxygen-latex | texlive-latex-recommended, texlive-fonts-recommended
+DEB_INSTALL_DOCS_srtp-docs += doc/*.txt doc/*.pdf
+DEB_COMPRESS_EXCLUDE += .pdf
+build/srtp-docs::
+	[ -f debian/stamp-make-docs ] || $(DEB_MAKE_INVOKE) libsrtpdoc
+	touch debian/stamp-make-docs
 clean::
 	rm -f doc/*.pdf
 	rm -f debian/stamp-make-docs
@@ -83,16 +88,8 @@ post-patches::
 
 # Let d-shlibs calculate development package dependencies
 #  and handle shared library install
+CDBS_BUILD_DEPENDS += , d-shlibs
 binary-post-install/libsrtp0::
 	d-shlibmove --commit \
 		--movedev "debian/tmp/usr/include/srtp/*" usr/include/srtp/ \
 		debian/tmp/usr/lib/libsrtp.so
-
-# Needed by upstream build
-CDBS_BUILD_DEPENDS += , doxygen-latex | doxygen, doxygen-latex | texlive-latex-recommended, texlive-fonts-recommended
-
-# Needed by upstream build tests
-CDBS_BUILD_DEPENDS += , procps, psmisc, miscfiles
-
-# Needed for our packaging
-CDBS_BUILD_DEPENDS += , d-shlibs, hardening-includes
