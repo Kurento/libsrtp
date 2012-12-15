@@ -1,3 +1,12 @@
+srtp (1.4.4+20100615~dfsg-2) unstable; urgency=low
+
+  * Fix avoid installing example binary env: Hardly usable beyond tests,
+    and cause FTPBS when build tests disabled (i.e. when
+    DEB_BUILD_OPTIONS contains nocheck).
+    Closes: bug#696019. Thanks to Thorsten Glaser.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sat, 15 Dec 2012 22:02:05 +0100
+
 srtp (1.4.4+20100615~dfsg-1) unstable; urgency=low
 
   * Snapshot of newer upstream CVS code.
