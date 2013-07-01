@@ -1,4 +1,4 @@
-Format: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?rev=174
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: libSRTP
 Upstream-Contact: https://github.com/cisco/libsrtp/issues
 Source: https://github.com/cisco/libsrtp
@@ -12,6 +12,7 @@ Comment: source-less binary
 Files-Excluded: releases
 Comment: duplicated code
 
+Files: *
 Copyright: 2001-2006, Cisco Systems, Inc
 License: BSD-3-clause~Cisco
 
