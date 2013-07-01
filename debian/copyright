@@ -9,6 +9,8 @@ Files-Excluded: doc/rfc*.txt doc/draft*.txt
 Comment: non-DFSG sources
 Files-Excluded: doc/*.pdf
 Comment: source-less binary
+Files-Excluded: releases
+Comment: duplicated code
 
 Copyright: 2001-2006, Cisco Systems, Inc
 License: BSD-3-clause~Cisco
