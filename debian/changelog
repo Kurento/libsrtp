@@ -1,3 +1,32 @@
+srtp (1.4.5~20130609~dfsg-1) UNRELEASED; urgency=low
+
+FIXME: fails generating PDF documentation.
+
+  [ upstream ]
+  * New snapshot of Git source.
+
+  [ Jonas Smedegaard ]
+  * Update README.source to emphasize control.in file as *not* a
+    show-stopper for contributions, referring to wiki page for details.
+  * Add git URL as alternate source.
+  * Have git-import-orig avoid .git-ignore files.
+  * Remove debian/source/local-options: abort-on-upstream-changes and
+    unapply-patches are default in dpkg-source since 1.16.1.
+  * Bump debhelper compatibility level to 8.
+  * Use canonical hostname (anonscm.debian.org) in Vcs-* URIs.
+  * Update Homepage to use Github URL.
+  * Update Source and Upstream-Contact to use Github URLs.
+  * Update CDBS upstream-tarball hints to use Github source.
+  * Update watch file to use Github URL.
+  * Strip releases subdir when repackaging upstream tarball.
+  * Unfuzz patch 1008.
+  * Bump copyright file format to 1.0.
+  * Extend copyright coverage for autotools to include recent years.
+  * Relax to build-depend unversioned on debhelper, devscripts and cdbs:
+    Needed versions satisfied even in oldstable.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Mon, 01 Jul 2013 04:17:08 +0200
+
 srtp (1.4.4+20100615~dfsg-2) unstable; urgency=low
 
   * Fix avoid installing example binary env: Hardly usable beyond tests,

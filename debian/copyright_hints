@@ -1,4 +1,4 @@
-Format: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?rev=174
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: FIXME
 Upstream-Contact: FIXME
 Source: FIXME
@@ -69,10 +69,10 @@ Files: LICENSE
  test/rtpw.c
  test/srtp_driver.c
 Copyright: 2001-2005, Cisco Systems, Inc
- 2001-2006, Cisco Systems, Inc
- HOLDERS AND CONTRIBUTORS
- HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT
-License: BSD (3 clause)
+  2001-2006, Cisco Systems, Inc
+  HOLDERS AND CONTRIBUTORS
+  HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT
+License: BSD-3-clause
  FIXME
 
 Files: CHANGES
@@ -112,7 +112,6 @@ Files: CHANGES
  debian/patches/README
  debian/patches/series
  debian/source/format
- debian/source/local-options
  debian/srtp-utils.install
  debian/srtp-utils.links
  debian/watch
@@ -138,57 +137,57 @@ License: UNKNOWN
 Files: crypto/include/kernel_compat.h
  crypto/rng/rand_linux_kernel.c
 Copyright: 2005, Ingate Systems AB
- HOLDERS AND CONTRIBUTORS
- HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT
-License: BSD (3 clause)
+  HOLDERS AND CONTRIBUTORS
+  HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT
+License: BSD-3-clause
  FIXME
 
 Files: config.guess
  config.sub
 Copyright: 1992-1999,
- 1992-2004
+  1992-2000
 License: GPL-2+
  FIXME
 
 Files: crypto/include/cipher.h
 Copyright: ((->type)->dealloc)
- 2001-2006, Cisco Systems, Inc
- ? ((->type)->set_iv(((cipher_pointer_t)->state), (n))) : \
- HOLDERS AND CONTRIBUTORS
- HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT
-License: BSD (3 clause)
+  2001-2006, Cisco Systems, Inc
+  ? ((->type)->set_iv(((cipher_pointer_t)->state), (n))) : \
+  HOLDERS AND CONTRIBUTORS
+  HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT
+License: BSD-3-clause
  FIXME
 
 Files: crypto/include/auth.h
 Copyright: ((->type)->dealloc)
- 2001-2006, Cisco Systems, Inc
- HOLDERS AND CONTRIBUTORS
- HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT
-License: BSD (3 clause)
+  2001-2006, Cisco Systems, Inc
+  HOLDERS AND CONTRIBUTORS
+  HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT
+License: BSD-3-clause
  FIXME
 
 Files: doc/intro.txt
 Copyright: 2001-2005, Cisco Systems, Inc.
- HOLDERS AND CONTRIBUTORS
- HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT
-License: BSD (3 clause)
+  HOLDERS AND CONTRIBUTORS
+  HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT
+License: BSD-3-clause
  FIXME
 
 Files: debian/rules
 Copyright: 2007-2008,2010, Jonas Smedegaard <dr@jones.dk>
-License: GPL
+License: GPL-2+
  FIXME
 
 Files: configure
 Copyright: (ISLOWER ? 'A' + ( - 'a') : )
- (ISLOWER ? ( | 0x40) : )
- 2003, Free Software Foundation, Inc
+  (ISLOWER ? ( | 0x40) : )
+  2003, Free Software Foundation, Inc
 License: UNKNOWN
  FIXME
 
 Files: update.sh
 Copyright: 2001-2005/ 2001-2006/' $x > $x.tmp;
- dates in files
+  dates in files
 License: UNKNOWN
  FIXME
 
