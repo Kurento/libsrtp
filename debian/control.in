@@ -6,7 +6,7 @@ Standards-Version: 3.9.2
 Section: libs
 Vcs-Git: git://anonscm.debian.org/git/collab-maint/srtp.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/srtp.git
-Homepage: http://srtp.sourceforge.net/srtp.html
+Homepage: https://github.com/cisco/libsrtp
 
 Package: libsrtp0-dev
 Section: libdevel
