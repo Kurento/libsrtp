@@ -4,8 +4,8 @@ Maintainer: Jonas Smedegaard <dr@jones.dk>
 Build-Depends: @cdbs@
 Standards-Version: 3.9.2
 Section: libs
-Vcs-Git: git://git.debian.org/git/collab-maint/srtp.git
-Vcs-Browser: http://git.debian.org/?p=collab-maint/srtp.git;a=summary
+Vcs-Git: git://anonscm.debian.org/git/collab-maint/srtp.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/srtp.git
 Homepage: http://srtp.sourceforge.net/srtp.html
 
 Package: libsrtp0-dev
