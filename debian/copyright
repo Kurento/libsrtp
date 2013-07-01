@@ -23,7 +23,7 @@ License: BSD-3-clause~Ingate
 
 Files: config.guess
  config.sub
-Copyright: 1992-2004, Free Software Foundation, Inc.
+Copyright: 1992-2011, Free Software Foundation, Inc.
 License: GPL-2+ with Autoconf exception
  As a special exception to the GNU General Public License, if you
  distribute this file as part of a program that contains a configuration
