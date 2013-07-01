@@ -1,7 +1,7 @@
 Format: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?rev=174
 Upstream-Name: libSRTP
-Upstream-Contact: David A. McGrew <mcgrew@cisco.com>
-Source: http://srtp.sourceforge.net/download.html
+Upstream-Contact: https://github.com/cisco/libsrtp/issues
+Source: https://github.com/cisco/libsrtp
  git://github.com/cisco/libsrtp
 Files-Excluded: */CVS */.cvsignore
 Comment: VCS hints annoying lintian
