@@ -1,0 +1,23 @@
+From: Daniel Pocock <daniel@pocock.com.au>
+Date: Thu, 18 Jul 2013 23:54:21 +0200
+Subject: Add algorithm to cipher_t
+
+---
+ crypto/include/cipher.h |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/crypto/include/cipher.h b/crypto/include/cipher.h
+index eff6dd1..205d4b3 100644
+--- a/crypto/include/cipher.h
++++ b/crypto/include/cipher.h
+@@ -161,8 +161,9 @@ typedef struct cipher_t {
+   void          *state;
+   int            key_len;
+ #ifdef FORCE_64BIT_ALIGN
+-  int            pad;
++  //int            pad;
+ #endif
++  int algorithm;
+ } cipher_t;
+ 
+ /* some syntactic sugar on these function types */
