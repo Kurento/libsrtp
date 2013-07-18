@@ -42,6 +42,10 @@ else
 DEB_CONFIGURE_EXTRA_FLAGS += --disable-debug
 endif
 
+ifeq ($(DEB_HOST_ARCH_CPU),sparc)
+CFLAGS += -D-DFORCE_64BIT_ALIGN
+endif
+
 CFLAGS += -D_REENTRANT
 
 # Tighten security - more info at http://wiki.debian.org/Hardening

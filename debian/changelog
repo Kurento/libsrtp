@@ -25,6 +25,9 @@ FIXME: fails generating PDF documentation.
   * Relax to build-depend unversioned on debhelper, devscripts and cdbs:
     Needed versions satisfied even in oldstable.
 
+  [ Daniel Pocock ]
+  * Set FORCE_64BIT_ALIGN for sparc builds (Closes: #628583)
+
  -- Jonas Smedegaard <dr@jones.dk>  Mon, 01 Jul 2013 04:17:08 +0200
 
 srtp (1.4.4+20100615~dfsg-2) unstable; urgency=low
