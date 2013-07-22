@@ -3,14 +3,15 @@ Upstream-Name: libSRTP
 Upstream-Contact: https://github.com/cisco/libsrtp/issues
 Source: https://github.com/cisco/libsrtp
  git://github.com/cisco/libsrtp
-Files-Excluded: */CVS */.cvsignore
-Comment: VCS hints annoying lintian
-Files-Excluded: doc/rfc*.txt doc/draft*.txt
-Comment: non-DFSG sources
-Files-Excluded: doc/*.pdf
-Comment: source-less binary
-Files-Excluded: releases
-Comment: duplicated code
+ .
+ Repackaged, excluding non-DFSG files and unused external projects
+Files-Excluded:
+ */CVS
+ */.cvsignore
+ doc/rfc*.txt
+ doc/draft*.txt
+ doc/*.pdf
+ releases
 
 Files: *
 Copyright: 2001-2006, Cisco Systems, Inc
