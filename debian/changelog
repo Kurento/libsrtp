@@ -1,7 +1,5 @@
 srtp (1.4.5~20130609~dfsg-1) UNRELEASED; urgency=low
 
-FIXME: fails generating PDF documentation.
-
   [ upstream ]
   * New snapshot of Git source.
 
@@ -29,6 +27,7 @@ FIXME: fails generating PDF documentation.
   * Set FORCE_64BIT_ALIGN for sparc builds (Closes: #628583)
   * Add algorithm to cipher_t
   * Fix stat driver test
+  * Tweak documentation build to fix errors
 
  -- Jonas Smedegaard <dr@jones.dk>  Mon, 01 Jul 2013 04:17:08 +0200
 
