@@ -69,7 +69,7 @@ Last-Update: 2013-07-22
  \renewcommand{\footrulewidth}{0.4pt}
  
 +\let\origdoublepage\cleardoublepage
-+\newcommand{\clearemptydoublepage}{%
++\providecommand{\clearemptydoublepage}{%
 +  \clearpage
 +  {\pagestyle{empty}\origdoublepage}%
 +}
