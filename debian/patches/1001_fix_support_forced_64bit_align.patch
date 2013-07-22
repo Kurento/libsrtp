@@ -6,11 +6,9 @@ Subject: Add algorithm to cipher_t
  crypto/include/cipher.h |    3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/crypto/include/cipher.h b/crypto/include/cipher.h
-index eff6dd1..205d4b3 100644
 --- a/crypto/include/cipher.h
 +++ b/crypto/include/cipher.h
-@@ -161,8 +161,9 @@ typedef struct cipher_t {
+@@ -161,8 +161,9 @@
    void          *state;
    int            key_len;
  #ifdef FORCE_64BIT_ALIGN
