@@ -1,35 +1,49 @@
-srtp (1.4.5~20130609~dfsg-1) UNRELEASED; urgency=low
+srtp (1.4.5~20130609~dfsg-1) unstable; urgency=low
 
   [ upstream ]
   * New snapshot of Git source.
+    + Includes fix for CVE-2013-2139.
+      Closes: bug#711163. Thanks to Moritz Muehlenhoff.
 
   [ Jonas Smedegaard ]
   * Update README.source to emphasize control.in file as *not* a
     show-stopper for contributions, referring to wiki page for details.
-  * Add git URL as alternate source.
   * Have git-import-orig avoid .git-ignore files.
   * Remove debian/source/local-options: abort-on-upstream-changes and
     unapply-patches are default in dpkg-source since 1.16.1.
   * Bump debhelper compatibility level to 8.
   * Use canonical hostname (anonscm.debian.org) in Vcs-* URIs.
   * Update Homepage to use Github URL.
-  * Update Source and Upstream-Contact to use Github URLs.
   * Update CDBS upstream-tarball hints to use Github source.
   * Update watch file to use Github URL.
   * Strip releases subdir when repackaging upstream tarball.
-  * Unfuzz patch 1008.
-  * Bump copyright file format to 1.0.
-  * Extend copyright coverage for autotools to include recent years.
+  * Tidy patches:
+    + Unfuzz and refresh with shortening quilt options.
+    + Tidy DEP-3 headers.
+  * Update copyright and licensing info:
+    + Add git URL as alternate source.
+    + Update Source and Upstream-Contact to use Github URLs.
+    + Bump copyright file format to 1.0.
+    + Fix adjust copyright file header section to mention repackaging in
+      Source paragraph and use only a single Files-Excluded paragraph.
+    + Extend copyright coverage for autotools to include recent years.
+    + Fix add License section for GAP~configure.
+    + Bump packaging license to GPL-3+, and extend copyrigt coverage for
+      myself to include recent years.
+    + Fix include license verbatim and label it as derived: GPL-2+~file.
   * Relax to build-depend unversioned on debhelper, devscripts and cdbs:
     Needed versions satisfied even in oldstable.
+  * Bump standards-version to 3.9.4.
+  * Drop done TODO items.
 
   [ Daniel Pocock ]
-  * Set FORCE_64BIT_ALIGN for sparc builds (Closes: #628583)
-  * Add algorithm to cipher_t
-  * Fix stat driver test
-  * Tweak documentation build to fix errors
+  * Fix bus error in cipher_test causing FTBFS on sparc64.
+    Closes: bug#628583. Thanks to Tzafrir Cohen.
+  * Fix support forced 64bit alignment.
+  * Fix stat driver test. Thanks to John Foley.
+  * Tweak documentation build to fix errors.
 
- -- Jonas Smedegaard <dr@jones.dk>  Mon, 01 Jul 2013 04:17:08 +0200
+ -- Jonas Smedegaard <dr@jones.dk>  Tue, 23 Jul 2013 00:22:19 +0200
 
 srtp (1.4.4+20100615~dfsg-2) unstable; urgency=low
 

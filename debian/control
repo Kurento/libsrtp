@@ -14,7 +14,7 @@ Build-Depends: cdbs,
  doxygen-latex | texlive-latex-recommended,
  texlive-fonts-recommended,
  d-shlibs
-Standards-Version: 3.9.2
+Standards-Version: 3.9.4
 Section: libs
 Vcs-Git: git://anonscm.debian.org/git/collab-maint/srtp.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/srtp.git

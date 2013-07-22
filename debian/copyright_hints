@@ -103,6 +103,8 @@ Files: CHANGES
  debian/control
  debian/control.in
  debian/gbp.conf
+ debian/patches/1001_fix_support_forced_64bit_align.patch
+ debian/patches/1002_fix_stat_driver_test.patch
  debian/patches/1003_fix_mips_namespace_collision.patch
  debian/patches/1004_make_runtest_more_verbose.patch
  debian/patches/1005_fix_data_alignment.patch
@@ -174,8 +176,8 @@ License: BSD-3-clause
  FIXME
 
 Files: debian/rules
-Copyright: 2007-2008,2010, Jonas Smedegaard <dr@jones.dk>
-License: GPL-2+
+Copyright: 2007-2008, 2010-2011, 2013 Jonas Smedegaard
+License: GPL-3+
  FIXME
 
 Files: configure
