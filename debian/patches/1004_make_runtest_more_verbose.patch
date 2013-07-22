@@ -3,6 +3,7 @@ Author: Victor Seva <linuxmaniac@torreviejawireless.org>
 Origin: vendor, http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=10;bug=460534
 Bug-Debian: http://bugs.debian.org/460534
 Last-Update: 2010-02-28
+
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -19,14 +19,14 @@

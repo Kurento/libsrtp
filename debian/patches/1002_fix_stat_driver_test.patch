@@ -1,6 +1,9 @@
 Description: Fix stat driver test
 Author: John Foley <foleyj@cisco.com>
-Origin: http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=89;filename=init_nonce.diff;att=1;bug=628583
+Origin: http://bugs.debian.org/628583#89
+Bug-Debian: http://bugs.debian.org/628583
+Last-Update: 2013-07-22
+
 --- a/crypto/test/stat_driver.c
 +++ b/crypto/test/stat_driver.c
 @@ -51,6 +51,7 @@

@@ -2,6 +2,7 @@ Description: Hack build routines to compile shared library
 Author: loki_val and solar
 Origin: http://sources.gentoo.org/viewcvs.py/gentoo-x86/net-libs/libsrtp/files/libsrtp-1.4.4-shared.patch
 Last-Update: 2010-03-19
+
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -15,7 +15,7 @@
