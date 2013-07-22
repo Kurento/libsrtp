@@ -29,11 +29,10 @@ DEB_UPSTREAM_URL = https://github.com/cisco/libsrtp/archive
 #DEB_UPSTREAM_TARBALL_BASENAME = $(DEB_UPSTREAM_TARBALL_VERSION)
 DEB_UPSTREAM_TARBALL_BASENAME = 7713d5706524f9f1ee94fd6b55125357e63656d5
 DEB_UPSTREAM_REPACKAGE_EXCLUDES = ./CVS .cvsignore ./doc/rfc*.txt ./doc/draft*.txt ./doc/*.pdf ./releases/
-#DEB_UPSTREAM_TARBALL_SRCDIR = compass-$(DEB_UPSTREAM_TARBALL_VERSION)
 DEB_UPSTREAM_TARBALL_SRCDIR = libsrtp-7713d5706524f9f1ee94fd6b55125357e63656d5
 
-# Needed by upstream build tests
-CDBS_BUILD_DEPENDS += , procps, psmisc, miscfiles
+# Needed by upstream testsuite
+CDBS_BUILD_DEPENDS +=, procps, psmisc, miscfiles
 
 DEB_CONFIGURE_EXTRA_FLAGS = --disable-stdout --enable-syslog
 ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
@@ -77,7 +76,9 @@ clean::
 	rm -f debian/stamp-upstreamtmpstuff
 
 # generate (and cleanup) documentation
-CDBS_BUILD_DEPENDS += , doxygen-latex | doxygen, doxygen-latex | texlive-latex-recommended, texlive-fonts-recommended
+CDBS_BUILD_DEPENDS +=, doxygen-latex | doxygen
+CDBS_BUILD_DEPENDS +=, doxygen-latex | texlive-latex-recommended
+CDBS_BUILD_DEPENDS +=, texlive-fonts-recommended
 DEB_INSTALL_DOCS_srtp-docs += doc/*.txt doc/*.pdf
 DEB_COMPRESS_EXCLUDE += .pdf
 build/srtp-docs::
@@ -93,7 +94,7 @@ post-patches::
 
 # Let d-shlibs calculate development package dependencies
 #  and handle shared library install
-CDBS_BUILD_DEPENDS += , d-shlibs
+CDBS_BUILD_DEPENDS +=, d-shlibs
 binary-post-install/libsrtp0::
 	d-shlibmove --commit \
 		--movedev "debian/tmp/usr/include/srtp/*" usr/include/srtp/ \
