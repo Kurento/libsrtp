@@ -5,3 +5,4 @@
 1008_shared-lib.patch
 2001_make_shellscript_noisy.patch
 2002_Add-algorithm-to-cipher_t.patch
+2003_Fix-stat-driver-test.patch

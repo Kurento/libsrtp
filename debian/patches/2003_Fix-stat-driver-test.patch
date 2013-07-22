@@ -1,0 +1,13 @@
+Description: Fix stat driver test
+Author: John Foley <foleyj@cisco.com>
+Origin: http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=89;filename=init_nonce.diff;att=1;bug=628583
+--- a/crypto/test/stat_driver.c
++++ b/crypto/test/stat_driver.c
+@@ -51,6 +51,7 @@ main (int argc, char *argv[]) {
+ 
+   printf("statistical tests driver\n");
+ 
++  v128_set_to_zero(&nonce);
+   for (i=0; i < 2500; i++)
+     buffer[i] = 0;
+

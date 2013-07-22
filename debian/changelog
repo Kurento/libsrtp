@@ -28,6 +28,7 @@ FIXME: fails generating PDF documentation.
   [ Daniel Pocock ]
   * Set FORCE_64BIT_ALIGN for sparc builds (Closes: #628583)
   * Add algorithm to cipher_t
+  * Fix stat driver test
 
  -- Jonas Smedegaard <dr@jones.dk>  Mon, 01 Jul 2013 04:17:08 +0200
 
