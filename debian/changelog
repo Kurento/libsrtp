@@ -42,6 +42,7 @@ srtp (1.4.5~20130609~dfsg-1) unstable; urgency=low
   * Fix support forced 64bit alignment.
   * Fix stat driver test. Thanks to John Foley.
   * Tweak documentation build to fix errors.
+  * Add myself to uploaders
 
  -- Jonas Smedegaard <dr@jones.dk>  Tue, 23 Jul 2013 00:22:19 +0200
 
