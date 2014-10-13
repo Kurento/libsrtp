@@ -1,3 +1,11 @@
+srtp (1.4.5~20130609~dfsg-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * 2002_missing_doxygen_commands.patch: define \+ command in
+    doc/header.template (Closes: #752970) - patch by Si Padmore
+
+ -- Jonathan Wiltshire <jmw@debian.org>  Mon, 13 Oct 2014 21:24:34 +0100
+
 srtp (1.4.5~20130609~dfsg-1) unstable; urgency=low
 
   [ upstream ]
@@ -42,7 +50,6 @@ srtp (1.4.5~20130609~dfsg-1) unstable; urgency=low
   * Fix support forced 64bit alignment.
   * Fix stat driver test. Thanks to John Foley.
   * Tweak documentation build to fix errors.
-  * Add myself to uploaders
 
  -- Jonas Smedegaard <dr@jones.dk>  Tue, 23 Jul 2013 00:22:19 +0200
 

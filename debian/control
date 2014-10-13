@@ -1,7 +1,6 @@
 Source: srtp
 Priority: optional
 Maintainer: Jonas Smedegaard <dr@jones.dk>
-Uploaders: Daniel Pocock <daniel@pocock.com.au>
 Build-Depends: cdbs,
  autotools-dev,
  debhelper,
