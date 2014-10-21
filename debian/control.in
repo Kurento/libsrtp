@@ -3,7 +3,7 @@ Priority: optional
 Maintainer: Jonas Smedegaard <dr@jones.dk>
 Uploaders: Daniel Pocock <daniel@pocock.com.au>
 Build-Depends: @cdbs@
-Standards-Version: 3.9.4
+Standards-Version: 3.9.6
 Section: libs
 Vcs-Git: git://anonscm.debian.org/git/collab-maint/srtp.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/srtp.git
