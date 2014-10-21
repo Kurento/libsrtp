@@ -16,6 +16,7 @@ Files: LICENSE
  crypto/hash/sha1.c
  crypto/include/aes.h
  crypto/include/alloc.h
+ crypto/include/auth.h
  crypto/include/crypto_kernel.h
  crypto/include/crypto_math.h
  crypto/include/crypto_types.h
@@ -70,8 +71,6 @@ Files: LICENSE
  test/srtp_driver.c
 Copyright: 2001-2005, Cisco Systems, Inc
   2001-2006, Cisco Systems, Inc
-  HOLDERS AND CONTRIBUTORS
-  HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT
 License: BSD-3-clause
  FIXME
 
@@ -111,6 +110,7 @@ Files: CHANGES
  debian/patches/1007_update_Doxyfile.patch
  debian/patches/1008_shared-lib.patch
  debian/patches/2001_make_shellscript_noisy.patch
+ debian/patches/2002_define_missing_latex_cmd_plus.patch
  debian/patches/README
  debian/patches/series
  debian/source/format
@@ -139,8 +139,6 @@ License: UNKNOWN
 Files: crypto/include/kernel_compat.h
  crypto/rng/rand_linux_kernel.c
 Copyright: 2005, Ingate Systems AB
-  HOLDERS AND CONTRIBUTORS
-  HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT
 License: BSD-3-clause
  FIXME
 
@@ -152,31 +150,18 @@ License: GPL-2+
  FIXME
 
 Files: crypto/include/cipher.h
-Copyright: ((->type)->dealloc)
-  2001-2006, Cisco Systems, Inc
+Copyright: 2001-2006, Cisco Systems, Inc
   ? ((->type)->set_iv(((cipher_pointer_t)->state), (n))) : \
-  HOLDERS AND CONTRIBUTORS
-  HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT
-License: BSD-3-clause
- FIXME
-
-Files: crypto/include/auth.h
-Copyright: ((->type)->dealloc)
-  2001-2006, Cisco Systems, Inc
-  HOLDERS AND CONTRIBUTORS
-  HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT
 License: BSD-3-clause
  FIXME
 
 Files: doc/intro.txt
 Copyright: 2001-2005, Cisco Systems, Inc.
-  HOLDERS AND CONTRIBUTORS
-  HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT
 License: BSD-3-clause
  FIXME
 
 Files: debian/rules
-Copyright: 2007-2008, 2010-2011, 2013 Jonas Smedegaard
+Copyright: 2007-2008, 2010-2011, 2013-2014, Jonas Smedegaard
 License: GPL-3+
  FIXME
 

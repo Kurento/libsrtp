@@ -1,6 +1,7 @@
 Source: srtp
 Priority: optional
 Maintainer: Jonas Smedegaard <dr@jones.dk>
+Uploaders: Daniel Pocock <daniel@pocock.com.au>
 Build-Depends: cdbs,
  autotools-dev,
  debhelper,
@@ -14,10 +15,10 @@ Build-Depends: cdbs,
  doxygen-latex | texlive-latex-recommended,
  texlive-fonts-recommended,
  d-shlibs
-Standards-Version: 3.9.4
+Standards-Version: 3.9.6
 Section: libs
-Vcs-Git: git://anonscm.debian.org/git/collab-maint/srtp.git
-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/srtp.git
+Vcs-Git: git://anonscm.debian.org/collab-maint/srtp.git
+Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/srtp.git
 Homepage: https://github.com/cisco/libsrtp
 
 Package: libsrtp0-dev

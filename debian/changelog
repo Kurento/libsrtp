@@ -1,3 +1,21 @@
+srtp (1.4.5~20130609~dfsg-2) UNRELEASED; urgency=medium
+
+  [ Daniel Pocock ]
+  * Add myself to uploaders
+
+  [ Jonas Smedegaard ]
+  * Acknowledge NMU, with a few adjustments:
+    + Fix revert accidental change to .gitignore.
+    + Refresh patch 2002 with shortening quilt options.
+    Closes: bug##752970. Thanks to Jonathan Wiltshire.
+  * Declare compliance with Debian Policy 3.9.6.
+  * Fix use canonical URL in Vcs-Git.
+  * Update Vcs-Browser URL to use cgit web frontend.
+  * Update copyright info:
+    + Extend coverage for myself to include current year.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Tue, 21 Oct 2014 13:14:44 +0200
+
 srtp (1.4.5~20130609~dfsg-1.1) unstable; urgency=medium
 
   * Non-maintainer upload.
