@@ -6,7 +6,7 @@ Build-Depends: @cdbs@
 Standards-Version: 3.9.6
 Section: libs
 Vcs-Git: git://anonscm.debian.org/collab-maint/srtp.git
-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/srtp.git
+Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/srtp.git
 Homepage: https://github.com/cisco/libsrtp
 
 Package: libsrtp0-dev
