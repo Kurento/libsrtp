@@ -115,5 +115,6 @@ post-patches::
 CDBS_BUILD_DEPENDS +=, d-shlibs
 binary-post-install/$(pkg-lib)::
 	d-shlibmove --commit \
+		--devunversioned \
 		--movedev "debian/tmp/usr/include/*" usr/include/ \
 		debian/tmp/usr/lib/$(libname).so

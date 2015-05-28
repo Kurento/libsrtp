@@ -9,12 +9,9 @@ Vcs-Git: git://anonscm.debian.org/collab-maint/srtp.git
 Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/srtp.git
 Homepage: https://github.com/cisco/libsrtp
 
-Package: __LIBPKGNAME__-dev
+Package: libsrtp-dev
 Section: libdevel
 Depends: ${devlibs:Depends}, ${misc:Depends}, __LIBPKGNAME__ (= ${binary:Version})
-Provides: libsrtp-dev
-Conflicts: libsrtp-dev, libsrtp1-dev (<= 1.4.4)
-Replaces: libsrtp1-dev (<= 1.4.4)
 Architecture: any
 Description: Secure RTP (SRTP) and UST Reference Implementations - development files
  SRTP is a security profile for RTP that adds confidentiality, message
