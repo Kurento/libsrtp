@@ -31,6 +31,10 @@ DEB_UPSTREAM_TARBALL_BASENAME = v$(DEB_UPSTREAM_TARBALL_VERSION)
 DEB_UPSTREAM_REPACKAGE_EXCLUDES = ./CVS .cvsignore ./doc/rfc*.txt ./doc/draft*.txt ./doc/*.pdf ./releases/
 DEB_UPSTREAM_TARBALL_SRCDIR = libsrtp-$(DEB_UPSTREAM_TARBALL_VERSION)
 
+# Build-depend unversioned on debhelper
+#  TODO: Drop when adopted in cdbs
+CDBS_BUILD_DEPENDS_rules_debhelper_v9 = debhelper
+
 # Needed by upstream testsuite
 CDBS_BUILD_DEPENDS +=, procps, psmisc, miscfiles
 
