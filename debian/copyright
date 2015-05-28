@@ -14,17 +14,30 @@ Files-Excluded:
  releases
 
 Files: *
-Copyright: 2001-2006, Cisco Systems, Inc
+Copyright:
+  © 2001-2006, Cisco Systems, Inc
 License: BSD-3-clause~Cisco
 
 Files: crypto/include/kernel_compat.h
  crypto/rng/rand_linux_kernel.c
-Copyright: 2005, Ingate Systems AB
+Copyright:
+  © 2005, Ingate Systems AB
 License: BSD-3-clause~Ingate
 
 Files: config.guess
  config.sub
-Copyright: 1992-2011, Free Software Foundation, Inc.
+Copyright:
+  © 1992-2011, Free Software Foundation, Inc.
+License-Grant:
+ This file is free software; you can redistribute it and/or modify it
+ under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
 License: GPL-2+~file with Autoconf exception
  As a special exception to the GNU General Public License, if you
  distribute this file as part of a program that contains a configuration
@@ -32,15 +45,28 @@ License: GPL-2+~file with Autoconf exception
  distribution terms that you use for the rest of that program.
 
 Files: configure
-Copyright: 2003, Free Software Foundation, Inc
+Copyright:
+  © 2003, Free Software Foundation, Inc
 License: GAP~configure
 
 Files: install-sh
-Copyright: 1991, the Massachusetts Institute of Technology
+Copyright:
+  © 1991, the Massachusetts Institute of Technology
 License: MIT
 
 Files: debian/*
-Copyright: 2007-2008,2010-2011,2013-2014, Jonas Smedegaard <dr@jones.dk>
+Copyright:
+  © 2007-2008,2010-2011,2013-2014, Jonas Smedegaard <dr@jones.dk>
+License-Grant:
+ This program is free software; you can redistribute it and/or modify it
+ under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 3 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
 License: GPL-3+
 
 License: BSD-3-clause~Cisco
@@ -85,39 +111,10 @@ License: GAP~configure
  gives unlimited permission to copy, distribute and modify it.
 
 License: GPL-2+~file
- This file is free software; you can redistribute it and/or modify it
- under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
- (at your option) any later version.
- .
- This program is distributed in the hope that it will be useful, but
- WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- General Public License for more details.
- .
- Comment:
- .
- On Debian systems the 'GNU General Public License' version 2 is located
- in '/usr/share/common-licenses/GPL-2'.
- .
- You should have received a copy of the GNU General Public License along
- with this program.  If not, see <http://www.gnu.org/licenses/>.
+License-Reference: /usr/share/common-licenses/GPL-2
 
 License: GPL-3+
- This program is free software; you can redistribute it and/or modify it
- under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 3 of the License, or
- (at your option) any later version.
- .
- This program is distributed in the hope that it will be useful, but
- WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- General Public License for more details.
- .
- Comment:
- .
- On Debian systems the 'GNU General Public License' version 3 is located
- in '/usr/share/common-licenses/GPL-3'.
+License-Reference: /usr/share/common-licenses/GPL-3
 
 License: GAP~configure
  This configure script is free software; the Free Software Foundation
