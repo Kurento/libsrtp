@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 # -*- mode: makefile; coding: utf-8 -*-
-# Copyright © 2007-2008, 2010-2011, 2013-2014 Jonas Smedegaard
+# Copyright © 2007-2008, 2010-2011, 2013-2015 Jonas Smedegaard
 # <dr@jones.dk>
 # Description: Main Debian packaging script for libSRTP
 #
