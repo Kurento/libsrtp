@@ -144,8 +144,8 @@ License: BSD-3-clause
 
 Files: config.guess
  config.sub
-Copyright: 1992-1999,
-  1992-2000
+Copyright: 1992-1999
+  1992-2000,
 License: GPL-2+
  FIXME
 
@@ -161,7 +161,7 @@ License: BSD-3-clause
  FIXME
 
 Files: debian/rules
-Copyright: 2007-2008, 2010-2011, 2013-2014, Jonas Smedegaard
+Copyright: 2007-2008, 2010-2011, 2013-2015, Jonas Smedegaard
 License: GPL-3+
  FIXME
 
