@@ -43,8 +43,8 @@
  */
 
 
-#include "err.h"
 #include "srtp_priv.h"
+#include "err.h"
 #include "ekt.h"
 
 extern debug_module_t mod_srtp;
@@ -148,10 +148,13 @@ ekt_stream_init_from_policy(ekt_stream_t stream_data, ekt_policy_t policy) {
 
 void
 aes_decrypt_with_raw_key(void *ciphertext, const void *key, int key_len) {
+#ifndef OPENSSL
+//FIXME: need to get this working through the crypto module interface
   aes_expanded_key_t expanded_key;
 
   aes_expand_decryption_key(key, key_len, &expanded_key);
   aes_decrypt(ciphertext, &expanded_key);
+#endif
 }
 
 /*
