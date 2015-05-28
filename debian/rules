@@ -17,15 +17,23 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# These must be listed before including CDBS snippets
+stem = $(DEB_SOURCE_PACKAGE)
+major := $(shell grep ^SHAREDLIBVERSION Makefile.in | grep -o '[[:digit:]]*' | head -n 1)
+pkg-lib = lib$(stem)$(major)
+debian/control:: debian/control.in
+DEB_PHONY_RULES += debian/control.in
+debian/control.in::
+	sed -e 's/__LIBPKGNAME__/$(pkg-lib)/g' \
+		< debian/control.in.in \
+		> debian/control.in
+
 include /usr/share/cdbs/1/class/autotools.mk
 include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/rules/utils.mk
 include /usr/share/cdbs/1/rules/upstream-tarball.mk
 include /usr/share/hardening-includes/hardening.make
 
-stem = $(DEB_SOURCE_PACKAGE)
-major := $(shell grep ^SHAREDLIBVERSION Makefile.in | grep -o '[[:digit:]]*' | head -n 1)
-pkg-lib = lib$(stem)$(major)
 pkg-doc = $(stem)-docs
 libname = lib$(stem)
 
