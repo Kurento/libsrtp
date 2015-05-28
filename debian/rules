@@ -24,7 +24,7 @@ include /usr/share/cdbs/1/rules/upstream-tarball.mk
 include /usr/share/hardening-includes/hardening.make
 
 # Update this checksum when new releases occur, to catch silent server side file content forges
-DEB_UPSTREAM_TARBALL_MD5 = f706820bb54a4ff805c3f04f31a13082
+DEB_UPSTREAM_TARBALL_MD5 = 2309aa6027992810a4285b042c71e644
 
 DEB_UPSTREAM_URL = https://github.com/cisco/libsrtp/archive
 DEB_UPSTREAM_TARBALL_BASENAME = v$(DEB_UPSTREAM_TARBALL_VERSION)
