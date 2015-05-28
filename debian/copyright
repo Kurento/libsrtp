@@ -15,7 +15,7 @@ Files-Excluded:
 
 Files: *
 Copyright:
-  © 2001-2006, Cisco Systems, Inc
+  © 2001-2006,2013, Cisco Systems, Inc
 License: BSD-3-clause~Cisco
 
 Files: crypto/include/kernel_compat.h
