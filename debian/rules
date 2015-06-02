@@ -106,9 +106,7 @@ clean::
 	rm -f debian/stamp-upstreamtmpstuff
 
 # generate (and cleanup) documentation
-CDBS_BUILD_DEPENDS +=, doxygen-latex | doxygen
-CDBS_BUILD_DEPENDS +=, doxygen-latex | texlive-latex-recommended
-CDBS_BUILD_DEPENDS +=, texlive-fonts-recommended
+CDBS_BUILD_DEPENDS +=, doxygen-latex
 DEB_INSTALL_DOCS_$(pkg-doc) += doc/*.txt doc/*.pdf
 DEB_COMPRESS_EXCLUDE_$(pkg-doc) += .pdf
 build/$(pkg-doc)::
