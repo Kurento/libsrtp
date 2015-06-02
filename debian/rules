@@ -51,7 +51,7 @@ DEB_UPSTREAM_TARBALL_SRCDIR = libsrtp-$(DEB_UPSTREAM_TARBALL_VERSION)
 CDBS_BUILD_DEPENDS_rules_debhelper_v9 = debhelper
 
 # Needed by upstream build and (always) at (development) runtime
-deps-dev = pkg-config
+deps-dev = pkg-config, libpcap-dev
 
 # Needed by upstream testsuite
 bdeps-test = procps, psmisc, miscfiles
