@@ -106,7 +106,8 @@ clean::
 	rm -f debian/stamp-upstreamtmpstuff
 
 # generate (and cleanup) documentation
-CDBS_BUILD_DEPENDS +=, doxygen-latex
+#  * TODO: Declare build-dependency here when supported by CDBS
+CDBS_BUILD_DEPENDS_INDEP +=, doxygen-latex
 DEB_INSTALL_DOCS_$(pkg-doc) += doc/*.txt doc/*.pdf
 DEB_COMPRESS_EXCLUDE_$(pkg-doc) += .pdf
 build/$(pkg-doc)::
