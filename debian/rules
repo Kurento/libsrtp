@@ -32,7 +32,6 @@ include /usr/share/cdbs/1/class/autotools.mk
 include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/rules/utils.mk
 include /usr/share/cdbs/1/rules/upstream-tarball.mk
-include /usr/share/hardening-includes/hardening.make
 
 pkg-dev = $(stem)-dev
 pkg-doc = $(stem)-docs
@@ -72,14 +71,6 @@ CFLAGS += -DFORCE_64BIT_ALIGN
 endif
 
 CFLAGS += -D_REENTRANT
-
-# Tighten security - more info at http://wiki.debian.org/Hardening
-CDBS_BUILD_DEPENDS += , hardening-includes
-CFLAGS += $(HARDENING_CFLAGS)
-LDFLAGS += $(HARDENING_LDFLAGS)
-
-# ...except this, causing "relocation [...]; recompile with -fPIC" failure
-DEB_BUILD_HARDENING_PIE:=0
 
 # Reapply default strong optimizations unless noopt in DEB_BUILD_OPTIONS
 CFLAGS += $(if $(filter noopt,$(DEB_BUILD_OPTIONS))-O0,-O4 -fexpensive-optimizations -funroll-loops)
