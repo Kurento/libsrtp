@@ -7,7 +7,7 @@ Last-Update: 2011-05-30
 
 --- a/test/srtp_driver.c
 +++ b/test/srtp_driver.c
-@@ -1195,7 +1195,6 @@
+@@ -1198,7 +1198,6 @@
   * These packets were made with the default SRTP policy.
   */
  
@@ -15,7 +15,7 @@ Last-Update: 2011-05-30
  err_status_t
  srtp_validate() {
    uint8_t srtp_plaintext_ref[28] = {
-@@ -1204,14 +1203,14 @@
+@@ -1207,14 +1206,14 @@
      0xab, 0xab, 0xab, 0xab, 0xab, 0xab, 0xab, 0xab, 
      0xab, 0xab, 0xab, 0xab
    };

@@ -6,7 +6,7 @@ Last-Update: 2010-02-28
 
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -19,14 +19,14 @@
+@@ -24,17 +24,17 @@
  
  runtest: build_table_apps test
  	@echo "running libsrtp test applications..."
@@ -17,6 +17,7 @@ Last-Update: 2010-02-28
 -	test/roc_driver$(EXE) -v >/dev/null
 -	test/replay_driver$(EXE) -v >/dev/null
 -	test/dtls_srtp_driver$(EXE) >/dev/null
+-	crypto/test/rand_gen_soak$(EXE) -v >/dev/null
 -	cd test; $(abspath $(srcdir))/test/rtpw_test.sh >/dev/null	
 +	crypto/test/cipher_driver$(EXE) -v
 +	crypto/test/kernel_driver$(EXE) -v
@@ -25,16 +26,20 @@ Last-Update: 2010-02-28
 +	test/roc_driver$(EXE) -v
 +	test/replay_driver$(EXE) -v
 +	test/dtls_srtp_driver$(EXE)
++	crypto/test/rand_gen_soak$(EXE) -v
 +	cd test; $(abspath $(srcdir))/test/rtpw_test.sh
+ ifeq (1, $(USE_OPENSSL))
+-	cd test; $(abspath $(srcdir))/test/rtpw_test_gcm.sh >/dev/null	
++	cd test; $(abspath $(srcdir))/test/rtpw_test_gcm.sh
+ endif
  	@echo "libsrtp test applications passed."
  	$(MAKE) -C crypto runtest
- 
 --- a/crypto/Makefile.in
 +++ b/crypto/Makefile.in
-@@ -63,12 +63,12 @@
- 	@echo "running libcryptomodule test applications..."
+@@ -68,12 +68,12 @@
  	test `test/aes_calc $(k128) $(p128)` = $(c128)
  	test `test/aes_calc $(k256) $(p256)` = $(c256)
+ endif
 -	test/cipher_driver$(EXE) -v >/dev/null
 -	test/datatypes_driver$(EXE) -v >/dev/null
 -	test/stat_driver$(EXE) >/dev/null
@@ -47,6 +52,6 @@ Last-Update: 2010-02-28
 +	test/sha1_driver$(EXE) -v
 +	test/kernel_driver$(EXE) -v
 +	test/rand_gen$(EXE) -n 256
- 	@echo "libcryptomodule test applications passed."
+ 	@echo "crypto test applications passed."
  
- # libcryptomodule.a (the crypto engine) 
+ 

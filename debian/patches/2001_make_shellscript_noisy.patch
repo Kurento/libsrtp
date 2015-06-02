@@ -4,9 +4,9 @@ Last-Update: 2011-05-25
 
 --- a/test/rtpw_test.sh
 +++ b/test/rtpw_test.sh
-@@ -4,6 +4,9 @@
- # 
- # tests the rtpw sender and receiver functions
+@@ -37,6 +37,9 @@
+ # OF THE POSSIBILITY OF SUCH DAMAGE.
+ #
  
 +set -e
 +set -x
@@ -14,7 +14,7 @@ Last-Update: 2011-05-25
  RTPW=./rtpw
  DEST_PORT=9999
  DURATION=3
-@@ -18,7 +21,7 @@
+@@ -51,7 +54,7 @@
  # they are killed, those processes will linger.  Re-running the script
  # will get rid of them.
  

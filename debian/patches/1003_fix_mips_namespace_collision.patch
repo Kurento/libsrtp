@@ -6,7 +6,7 @@ Last-Update: 2010-02-28
 
 --- a/test/srtp_driver.c
 +++ b/test/srtp_driver.c
-@@ -338,7 +338,7 @@
+@@ -341,7 +341,7 @@
    if (do_codec_timing) {
      srtp_policy_t policy;
      int ignore;
@@ -15,7 +15,7 @@ Last-Update: 2010-02-28
  
      crypto_policy_set_rtp_default(&policy.rtp);
      crypto_policy_set_rtcp_default(&policy.rtcp);
-@@ -350,33 +350,33 @@
+@@ -353,33 +353,33 @@
      policy.allow_repeat_tx = 0;
      policy.next = NULL;
  
