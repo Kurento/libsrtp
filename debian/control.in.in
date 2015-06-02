@@ -29,10 +29,12 @@ Description: Secure RTP (SRTP) and UST Reference Implementations - development f
 
 Package: __LIBPKGNAME__
 Section: libs
+Pre-Depends: ${misc:Pre-Depends}
 Depends: ${misc:Depends},
  ${shlibs:Depends}
 Suggests: srtp-utils
 Architecture: any
+Multi-Arch: same
 Description: Secure RTP (SRTP) and UST Reference Implementations - shared library
  SRTP is a security profile for RTP that adds confidentiality, message
  authentication, and replay protection to that protocol. It is specified
