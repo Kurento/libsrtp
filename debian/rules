@@ -87,6 +87,9 @@ DEB_MAKE_BUILD_TARGET = shared_library test
 DEB_MAKE_CLEAN_TARGET = superclean
 DEB_MAKE_CHECK_TARGET = runtest
 
+# Have testsuite use locally built shared library
+$(cdbs_make_check_stamps): export LD_LIBRARY_PATH=.
+
 # preserve (and restore) upstream-shipped files tampered with
 upstreamtmpfiles = doc/Makefile crypto/Makefile doc/Doxyfile
 pre-build:: debian/stamp-upstreamtmpstuff
