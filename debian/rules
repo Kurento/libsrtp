@@ -139,4 +139,4 @@ binary-post-install/$(pkg-lib)::
 
 # cleanup stuff missed upstream
 clean::
-	rm -f libsrtp.pc libsrtp.so.1
+	rm -f $(libname).pc $(libname).so.$(major)
