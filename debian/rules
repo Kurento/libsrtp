@@ -139,4 +139,4 @@ binary-post-install/$(pkg-lib)::
 
 # cleanup stuff missed upstream
 clean::
-	rm -f $(libname).pc $(libname).so.$(major)
+	rm -f $(libname).pc $(libname).so.$(major) doc/doxygen_sqlite3.db
