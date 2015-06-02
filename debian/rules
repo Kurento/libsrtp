@@ -50,7 +50,9 @@ DEB_UPSTREAM_TARBALL_SRCDIR = libsrtp-$(DEB_UPSTREAM_TARBALL_VERSION)
 CDBS_BUILD_DEPENDS_rules_debhelper_v9 = debhelper
 
 # Needed by upstream testsuite
-CDBS_BUILD_DEPENDS +=, procps, psmisc, miscfiles
+bdeps-test = procps, psmisc, miscfiles
+
+CDBS_BUILD_DEPENDS +=, $(bdeps-test)
 
 DEB_CONFIGURE_EXTRA_FLAGS = --disable-stdout --enable-syslog
 ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
