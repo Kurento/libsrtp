@@ -11,7 +11,7 @@ Homepage: https://github.com/cisco/libsrtp
 
 Package: libsrtp-dev
 Section: libdevel
-Depends: ${devlibs:Depends}, ${misc:Depends}, __LIBPKGNAME__ (= ${binary:Version})
+Depends: ${cdbs:Depends}, ${devlibs:Depends}, ${misc:Depends}, __LIBPKGNAME__ (= ${binary:Version})
 Architecture: any
 Description: Secure RTP (SRTP) and UST Reference Implementations - development files
  SRTP is a security profile for RTP that adds confidentiality, message

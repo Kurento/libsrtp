@@ -34,6 +34,7 @@ include /usr/share/cdbs/1/rules/utils.mk
 include /usr/share/cdbs/1/rules/upstream-tarball.mk
 include /usr/share/hardening-includes/hardening.make
 
+pkg-dev = $(stem)-dev
 pkg-doc = $(stem)-docs
 libname = lib$(stem)
 
@@ -49,10 +50,14 @@ DEB_UPSTREAM_TARBALL_SRCDIR = libsrtp-$(DEB_UPSTREAM_TARBALL_VERSION)
 #  TODO: Drop when adopted in cdbs
 CDBS_BUILD_DEPENDS_rules_debhelper_v9 = debhelper
 
+# Needed by upstream build and (always) at (development) runtime
+deps-dev = pkg-config
+
 # Needed by upstream testsuite
 bdeps-test = procps, psmisc, miscfiles
 
-CDBS_BUILD_DEPENDS +=, $(bdeps-test)
+CDBS_BUILD_DEPENDS +=, $(deps-dev), $(bdeps-test)
+CDBS_DEPENDS_$(pkg-dev) +=, $(deps-dev)
 
 DEB_CONFIGURE_EXTRA_FLAGS = --disable-stdout --enable-syslog
 ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
@@ -119,4 +124,6 @@ binary-post-install/$(pkg-lib)::
 	d-shlibmove --commit \
 		--devunversioned \
 		--movedev "debian/tmp/usr/include/*" usr/include/ \
+		--movedev "debian/tmp/usr/lib/pkgconfig/*" \
+			usr/lib/pkgconfig \
 		debian/tmp/usr/lib/$(libname).so
