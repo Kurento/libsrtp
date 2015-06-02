@@ -1,7 +1,10 @@
-srtp (1.4.5~20130609~dfsg-2) UNRELEASED; urgency=medium
+srtp (1.5.2~dfsg-1) experimental; urgency=medium
+
+  [ upstream ]
+  * New release(s).
 
   [ Daniel Pocock ]
-  * Add myself to uploaders
+  * Add myself to uploaders.
 
   [ Jonas Smedegaard ]
   * Acknowledge NMU, with a few adjustments:
@@ -12,12 +15,36 @@ srtp (1.4.5~20130609~dfsg-2) UNRELEASED; urgency=medium
   * Fix use canonical URL in Vcs-Git.
   * Update Vcs-Browser URL to use cgit web frontend.
   * Update copyright info:
+    + Extend coverage for main upstream author.
     + Extend coverage for myself to include current year.
     + Use License-Grant and License-Reference fields.
       Thanks to Ben Finney.
+    + Drop accidental duplicate License section for GAP~configure.
   * Update hints so get-orig-source target fetches released tarballs.
+  * Modernize git-buildpackage config: Drop "git-" prefix.
+  * Bump debhelper compatibility level to 9.
+  * Add lintian override regarding license in License-Reference field.
+    See bug#786450.
+  * Provide unversioned libsrtp-dev package (not versioned + virtual).
+  * Install pkgconfig file.
+    Build-depend on, and have -dev package depend on, pkg-config.
+  * Include rtp_decoder in -utils package.
+    Build-depend on, and have -dev package depend on, libpcap-dev.
+  * Drop patches 1001 1002 1008 applied upstream.
+    Unfuzz remaining patches.
+  * Add patch cherry-picked upstream renaming SHA1 functions to avoid
+    conflicts with e.g. polarssl.
+    Closes: bug#764778. Thanks to Si Padmore.
+  * Make library package multi-arch aware.
+    Closes: bug#765173. Thanks to Michał Mirosław.
+  * Drop fallback-build-dependencies for doxygen-latex: Unneeded even in
+    oldstable.
+  * Fix declare arch-indep build-dependency on doxygen-latex as such.
+    Closes: Bug#628559. Thanks to George Danchev.
+  * Add -dbg package.
+  * Stop use or build-depend on obsolete hardening-includes.
 
- -- Jonas Smedegaard <dr@jones.dk>  Tue, 21 Oct 2014 13:14:44 +0200
+ -- Jonas Smedegaard <dr@jones.dk>  Tue, 02 Jun 2015 23:31:26 +0200
 
 srtp (1.4.5~20130609~dfsg-1.1) unstable; urgency=medium
 
