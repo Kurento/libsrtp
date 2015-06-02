@@ -47,6 +47,24 @@ Description: Secure RTP (SRTP) and UST Reference Implementations - shared librar
  .
  This package contains the shared libraries.
 
+Package: __LIBPKGNAME__-dbg
+Section: debug
+Priority: extra
+Depends: ${misc:Depends},
+ __LIBPKGNAME__ (= ${binary:Version})
+Architecture: any
+Multi-Arch: same
+Description: Secure RTP (SRTP) and UST Reference Implementations - debugging symbols
+ SRTP is a security profile for RTP that adds confidentiality, message
+ authentication, and replay protection to that protocol. It is specified
+ in RFC 3711.
+ .
+ LibSRTP provides an implementation of the Secure Real-time Transport
+ Protocol (SRTP), the Universal Security Transform (UST), and a
+ supporting cryptographic kernel.
+ .
+ This package contains the debugging symbols.
+
 Package: srtp-docs
 Section: doc
 Depends: ${misc:Depends}
