@@ -131,3 +131,7 @@ binary-post-install/$(pkg-lib)::
 		--movedev "debian/tmp/usr/lib/pkgconfig/*" \
 			usr/lib/pkgconfig \
 		debian/tmp/usr/lib/$(libname).so
+
+# cleanup stuff missed upstream
+clean::
+	rm -f libsrtp.pc libsrtp.so.1
