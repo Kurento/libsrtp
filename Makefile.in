@@ -24,17 +24,17 @@ all: test
 
 runtest: build_table_apps test
 	@echo "running libsrtp test applications..."
-	crypto/test/cipher_driver$(EXE) -v >/dev/null
-	crypto/test/kernel_driver$(EXE) -v >/dev/null
-	test/rdbx_driver$(EXE) -v >/dev/null
-	test/srtp_driver$(EXE) -v >/dev/null
-	test/roc_driver$(EXE) -v >/dev/null
-	test/replay_driver$(EXE) -v >/dev/null
-	test/dtls_srtp_driver$(EXE) >/dev/null
-	crypto/test/rand_gen_soak$(EXE) -v >/dev/null
-	cd test; $(abspath $(srcdir))/test/rtpw_test.sh >/dev/null	
+	crypto/test/cipher_driver$(EXE) -v
+	crypto/test/kernel_driver$(EXE) -v
+	test/rdbx_driver$(EXE) -v
+	test/srtp_driver$(EXE) -v
+	test/roc_driver$(EXE) -v
+	test/replay_driver$(EXE) -v
+	test/dtls_srtp_driver$(EXE)
+	crypto/test/rand_gen_soak$(EXE) -v
+	cd test; $(abspath $(srcdir))/test/rtpw_test.sh
 ifeq (1, $(USE_OPENSSL))
-	cd test; $(abspath $(srcdir))/test/rtpw_test_gcm.sh >/dev/null	
+	cd test; $(abspath $(srcdir))/test/rtpw_test_gcm.sh
 endif
 	@echo "libsrtp test applications passed."
 	$(MAKE) -C crypto runtest

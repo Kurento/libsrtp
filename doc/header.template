@@ -10,27 +10,46 @@
 \usepackage{graphicx}
 \usepackage{multicol}
 \usepackage{float}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{ifthen}
+\usepackage[table]{xcolor}
 \usepackage{textcomp}
 \usepackage{alltt}
-\usepackage{times}
-\usepackage{graphicx}
-\ifx\pdfoutput\undefined
-\usepackage[ps2pdf,
-            pagebackref=true,
-            colorlinks=true,
-            linkcolor=blue
-           ]{hyperref}
-\else
+\usepackage{ifpdf}
+\ifpdf
 \usepackage[pdftex,
             pagebackref=true,
             colorlinks=true,
-            linkcolor=blue
+            linkcolor=blue,
+            unicode
            ]{hyperref}
+\else
+\usepackage[ps2pdf,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\usepackage{pspicture}
 \fi
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\usepackage{sectsty}
+\usepackage[titles]{tocloft}
 \usepackage{doxygen}
+\lstset{language=C++,inputencoding=utf8,basicstyle=\footnotesize,breaklines=true,breakatwhitespace=true,tabsize=3,numbers=left }
 \makeindex
 \setcounter{tocdepth}{1}
 \renewcommand{\footrulewidth}{0.4pt}
+
+\let\origdoublepage\cleardoublepage
+\providecommand{\clearemptydoublepage}{%
+  \clearpage
+  {\pagestyle{empty}\origdoublepage}%
+}
 
 % these lengths are from DAM
 \textwidth = 6.5 in
@@ -58,8 +77,11 @@
 \fontfamily{ppl}
 \selectfont
 
+\newcommand{\+}{\discretionary{\mbox{\scriptsize$\hookleftarrow$}}{}{}}
 
+\renewcommand{\familydefault}{\sfdefault}
 \begin{document}
+\hypersetup{pageanchor=false}
 \begin{titlepage}
 \vspace*{4cm}
 %\begin{center}
@@ -107,9 +129,6 @@ This reference material in this documenation was generated using the
 \clearemptydoublepage
 \pagenumbering{roman}
 \tableofcontents
-%\clearemptydoublepage
-
 \clearemptydoublepage
 \pagenumbering{arabic}
-
-
+\hypersetup{pageanchor=true}

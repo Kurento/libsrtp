@@ -341,7 +341,7 @@ main (int argc, char *argv[]) {
   if (do_codec_timing) {
     srtp_policy_t policy;
     int ignore;
-    double mips = mips_estimate(1000000000, &ignore);
+    double mips_est = mips_estimate(1000000000, &ignore);
 
     crypto_policy_set_rtp_default(&policy.rtp);
     crypto_policy_set_rtcp_default(&policy.rtcp);
@@ -353,33 +353,33 @@ main (int argc, char *argv[]) {
     policy.allow_repeat_tx = 0;
     policy.next = NULL;
 
-    printf("mips estimate: %e\n", mips);
+    printf("mips estimate: %e\n", mips_est);
 
     printf("testing srtp processing time for voice codecs:\n");
     printf("codec\t\tlength (octets)\t\tsrtp instructions/second\n");
     printf("G.711\t\t%d\t\t\t%e\n", 80, 
-           (double) mips * (80 * 8) / 
+           (double) mips_est * (80 * 8) / 
 	   srtp_bits_per_second(80, &policy) / .01 );
     printf("G.711\t\t%d\t\t\t%e\n", 160, 
-           (double) mips * (160 * 8) / 
+           (double) mips_est * (160 * 8) / 
 	   srtp_bits_per_second(160, &policy) / .02);
     printf("G.726-32\t%d\t\t\t%e\n", 40, 
-           (double) mips * (40 * 8) / 
+           (double) mips_est * (40 * 8) / 
 	   srtp_bits_per_second(40, &policy) / .01 );
     printf("G.726-32\t%d\t\t\t%e\n", 80, 
-           (double) mips * (80 * 8) / 
+           (double) mips_est * (80 * 8) / 
 	   srtp_bits_per_second(80, &policy) / .02);
     printf("G.729\t\t%d\t\t\t%e\n", 10, 
-           (double) mips * (10 * 8) / 
+           (double) mips_est * (10 * 8) / 
 	   srtp_bits_per_second(10, &policy) / .01 );
     printf("G.729\t\t%d\t\t\t%e\n", 20, 
-           (double) mips * (20 * 8) /
+           (double) mips_est * (20 * 8) /
 	   srtp_bits_per_second(20, &policy) / .02 );
     printf("Wideband\t%d\t\t\t%e\n", 320, 
-           (double) mips * (320 * 8) /
+           (double) mips_est * (320 * 8) /
 	   srtp_bits_per_second(320, &policy) / .01 );
     printf("Wideband\t%d\t\t\t%e\n", 640, 
-           (double) mips * (640 * 8) /
+           (double) mips_est * (640 * 8) /
 	   srtp_bits_per_second(640, &policy) / .02 );
   }
 
@@ -1198,7 +1198,6 @@ mips_estimate(int num_trials, int *ignore) {
  * These packets were made with the default SRTP policy.
  */
 
-
 err_status_t
 srtp_validate() {
   uint8_t srtp_plaintext_ref[28] = {
@@ -1207,14 +1206,14 @@ srtp_validate() {
     0xab, 0xab, 0xab, 0xab, 0xab, 0xab, 0xab, 0xab, 
     0xab, 0xab, 0xab, 0xab
   };
-  uint8_t srtp_plaintext[38] = {
+  uint8_t srtp_plaintext[38] __attribute__((aligned(4))) = {
     0x80, 0x0f, 0x12, 0x34, 0xde, 0xca, 0xfb, 0xad, 
     0xca, 0xfe, 0xba, 0xbe, 0xab, 0xab, 0xab, 0xab,
     0xab, 0xab, 0xab, 0xab, 0xab, 0xab, 0xab, 0xab, 
     0xab, 0xab, 0xab, 0xab, 0x00, 0x00, 0x00, 0x00, 
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00
   };
-  uint8_t srtp_ciphertext[38] = {
+  uint8_t srtp_ciphertext[38] __attribute__((aligned(4))) = {
     0x80, 0x0f, 0x12, 0x34, 0xde, 0xca, 0xfb, 0xad, 
     0xca, 0xfe, 0xba, 0xbe, 0x4e, 0x55, 0xdc, 0x4c,
     0xe7, 0x99, 0x78, 0xd8, 0x8c, 0xa4, 0xd2, 0x15, 

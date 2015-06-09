@@ -68,12 +68,12 @@ ifneq (1, $(USE_OPENSSL))
 	test `test/aes_calc $(k128) $(p128)` = $(c128)
 	test `test/aes_calc $(k256) $(p256)` = $(c256)
 endif
-	test/cipher_driver$(EXE) -v >/dev/null
-	test/datatypes_driver$(EXE) -v >/dev/null
-	test/stat_driver$(EXE) >/dev/null
-	test/sha1_driver$(EXE) -v >/dev/null
-	test/kernel_driver$(EXE) -v >/dev/null
-	test/rand_gen$(EXE) -n 256 >/dev/null
+	test/cipher_driver$(EXE) -v
+	test/datatypes_driver$(EXE) -v
+	test/stat_driver$(EXE)
+	test/sha1_driver$(EXE) -v
+	test/kernel_driver$(EXE) -v
+	test/rand_gen$(EXE) -n 256
 	@echo "crypto test applications passed."
 
 

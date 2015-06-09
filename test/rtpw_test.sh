@@ -37,6 +37,9 @@
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+set -e
+set -x
+
 RTPW=./rtpw
 DEST_PORT=9999
 DURATION=3
@@ -51,7 +54,7 @@ ARGS="-b $key -a -e 128"
 # they are killed, those processes will linger.  Re-running the script
 # will get rid of them.
 
-killall rtpw 2>/dev/null
+killall -q rtpw || true
 
 if test -x $RTPW; then
 
