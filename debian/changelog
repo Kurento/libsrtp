@@ -1,3 +1,9 @@
+srtp (1.5.2~kurento) experimental; urgency=medium
+
+  * Create kurento package with ssl support
+
+ -- Jose Antonio Santos Cadenas <santoscadenas@gmail.com>  Tue, 09 Jun 2015 12:42:06 +0200
+
 srtp (1.5.2~dfsg-1) experimental; urgency=medium
 
   [ upstream ]

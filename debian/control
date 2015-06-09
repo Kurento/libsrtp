@@ -1,6 +1,6 @@
 Source: srtp
 Priority: optional
-Maintainer: Jonas Smedegaard <dr@jones.dk>
+Maintainer: Kurento Maintenance Team <kurento@googlegroups.com>
 Uploaders: Daniel Pocock <daniel@pocock.com.au>
 Build-Depends: cdbs,
  autotools-dev,
@@ -12,7 +12,8 @@ Build-Depends: cdbs,
  procps,
  psmisc,
  miscfiles,
- d-shlibs
+ d-shlibs,
+ libssl-dev
 Build-Depends-Indep: doxygen-latex
 Standards-Version: 3.9.6
 Section: libs

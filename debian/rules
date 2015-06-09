@@ -58,7 +58,7 @@ bdeps-test = procps, psmisc, miscfiles
 CDBS_BUILD_DEPENDS +=, $(deps-dev), $(bdeps-test)
 CDBS_DEPENDS_$(pkg-dev) +=, $(deps-dev)
 
-DEB_CONFIGURE_EXTRA_FLAGS = --disable-stdout --enable-syslog
+DEB_CONFIGURE_EXTRA_FLAGS = --enable-openssl --disable-stdout --enable-syslog
 ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
 DEB_CONFIGURE_EXTRA_FLAGS += --enable-debug
 else

@@ -6,7 +6,6 @@ test/roc_driver		usr/lib/srtp/bin/
 test/rtp_decoder	usr/lib/srtp/bin/
 test/srtp_driver	usr/lib/srtp/bin/
 
-crypto/test/aes_calc		usr/lib/srtp/bin/
 crypto/test/cipher_driver	usr/lib/srtp/bin/
 crypto/test/datatypes_driver	usr/lib/srtp/bin/
 crypto/test/kernel_driver	usr/lib/srtp/bin/
