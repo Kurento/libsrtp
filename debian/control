@@ -13,7 +13,7 @@ Build-Depends: cdbs,
  psmisc,
  miscfiles,
  d-shlibs,
- libssl-dev
+ libssl-dev (>= 1.0.2)
 Build-Depends-Indep: doxygen-latex
 Standards-Version: 3.9.6
 Section: libs
