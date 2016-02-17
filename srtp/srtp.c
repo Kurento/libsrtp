@@ -773,6 +773,22 @@ srtp_stream_init(srtp_stream_ctx_t *srtp,
    return err_status_ok;  
  }
 
+static err_status_t
+check_repeat_tx(srtp_stream_ctx_t *stream, int delta)
+{
+  err_status_t status;;
+
+  status = rdbx_check(&stream->rtp_rdbx, delta);
+  if (status) {
+      if (status != err_status_replay_fail || !stream->allow_repeat_tx) {
+          return status;  /* we've been asked to reuse an index */
+      }
+  } else {
+      rdbx_add_index(&stream->rtp_rdbx, delta);
+  }
+
+  return err_status_ok;
+}
 
  /*
   * srtp_event_reporter is an event handler function that merely
@@ -960,13 +976,9 @@ srtp_protect_aead (srtp_ctx_t *ctx, srtp_stream_ctx_t *stream,
      * and the sequence number from the header
      */
     delta = rdbx_estimate_index(&stream->rtp_rdbx, &est, ntohs(hdr->seq));
-    status = rdbx_check(&stream->rtp_rdbx, delta);
-    if (status) {
-	if (status != err_status_replay_fail || !stream->allow_repeat_tx) {
-	    return status;  /* we've been asked to reuse an index */
-	}
-    } else {
-	rdbx_add_index(&stream->rtp_rdbx, delta);
+    status = check_repeat_tx (stream, delta);
+    if (status != err_status_ok) {
+      return status;
     }
 
 #ifdef NO_64BIT_MATH
@@ -1334,13 +1346,10 @@ srtp_unprotect_aead (srtp_ctx_t *ctx, srtp_stream_ctx_t *stream, int delta,
     * and the sequence number from the header
     */
    delta = rdbx_estimate_index(&stream->rtp_rdbx, &est, ntohs(hdr->seq));
-   status = rdbx_check(&stream->rtp_rdbx, delta);
-   if (status) {
-     if (status != err_status_replay_fail || !stream->allow_repeat_tx)
-       return status;  /* we've been asked to reuse an index */
+   status = check_repeat_tx (stream, delta);
+   if (status != err_status_ok) {
+     return status;
    }
-   else
-     rdbx_add_index(&stream->rtp_rdbx, delta);
 
 #ifdef NO_64BIT_MATH
    debug_print2(mod_srtp, "estimated packet index: %08x%08x", 
