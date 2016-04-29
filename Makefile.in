@@ -259,8 +259,9 @@ install:
 	if [ -f libsrtp.a ]; then cp libsrtp.a $(DESTDIR)$(libdir)/; fi
 	if [ -f libsrtp.dll.a ]; then cp libsrtp.dll.a $(DESTDIR)$(libdir)/; fi
 	if [ -f libsrtp.$(SHAREDLIBSUFFIX) ]; then \
-		cp libsrtp.$(SHAREDLIBSUFFIX) $(DESTDIR)$(SHAREDLIB_DIR)/; \
-		cp libsrtp.$(SHAREDLIBSUFFIXNOVER) $(DESTDIR)$(SHAREDLIB_DIR)/; \
+		cp libsrtp.$(SHAREDLIBSUFFIXNOVER) $(DESTDIR)$(SHAREDLIB_DIR)/libsrtp.$(SHAREDLIBSUFFIX).0.0; \
+		ln -s libsrtp.$(SHAREDLIBSUFFIX).0.0 $(DESTDIR)$(SHAREDLIB_DIR)/libsrtp.$(SHAREDLIBSUFFIX); \
+		ln -s libsrtp.$(SHAREDLIBSUFFIX).0.0 $(DESTDIR)$(SHAREDLIB_DIR)/libsrtp.$(SHAREDLIBSUFFIXNOVER); \
 	fi
 	if [ "$(pkgconfig_DATA)" != "" ]; then \
 		$(INSTALL) -d $(DESTDIR)$(pkgconfigdir); \

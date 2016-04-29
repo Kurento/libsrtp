@@ -113,20 +113,20 @@ post-patches::
 # Let d-shlibs calculate development package dependencies
 #  and handle shared library install
 CDBS_BUILD_DEPENDS +=, d-shlibs
-binary-post-install/$(pkg-lib)::
-	mv debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/$(libname).so \
-		debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/$(libname).so.$(major).0.0
-	ln -s $(libname).so.$(major).0.0 \
-		debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/$(libname).so
-	ln -fs $(libname).so.$(major).0.0 \
-		debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/$(libname).so.$(major)
-	d-shlibmove --commit \
-		--devunversioned \
-		--multiarch \
-		--movedev "debian/tmp/usr/include/*" usr/include/ \
-		--movedev "debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/*" \
-			usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig \
-		debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/$(libname).so
+# binary-post-install/$(pkg-lib)::
+# 	mv debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/$(libname).so \
+# 		debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/$(libname).so.$(major).0.0
+# 	ln -s $(libname).so.$(major).0.0 \
+# 		debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/$(libname).so
+# 	ln -fs $(libname).so.$(major).0.0 \
+# 		debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/$(libname).so.$(major)
+# 	d-shlibmove --commit \
+# 		--devunversioned \
+# 		--multiarch \
+# 		--movedev "debian/tmp/usr/include/*" usr/include/ \
+# 		--movedev "debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/*" \
+# 			usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig \
+# 		debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/$(libname).so
 
 # cleanup stuff missed upstream
 clean::

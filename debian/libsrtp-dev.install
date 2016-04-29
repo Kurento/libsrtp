@@ -1,0 +1,4 @@
+usr/include/srtp/*
+usr/lib/*/pkgconfig/*
+usr/lib/*/libsrtp.a
+usr/lib/*/libsrtp.so
