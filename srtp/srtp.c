@@ -778,13 +778,11 @@ check_repeat_tx(srtp_stream_ctx_t *stream, int delta)
 {
   err_status_t status;;
 
-  if (stream->allow_repeat_tx) {
-    return err_status_ok;
-  }
-
   status = rdbx_check(&stream->rtp_rdbx, delta);
   if (status != err_status_ok) {
-    return status;  /* we've been asked to reuse an index */
+    if (!stream->allow_repeat_tx) {
+      return status;  /* we've been asked to reuse an index */
+    }
   } else {
     rdbx_add_index(&stream->rtp_rdbx, delta);
   }
