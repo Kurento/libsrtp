@@ -15,7 +15,7 @@ Build-Depends: cdbs,
  psmisc,
  miscfiles,
  d-shlibs,
- libssl-dev (>= 1.0.2)
+ libssl1.0-dev | libssl-dev (<< 1.1.0)
 Build-Depends-Indep: doxygen-latex
 Standards-Version: 3.9.6
 Section: libs
@@ -28,7 +28,7 @@ Section: libdevel
 Depends: ${cdbs:Depends},
  ${devlibs:Depends},
  ${misc:Depends},
- libssl-dev,
+ libssl1.0-dev | libssl-dev (<< 1.1.0),
  libsrtp1 (= ${binary:Version})
 Architecture: any
 Description: Secure RTP (SRTP) and UST Reference Implementations - development files

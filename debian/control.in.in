@@ -15,7 +15,7 @@ Section: libdevel
 Depends: ${cdbs:Depends},
  ${devlibs:Depends},
  ${misc:Depends},
- libssl-dev,
+ libssl1.0-dev | libssl-dev (<< 1.1.0),
  __LIBPKGNAME__ (= ${binary:Version})
 Architecture: any
 Description: Secure RTP (SRTP) and UST Reference Implementations - development files
