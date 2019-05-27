@@ -1,13 +1,20 @@
-Description: Fix data alignment
-Author: "Martin Guy" <martinwguy@yahoo.it>
+From: Martin Guy <martinwguy@yahoo.it>
+Date: Wed, 8 May 2019 16:16:16 -0400
+Subject: Fix data alignment
+
 Origin: vendor, http://bugs.debian.org/470505#5
 Bug: http://sourceforge.net/tracker/index.php?func=detail&aid=1912057&group_id=38894&atid=423799
 Bug-Debian: http://bugs.debian.org/470505
 Last-Update: 2016-03-15
+---
+ test/srtp_driver.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
+diff --git a/test/srtp_driver.c b/test/srtp_driver.c
+index 56052a6..323a8b6 100644
 --- a/test/srtp_driver.c
 +++ b/test/srtp_driver.c
-@@ -1679,14 +1679,14 @@
+@@ -1679,14 +1679,14 @@ srtp_validate ()
          0xab, 0xab, 0xab, 0xab, 0xab, 0xab, 0xab, 0xab,
          0xab, 0xab, 0xab, 0xab
      };

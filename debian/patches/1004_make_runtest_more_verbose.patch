@@ -1,12 +1,20 @@
-Description: Avoid runtest silencing its output
-Author: Victor Seva <linuxmaniac@torreviejawireless.org>
+From: Victor Seva <linuxmaniac@torreviejawireless.org>
+Date: Wed, 8 May 2019 16:16:16 -0400
+Subject: Avoid runtest silencing its output
+
 Origin: vendor, http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=10;bug=460534
 Bug-Debian: http://bugs.debian.org/460534
 Last-Update: 2016-03-15
+---
+ Makefile.in        | 20 ++++++++++----------
+ crypto/Makefile.in | 10 +++++-----
+ 2 files changed, 15 insertions(+), 15 deletions(-)
 
+diff --git a/Makefile.in b/Makefile.in
+index f6ee38c..198ae5c 100644
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -22,17 +22,17 @@
+@@ -22,17 +22,17 @@ all: test
  
  runtest: test
  	@echo "running libsrtp2 test applications..."
@@ -34,9 +42,11 @@ Last-Update: 2016-03-15
  endif
  	@echo "libsrtp2 test applications passed."
  	$(MAKE) -C crypto runtest
+diff --git a/crypto/Makefile.in b/crypto/Makefile.in
+index faaa991..6d92f4e 100644
 --- a/crypto/Makefile.in
 +++ b/crypto/Makefile.in
-@@ -68,11 +68,11 @@
+@@ -68,11 +68,11 @@ ifneq (1, $(USE_OPENSSL))
  	test `test/aes_calc $(k128) $(p128)` = $(c128)
  	test `test/aes_calc $(k256) $(p256)` = $(c256)
  endif
