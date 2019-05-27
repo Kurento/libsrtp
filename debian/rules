@@ -1,0 +1,112 @@
+#!/usr/bin/make -f
+# -*- mode: makefile; coding: utf-8 -*-
+# Copyright © 2007-2008, 2010-2011, 2013-2017 Jonas Smedegaard
+# <dr@jones.dk>
+# Description: Main Debian packaging script for libSRTP
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3, or (at your option)
+# any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# These must be listed before including CDBS snippets
+stem = $(DEB_SOURCE_PACKAGE)
+major := $(shell grep ^SHAREDLIBVERSION Makefile.in | grep -o '[[:digit:]]*' | head -n 1)
+pkg-lib = $(stem)-$(major)
+pkg-dev = $(stem)-dev
+pkg-doc = $(stem)-docs
+debian/control:: debian/control.in
+DEB_PHONY_RULES += debian/control.in
+debian/control.in::
+	sed \
+		-e 's/__LIBPKGNAME__/$(pkg-lib)/g' \
+		-e 's/__DEVPKGNAME__/$(pkg-dev)/g' \
+		-e 's/__DOCPKGNAME__/$(pkg-doc)/g' \
+		< debian/control.in.in \
+		> debian/control.in
+
+include /usr/share/cdbs/1/class/autotools.mk
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/rules/upstream-tarball.mk
+
+CDBS_BUILD_DEPENDS +=, pkg-kde-tools
+include /usr/share/pkg-kde-tools/makefiles/1/cdbs/symbolshelper.mk
+
+libname = $(stem)
+
+DEB_UPSTREAM_URL = https://github.com/cisco/libsrtp/archive
+DEB_UPSTREAM_TARBALL_BASENAME = v$(DEB_UPSTREAM_TARBALL_VERSION)
+
+# Needed by upstream build and (always) at (development) runtime
+deps-dev = pkg-config, libpcap0.8-dev
+
+# Needed by upstream testsuite
+bdeps-test = procps, psmisc, miscfiles
+
+CDBS_BUILD_DEPENDS +=, $(deps-dev), $(bdeps-test)
+CDBS_DEPENDS_$(pkg-dev) +=, $(deps-dev)
+
+DEB_CONFIGURE_EXTRA_FLAGS = --disable-stdout --enable-syslog
+ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
+DEB_CONFIGURE_EXTRA_FLAGS += --enable-debug
+else
+DEB_CONFIGURE_EXTRA_FLAGS += --disable-debug
+endif
+DEB_CONFIGURE_EXTRA_FLAGS += --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH)
+
+ifeq ($(DEB_HOST_ARCH_CPU),sparc)
+CFLAGS += -DFORCE_64BIT_ALIGN
+endif
+
+CFLAGS += -D_REENTRANT
+
+# Reapply default strong optimizations unless noopt in DEB_BUILD_OPTIONS
+CFLAGS += $(if $(filter noopt,$(DEB_BUILD_OPTIONS))-O0,-O4 -fexpensive-optimizations -funroll-loops)
+
+DEB_MAKE_BUILD_TARGET = shared_library test
+DEB_MAKE_CLEAN_TARGET = superclean
+DEB_MAKE_CHECK_TARGET = runtest \
+ LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:$(realpath $(DEB_SRCDIR))"
+
+# generate (and cleanup) documentation
+#  * TODO: Declare build-dependency here when supported by CDBS
+CDBS_BUILD_DEPENDS_INDEP +=, doxygen
+DEB_INSTALL_DOCS_$(pkg-doc) += doc/html
+build/$(pkg-doc):: debian/stamp-make-docs
+debian/stamp-make-docs:
+	$(DEB_MAKE_INVOKE) $(libname)doc
+	touch $@
+clean::
+	rm -rf doc/html
+	rm -f debian/stamp-make-docs
+
+# Ensure test script is executable
+post-patches::
+	chmod +x test/rtpw_test.sh
+
+# Let d-shlibs calculate development package dependencies
+#  and handle shared library install
+CDBS_BUILD_DEPENDS +=, d-shlibs
+binary-post-install/$(pkg-lib)::
+	d-shlibmove --commit \
+		--devunversioned \
+		--multiarch \
+		--movedev "debian/tmp/usr/include/*" usr/include/ \
+		--movedev "debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/*" \
+			usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig \
+		debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/$(libname).so
+
+# cleanup stuff missed upstream
+clean::
+	rm -f $(libname).pc $(libname).so.$(major) crypto/Makefile crypto/test/env
+
+# relax symbols check for now...
+export DPKG_GENSYMBOLS_CHECK_LEVEL=0
