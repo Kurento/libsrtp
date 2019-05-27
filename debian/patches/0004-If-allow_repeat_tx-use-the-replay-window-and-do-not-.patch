@@ -1,0 +1,78 @@
+From: Juan Navarro <juan.navarro@gmx.es>
+Date: Wed, 8 May 2019 17:52:57 -0400
+Subject: If allow_repeat_tx use the replay window and do not drop the packet
+
+By @prlanzarin at
+https://github.com/prlanzarin/libsrtp/commit/0ee70a87d9d743b1fd8f57345999a0abbb8c22f7
+
+This commit overrides all checks for errors in points where the function
+srtp_rdbx_check() is called, if allow_repeat_tx is set.
+
+With this, Kurento is able to re-ask the sender for packets that have
+been lost in their way to any of the receivers.
+
+That's not the correct architecture, because packets that Kurento has
+received successfully shouldn't be re-sent by the sender, instead they
+should be resent by Kurento itself to those receivers that ask for a
+retransmission. But, prior to a full re-architecturing of this area,
+forcing this override in libsrtp is the ugly solution that works for
+now.
+
+This commit is in spirit a summary of old changes for Kurento that were
+done at:
+-
+https://github.com/Kurento/libsrtp/commit/b27df0c85f0553e7a04fc4acd699c634061c931c
+-
+https://github.com/Kurento/libsrtp/commit/c6972859b539099193deb91e8c002c8a13cf58ea
+-
+https://github.com/Kurento/libsrtp/commit/55bec21f7cb50cc940d341dd28ebb8a97a79ee5e
+---
+ srtp/srtp.c | 20 ++++++++++++--------
+ 1 file changed, 12 insertions(+), 8 deletions(-)
+
+diff --git a/srtp/srtp.c b/srtp/srtp.c
+index ede804f..1606b10 100644
+--- a/srtp/srtp.c
++++ b/srtp/srtp.c
+@@ -1727,11 +1727,11 @@ srtp_protect_aead (srtp_ctx_t *ctx, srtp_stream_ctx_t *stream,
+     delta = srtp_rdbx_estimate_index(&stream->rtp_rdbx, &est, ntohs(hdr->seq));
+     status = srtp_rdbx_check(&stream->rtp_rdbx, delta);
+     if (status) {
+-	if (status != srtp_err_status_replay_fail || !stream->allow_repeat_tx) {
+-	    return status;  /* we've been asked to reuse an index */
+-	}
++      if (!stream->allow_repeat_tx) {
++        return status;  /* we've been asked to reuse an index */
++      }
+     } else {
+-	srtp_rdbx_add_index(&stream->rtp_rdbx, delta);
++      srtp_rdbx_add_index(&stream->rtp_rdbx, delta);
+     }
+ 
+ #ifdef NO_64BIT_MATH
+@@ -2187,8 +2187,9 @@ srtp_protect_mki(srtp_ctx_t *ctx, void *rtp_hdr, int *pkt_octet_len,
+   } else {
+     status = srtp_rdbx_check(&stream->rtp_rdbx, delta);
+     if (status) {
+-      if (status != srtp_err_status_replay_fail || !stream->allow_repeat_tx)
+-        return status; /* we've been asked to reuse an index */
++      if (!stream->allow_repeat_tx) {
++        return status;  /* we've been asked to reuse an index */
++      }
+     }
+     srtp_rdbx_add_index(&stream->rtp_rdbx, delta);
+   }
+@@ -2413,8 +2414,11 @@ srtp_unprotect_mki(srtp_ctx_t *ctx, void *srtp_hdr, int *pkt_octet_len,
+     /* check replay database */
+     if (!advance_packet_index) {
+       status = srtp_rdbx_check(&stream->rtp_rdbx, delta);
+-      if (status)
+-        return status;
++      if (status) {
++        if (!stream->allow_repeat_tx) {
++          return status;  /* we've been asked to reuse an index */
++        }
++      }
+     }
+   }
+ 

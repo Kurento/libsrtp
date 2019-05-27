@@ -1,3 +1,4 @@
 1004_make_runtest_more_verbose.patch
 1005_fix_data_alignment.patch
 2001_make_shellscript_noisy.patch
+0004-If-allow_repeat_tx-use-the-replay-window-and-do-not-.patch
