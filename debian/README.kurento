@@ -80,3 +80,9 @@ Kurento changes from Debian/Ubuntu package
   - Add 'libssl-dev' to Build-Depends in 'debian/control'.
   - Add '--enable-openssl' to DEB_CONFIGURE_EXTRA_FLAGS in 'debian/rules'.
   - NOTE: No need to add 'libssl1.1' to Package Depends in 'debian/control', because it gets added automatically.
+
+- Fix debug flags in 'debian/rules': Original uses some wring flags:
+  - --(enable|disable)-stdout -> --(enable|disable)-log-stdout
+  - --enable-syslog -> syslog is not supported by libsrtp
+    Instead, send logs to a file: --with-log-file='/var/log/libsrtp.log'
+  - --(enable|disable)-debug -> --(enable|disable)-debug-logging

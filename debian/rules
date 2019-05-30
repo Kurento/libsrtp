@@ -54,11 +54,11 @@ bdeps-test = procps, psmisc, miscfiles
 CDBS_BUILD_DEPENDS +=, $(deps-dev), $(bdeps-test)
 CDBS_DEPENDS_$(pkg-dev) +=, $(deps-dev)
 
-DEB_CONFIGURE_EXTRA_FLAGS = --disable-stdout --enable-syslog --enable-openssl
+DEB_CONFIGURE_EXTRA_FLAGS = --disable-log-stdout --with-log-file='/var/log/libsrtp.log' --enable-openssl
 ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
-DEB_CONFIGURE_EXTRA_FLAGS += --enable-debug
+DEB_CONFIGURE_EXTRA_FLAGS += --enable-debug-logging
 else
-DEB_CONFIGURE_EXTRA_FLAGS += --disable-debug
+DEB_CONFIGURE_EXTRA_FLAGS += --disable-debug-logging
 endif
 DEB_CONFIGURE_EXTRA_FLAGS += --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH)
 
