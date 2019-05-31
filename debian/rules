@@ -1,0 +1,126 @@
+#!/usr/bin/make -f
+# -*- mode: makefile; coding: utf-8 -*-
+# Copyright © 2007-2008, 2010-2011, 2013-2015 Jonas Smedegaard
+# <dr@jones.dk>
+# Description: Main Debian packaging script for libSRTP
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3, or (at your option)
+# any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# These must be listed before including CDBS snippets
+stem = $(DEB_SOURCE_PACKAGE)
+major := $(shell grep ^SHAREDLIBVERSION Makefile.in | grep -o '[[:digit:]]*' | head -n 1)
+pkg-lib = lib$(stem)$(major)
+debian/control:: debian/control.in
+DEB_PHONY_RULES += debian/control.in
+debian/control.in::
+	sed -e 's/__LIBPKGNAME__/$(pkg-lib)/g' \
+		< debian/control.in.in \
+		> debian/control.in
+
+include /usr/share/cdbs/1/class/autotools.mk
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/rules/utils.mk
+include /usr/share/cdbs/1/rules/upstream-tarball.mk
+
+pkg-dev = $(stem)-dev
+pkg-doc = $(stem)-docs
+libname = lib$(stem)
+
+# Update this checksum when new releases occur, to catch silent server side file content forges
+DEB_UPSTREAM_TARBALL_MD5 = 84fe9ef31a9894a72f25ee8b0c87fbb1
+
+DEB_UPSTREAM_URL = https://github.com/cisco/libsrtp/archive
+DEB_UPSTREAM_TARBALL_BASENAME = v$(DEB_UPSTREAM_TARBALL_VERSION)
+DEB_UPSTREAM_REPACKAGE_EXCLUDES = ./CVS .cvsignore ./doc/rfc*.txt ./doc/draft*.txt ./doc/*.pdf ./releases/
+DEB_UPSTREAM_TARBALL_SRCDIR = libsrtp-$(DEB_UPSTREAM_TARBALL_VERSION)
+
+# Build-depend unversioned on debhelper
+#  TODO: Drop when adopted in cdbs
+CDBS_BUILD_DEPENDS_rules_debhelper_v9 = debhelper
+
+# Needed by upstream build and (always) at (development) runtime
+deps-dev = pkg-config, libpcap0.8-dev
+
+# Needed by upstream testsuite
+bdeps-test = procps, psmisc, miscfiles
+
+CDBS_BUILD_DEPENDS +=, $(deps-dev), $(bdeps-test)
+CDBS_DEPENDS_$(pkg-dev) +=, $(deps-dev)
+
+DEB_CONFIGURE_EXTRA_FLAGS = --disable-stdout --enable-syslog
+ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
+DEB_CONFIGURE_EXTRA_FLAGS += --enable-debug
+else
+DEB_CONFIGURE_EXTRA_FLAGS += --disable-debug
+endif
+DEB_CONFIGURE_EXTRA_FLAGS += --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH)
+
+ifeq ($(DEB_HOST_ARCH_CPU),sparc)
+CFLAGS += -DFORCE_64BIT_ALIGN
+endif
+
+CFLAGS += -D_REENTRANT
+
+# Reapply default strong optimizations unless noopt in DEB_BUILD_OPTIONS
+CFLAGS += $(if $(filter noopt,$(DEB_BUILD_OPTIONS))-O0,-O4 -fexpensive-optimizations -funroll-loops)
+
+DEB_MAKE_BUILD_TARGET = shared_library test
+DEB_MAKE_CLEAN_TARGET = superclean
+DEB_MAKE_CHECK_TARGET = runtest \
+ LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:$(realpath $(DEB_SRCDIR))"
+
+# preserve (and restore) upstream-shipped files tampered with
+upstreamtmpfiles = doc/Makefile crypto/Makefile doc/Doxyfile
+pre-build:: debian/stamp-upstreamtmpstuff
+debian/stamp-upstreamtmpstuff: debian/stamp-copyright-check
+	for file in $(upstreamtmpfiles); do \
+		[ ! -e $$file ] || cp -np $$file $$file.upstream; \
+	done
+	touch $@
+clean::
+	for file in $(upstreamtmpfiles); do \
+		[ ! -e $$file.upstream ] || mv -f $$file.upstream $$file; \
+	done
+	rm -f debian/stamp-upstreamtmpstuff
+
+# generate (and cleanup) documentation
+#  * TODO: Declare build-dependency here when supported by CDBS
+CDBS_BUILD_DEPENDS_INDEP +=, doxygen-latex
+DEB_INSTALL_DOCS_$(pkg-doc) += doc/*.txt doc/*.pdf
+DEB_COMPRESS_EXCLUDE_$(pkg-doc) += .pdf
+build/$(pkg-doc)::
+	[ -f debian/stamp-make-docs ] || $(DEB_MAKE_INVOKE) libsrtpdoc
+	touch debian/stamp-make-docs
+clean::
+	rm -f doc/*.pdf
+	rm -f debian/stamp-make-docs
+
+# Ensure test script is executable
+post-patches::
+	chmod +x test/rtpw_test.sh
+
+# Let d-shlibs calculate development package dependencies
+#  and handle shared library install
+CDBS_BUILD_DEPENDS +=, d-shlibs
+binary-post-install/$(pkg-lib)::
+	d-shlibmove --commit \
+		--multiarch \
+		--movedev "debian/tmp/usr/include/*" usr/include/ \
+		--movedev "debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/*" \
+			usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig \
+		debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/$(libname).so
+
+# cleanup stuff missed upstream
+clean::
+	rm -f $(libname).pc $(libname).so.$(major) doc/doxygen_sqlite3.db

@@ -1,0 +1,67 @@
+From: Victor Seva <linuxmaniac@torreviejawireless.org>
+Date: Fri, 31 May 2019 11:44:10 +0200
+Subject: Avoid runtest silencing its output
+
+Origin: vendor, http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=10;bug=460534
+Bug-Debian: http://bugs.debian.org/460534
+Last-Update: 2010-02-28
+---
+ Makefile.in        | 20 ++++++++++----------
+ crypto/Makefile.in | 12 ++++++------
+ 2 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index d9b2c4f..fe0d8a3 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -24,17 +24,17 @@ all: test
+ 
+ runtest: build_table_apps test
+ 	@echo "running libsrtp test applications..."
+-	crypto/test/cipher_driver$(EXE) -v >/dev/null
+-	crypto/test/kernel_driver$(EXE) -v >/dev/null
+-	test/rdbx_driver$(EXE) -v >/dev/null
+-	test/srtp_driver$(EXE) -v >/dev/null
+-	test/roc_driver$(EXE) -v >/dev/null
+-	test/replay_driver$(EXE) -v >/dev/null
+-	test/dtls_srtp_driver$(EXE) >/dev/null
+-	crypto/test/rand_gen_soak$(EXE) -v >/dev/null
+-	cd test; $(abspath $(srcdir))/test/rtpw_test.sh >/dev/null	
++	crypto/test/cipher_driver$(EXE) -v
++	crypto/test/kernel_driver$(EXE) -v
++	test/rdbx_driver$(EXE) -v
++	test/srtp_driver$(EXE) -v
++	test/roc_driver$(EXE) -v
++	test/replay_driver$(EXE) -v
++	test/dtls_srtp_driver$(EXE)
++	crypto/test/rand_gen_soak$(EXE) -v
++	cd test; $(abspath $(srcdir))/test/rtpw_test.sh
+ ifeq (1, $(USE_OPENSSL))
+-	cd test; $(abspath $(srcdir))/test/rtpw_test_gcm.sh >/dev/null	
++	cd test; $(abspath $(srcdir))/test/rtpw_test_gcm.sh
+ endif
+ 	@echo "libsrtp test applications passed."
+ 	$(MAKE) -C crypto runtest
+diff --git a/crypto/Makefile.in b/crypto/Makefile.in
+index 4938437..ca7ff03 100644
+--- a/crypto/Makefile.in
++++ b/crypto/Makefile.in
+@@ -68,12 +68,12 @@ ifneq (1, $(USE_OPENSSL))
+ 	test `test/aes_calc $(k128) $(p128)` = $(c128)
+ 	test `test/aes_calc $(k256) $(p256)` = $(c256)
+ endif
+-	test/cipher_driver$(EXE) -v >/dev/null
+-	test/datatypes_driver$(EXE) -v >/dev/null
+-	test/stat_driver$(EXE) >/dev/null
+-	test/sha1_driver$(EXE) -v >/dev/null
+-	test/kernel_driver$(EXE) -v >/dev/null
+-	test/rand_gen$(EXE) -n 256 >/dev/null
++	test/cipher_driver$(EXE) -v
++	test/datatypes_driver$(EXE) -v
++	test/stat_driver$(EXE)
++	test/sha1_driver$(EXE) -v
++	test/kernel_driver$(EXE) -v
++	test/rand_gen$(EXE) -n 256
+ 	@echo "crypto test applications passed."
+ 
+ 

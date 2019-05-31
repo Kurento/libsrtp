@@ -1,0 +1,23 @@
+From: Juan Navarro <juan.navarro@gmx.es>
+Date: Fri, 31 May 2019 11:45:41 +0200
+Subject: Keep shared lib version as 0
+
+Newer Debian packager scripts set this to 1 but Ubuntu 16.04 and 18.04
+still use the number '0' so keep it that way
+---
+ Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index fe0d8a3..e4e6035 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -84,7 +84,7 @@ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = libsrtp.pc
+ endif
+ 
+-SHAREDLIBVERSION = 1
++SHAREDLIBVERSION = 0
+ ifeq (linux,$(findstring linux,@host@))
+ SHAREDLIB_DIR = $(libdir)
+ SHAREDLIB_LDFLAGS = -shared -Wl,-soname,$@

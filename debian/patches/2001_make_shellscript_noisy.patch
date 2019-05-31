@@ -1,0 +1,32 @@
+From: Jonas Smedegaard <dr@jones.dk>
+Date: Fri, 31 May 2019 11:44:11 +0200
+Subject: Enable debugging in regression test shell script
+
+Last-Update: 2011-05-25
+---
+ test/rtpw_test.sh | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/test/rtpw_test.sh b/test/rtpw_test.sh
+index d5808ab..5b2ecea 100755
+--- a/test/rtpw_test.sh
++++ b/test/rtpw_test.sh
+@@ -37,6 +37,9 @@
+ # OF THE POSSIBILITY OF SUCH DAMAGE.
+ #
+ 
++set -e
++set -x
++
+ RTPW=./rtpw
+ DEST_PORT=9999
+ DURATION=3
+@@ -51,7 +54,7 @@ ARGS="-b $key -a -e 128"
+ # they are killed, those processes will linger.  Re-running the script
+ # will get rid of them.
+ 
+-killall rtpw 2>/dev/null
++killall -q rtpw || true
+ 
+ if test -x $RTPW; then
+ 

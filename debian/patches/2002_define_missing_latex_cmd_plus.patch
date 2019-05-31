@@ -1,0 +1,27 @@
+From: Si Padmore <sipadmore@gmx.co.uk>
+Date: Fri, 31 May 2019 11:44:11 +0200
+Subject: Provide missing definiton of \+ command
+
+doxygen's tex output contains a \+ command, which would normally
+be defined in the standard doxygen header, but srtp is using a
+custom header which lacks this definition.
+This patch adds the missing definition, following the approach
+used to solve https://bugs.debian.org/751355 .
+Last-Update: 2014-08-22
+Bug-Debian: http://bugs.debian.org/752970
+---
+ doc/header.template | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/doc/header.template b/doc/header.template
+index e3637ca..74b78a2 100644
+--- a/doc/header.template
++++ b/doc/header.template
+@@ -77,6 +77,7 @@
+ \fontfamily{ppl}
+ \selectfont
+ 
++\newcommand{\+}{\discretionary{\mbox{\scriptsize$\hookleftarrow$}}{}{}}
+ 
+ \renewcommand{\familydefault}{\sfdefault}
+ \begin{document}

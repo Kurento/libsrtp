@@ -1,0 +1,4 @@
+test/rtpw usr/bin/
+
+test/*_driver test/rtp_decoder usr/lib/srtp/bin/
+crypto/test/*_driver crypto/test/rand_gen usr/lib/srtp/bin/

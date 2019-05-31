@@ -1,0 +1,8 @@
+020141104~c270245.patch
+1003_fix_mips_namespace_collision.patch
+1004_make_runtest_more_verbose.patch
+1005_fix_data_alignment.patch
+1007_update_Doxyfile.patch
+2001_make_shellscript_noisy.patch
+2002_define_missing_latex_cmd_plus.patch
+0008-Keep-shared-lib-version-as-0.patch
