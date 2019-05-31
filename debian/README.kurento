@@ -1,0 +1,27 @@
+External repositories
+=====================
+
+- Upstream: https://github.com/cisco/libsrtp
+- Debian/Ubuntu package: https://salsa.debian.org/pkg-voip-team/libsrtp2
+
+
+
+Kurento changes from Debian/Ubuntu package
+==========================================
+
+The debian/ files in this repo are a mix of the packager versions 1.4.5 and 1.5.3; the reason is that at some point after 1.4.5 (which is the version shipped with Ubuntu 16.04 and 18.04), the packager decided to change names and went from 'libsrtp0' to 'libsrtp1'. This means that the newer packager scripts will generate a different name than that of the packages shipped by Ubuntu.
+
+We want to keep the original names, so a bit of creative merge has to be done between the older scripts in 1.4.5 and the newer ones in 1.5.3 which assume a Major version of '1' instead of '0'.
+
+Main changes:
+
+- Set branch config for Kurento builds in 'debian/gbp.conf' (git-buildpackage config).
+
+- Depend on 'libpcap0.8-dev' instead of 'libpcap-dev'
+
+- Keep the name 'libsrtp0' instead of 'libsrtp1'
+
+- Enable building with OpenSSL:
+  - Add 'libssl-dev' to Build-Depends in 'debian/control'.
+  - Add '--enable-openssl' to DEB_CONFIGURE_EXTRA_FLAGS in 'debian/rules'.
+  - NOTE: No need to add 'libssl' to Package Depends in 'debian/control', because it gets added automatically.
