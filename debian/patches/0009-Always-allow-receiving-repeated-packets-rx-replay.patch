@@ -1,0 +1,78 @@
+From: Juan Navarro <juan.navarro@gmx.es>
+Date: Fri, 31 May 2019 13:01:23 +0200
+Subject: Always allow receiving repeated packets (rx replay)
+
+Force allowing replayed RTP packets at reception (which is forbidden by
+libsrtp but we need it). We need to force it always, because the srtpdec
+element in gst-plugins-bad doesn't provide any API to change the
+'allow_repeat_tx' flag in libsrtp.
+
+With this change, KMS will be able to receive packets that had been
+already received (replay on reception, checked at srtp_unprotect()),
+which adds up to the already existing capability of re-sending RTP
+packets that had been already sent (replay on transmission, checked at
+srtp_protect(), which is the original intent of 'allow_repeat_tx' in
+libsrtp). This feature had been asked for in the libsrtp bugtracker but
+the authors rejected it for security reasons:
+https://github.com/cisco/libsrtp/pull/37
+https://github.com/cisco/libsrtp/pull/63
+
+This change is in spirit a summary of old changes for Kurento that were
+done at:
+https://github.com/Kurento/libsrtp/commit/b27df0c85f0553e7a04fc4acd699c634061c931c
+https://github.com/Kurento/libsrtp/commit/c6972859b539099193deb91e8c002c8a13cf58ea
+https://github.com/Kurento/libsrtp/commit/55bec21f7cb50cc940d341dd28ebb8a97a79ee5e
+
+However, the old code had two problems:
+- It ignored not only replay errors, but *all* of them (!!)
+- It didn't actually work! because setting 'allow_repeat_tx = true' is
+only done by GStreamer's srtpenc but not srtpdec, which means that
+reception replays were still rejected by libsrtp, even when these
+changes were applied.
+---
+ srtp/srtp.c        | 7 +++++--
+ test/srtp_driver.c | 6 +++---
+ 2 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/srtp/srtp.c b/srtp/srtp.c
+index b34563d..d5627ec 100644
+--- a/srtp/srtp.c
++++ b/srtp/srtp.c
+@@ -1519,8 +1519,11 @@ srtp_unprotect(srtp_ctx_t *ctx, void *srtp_hdr, int *pkt_octet_len) {
+     
+     /* check replay database */
+     status = rdbx_check(&stream->rtp_rdbx, delta);
+-    if (status)
+-      return status;
++    if (status) {
++      if (status != err_status_replay_fail) {
++        return status;  /* we've been asked to reuse an index */
++      }
++    }
+   }
+ 
+ #ifdef NO_64BIT_MATH
+diff --git a/test/srtp_driver.c b/test/srtp_driver.c
+index 6e8e06d..efc84b0 100644
+--- a/test/srtp_driver.c
++++ b/test/srtp_driver.c
+@@ -764,8 +764,8 @@ srtp_test(const srtp_policy_t *policy) {
+   if (policy->rtp.sec_serv & sec_serv_auth) {
+     char *data = ((char *)hdr) + 12;
+     
+-    printf("testing for false positives in replay check...");
+-
++    printf("testing for false positives in replay check... KURENTO FORK - TEST DISABLED\n");
++#if 0
+     /* set message length */
+     len = msg_len_enc;
+ 
+@@ -780,7 +780,7 @@ srtp_test(const srtp_policy_t *policy) {
+     } else {
+       printf("passed\n");
+     }
+-
++#endif
+     printf("testing for false positives in auth check...");
+ 
+     /* increment sequence number in header */

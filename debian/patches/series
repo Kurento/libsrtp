@@ -6,3 +6,4 @@
 2001_make_shellscript_noisy.patch
 2002_define_missing_latex_cmd_plus.patch
 0008-Keep-shared-lib-version-as-0.patch
+0009-Always-allow-receiving-repeated-packets-rx-replay.patch
