@@ -13,7 +13,7 @@ Homepage: https://github.com/cisco/libsrtp
 Package: __LIBPKGNAME__-dev
 Section: libdevel
 Depends: ${cdbs:Depends},
- ${devlibs:Depends},
+ libssl1.0-dev | libssl-dev (<< 1.1.0),
  ${misc:Depends},
  __LIBPKGNAME__ (= ${binary:Version})
 Provides: libsrtp-dev
