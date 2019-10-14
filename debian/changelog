@@ -1,8 +1,12 @@
-srtp (1.6.0-0kurento1) UNRELEASED; urgency=medium
+srtp (1.6.0-0kurento1) testing; urgency=medium
 
   * debian: Full review after upgrade to 1.6.0, keep name 'libsrtp0'
+  * debian: Customizations for Kurento
+  * debian: Add README.kurento
+  * debian/patches: Rework patch: Always allow receiving repeated packets (rx replay)
+  * debian: Ensure dependency on OpenSSL <= 1.0 (<< 1.1)
 
- -- Juan Navarro <juan.navarro@gmx.es>  Fri, 31 May 2019 12:25:12 +0200
+ -- Juan Navarro <juan.navarro@gmx.es>  Mon, 14 Oct 2019 17:17:39 +0200
 
 srtp (1.5.3~dfsg-1) experimental; urgency=medium
 
