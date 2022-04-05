@@ -36,7 +36,8 @@ apt-get update
 # Install dependencies
 # ====================
 
-SOURCE_NAME="libsrtp2"
+PACKAGE_NAME="libsrtp2-1"
+SOURCE_NAME="$(dpkg-query --show --showformat='${source:Package}' "$PACKAGE_NAME")"
 
 apt-get build-dep --yes "$SOURCE_NAME"
 
@@ -61,9 +62,22 @@ done
 quilt push
 quilt refresh
 
-# Add a non-maintainer version increment, so this package has a greater version
-# and gets installed on top of the system's one.
-dch --nmu "Apply patches for Kurento."
+# Add a new changelog entry. Ensure that the version "epoch" is higher, to avoid
+# getting replaced with system's security updates.
+dch --local '-kurento' 'Apply patches for Kurento.'
+
+function increment_epoch {
+    local VERSION
+    local EPOCH
+    VERSION="$(dpkg-query --show --showformat='${source:Version}' "$PACKAGE_NAME")"
+    EPOCH="$(echo "$VERSION" | grep -Po "\d+(?=:)")" || true # Can be empty.
+    EPOCH="$((EPOCH+1))" # Makes it "1" if EPOCH was empty.
+    export EPOCH # Make it available to sed subshell.
+    # shellcheck disable=SC2016
+    sed -ri '1 s/(.*\()([0-9]+:)?(.*)/echo "\1$EPOCH:\3"/e' debian/changelog
+}
+
+increment_epoch
 
 
 
@@ -72,8 +86,7 @@ dch --nmu "Apply patches for Kurento."
 
 dpkg-buildpackage -us -uc -b
 
-# Exit the build dir.
-popd
+popd # $SOURCE_NAME
 
-# Move everything up, as it is usual for packages to be left in the parent dir.
+# Move everything up; it is a convention to leave packages in the parent dir.
 mv ./*.*deb ../
