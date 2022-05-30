@@ -18,6 +18,26 @@ set -o errexit -o errtrace -o pipefail -o nounset
 # Trace all commands
 set -o xtrace
 
+# Check dependencies.
+command -v quilt >/dev/null || {
+    echo "ERROR: 'quilt' is not installed; please install it (package 'quilt')"
+    exit 1
+}
+command -v dch >/dev/null || {
+    echo "ERROR: 'dch' is not installed; please install it (package 'devscripts')"
+    exit 1
+}
+command -v dch >/dev/null || {
+    echo "ERROR: 'dpkg-buildpackage' is not installed; please install it (package 'dpkg-dev')"
+    exit 1
+}
+
+# Check permissions.
+[[ "$(id -u)" -eq 0 ]] || {
+    echo "ERROR: Please run as root (or with 'sudo'); this script installs packages with apt-get"
+    exit 1
+}
+
 
 
 # Configure Apt
