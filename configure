@@ -46,8 +46,11 @@ command -v dch >/dev/null || {
 # Disable interactive prompts
 export DEBIAN_FRONTEND="noninteractive"
 
-# Enable all source repositories
-sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list
+# Uncomment required source repository.
+# "focal universe" was found by manually running `apt-cache madison $PACKAGE_NAME`...
+if grep --quiet '# *deb-src.*focal universe' /etc/apt/sources.list; then
+    sed --regexp-extended --in-place 's/# *(deb-src.*focal universe)/\1/' /etc/apt/sources.list
+fi
 
 apt-get update
 
