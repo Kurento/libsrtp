@@ -28,6 +28,7 @@ command -v dch >/dev/null || {
     exit 1
 }
 command -v dpkg-buildpackage >/dev/null || {
+    # Includes 'dpkg-parsechangelog'
     echo "ERROR: 'dpkg-buildpackage' is not installed; please install it (package 'dpkg-dev')"
     exit 1
 }
@@ -91,7 +92,7 @@ quilt refresh
 # Add a new changelog entry. Ensure that the Debian package version's Epoch
 # is higher, to avoid it from getting replaced with system's updates.
 # See Debian New Maintainers' Guide for info about Epoch in version numbers.
-dch --local '-kurento' 'Apply patches for Kurento.'
+dch --local 'kurento' 'Apply patches for Kurento.'
 
 function increment_epoch {
     local VERSION
@@ -103,13 +104,15 @@ function increment_epoch {
     # shellcheck disable=SC2016
     sed -ri '1 s/(.*\()([0-9]+:)?(.*)/echo "\1$EPOCH:\3"/e' debian/changelog
 }
-
 increment_epoch
 
+# Store the definitive package version.
+PACKAGE_VERSION="$(dpkg-parsechangelog --show-field Version)"
 
 
-# Build package
-# =============
+
+# Build source package
+# ====================
 
 dpkg-buildpackage -us -uc -b
 
@@ -117,3 +120,10 @@ popd # $SOURCE_NAME
 
 # Move everything up; it is a convention to leave packages in the parent dir.
 mv ./*.*deb ../
+
+
+
+# Configure debian files
+# ======================
+
+sed "s/@PACKAGE_VERSION@/$PACKAGE_VERSION/g" debian/control.in >debian/control

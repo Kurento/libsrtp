@@ -1,0 +1,26 @@
+Source: libsrtp-kurento
+Maintainer: Kurento <info@kurento.org>
+Priority: optional
+Build-Depends: debhelper (>= 12),
+ devscripts,
+ dpkg-dev,
+ quilt
+Standards-Version: 4.4.1
+Homepage: https://www.kurento.org/
+Vcs-Browser: https://github.com/Kurento/libsrtp
+Vcs-Git: https://github.com/Kurento/libsrtp.git
+
+Package: libsrtp-kurento
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends}, ${misc:Depends},
+ libsrtp2-1 (= @PACKAGE_VERSION@)
+Description: Dummy package that depends on Kurento patched libsrtp (shared library)
+
+Package: libsrtp-kurento-dbg
+Architecture: any
+Section: debug
+Depends: ${misc:Depends},
+ libsrtp-kurento (= ${binary:Version}),
+ libsrtp2-1-dbg (= @PACKAGE_VERSION@)
+Description: Dummy package that depends on Kurento patched libsrtp (debug symbols)
