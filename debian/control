@@ -15,7 +15,7 @@ Architecture: any
 Section: libs
 Depends: ${shlibs:Depends}, ${misc:Depends},
  libsrtp2-1
-Description: libsrtp patched for Kurento (shared library)
+Description: Dummy package that depends on Kurento patched libsrtp (shared library)
 
 Package: libsrtp-kurento-dbg
 Architecture: any
@@ -23,4 +23,4 @@ Section: debug
 Depends: ${misc:Depends},
  libsrtp-kurento (= ${binary:Version}),
  libsrtp2-1-dbg
-Description: libsrtp patched for Kurento (debug symbols)
+Description: Dummy package that depends on Kurento patched libsrtp (debug symbols)

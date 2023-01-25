@@ -60,7 +60,10 @@ apt-get update
 
 PACKAGE_NAME="libsrtp2-1"
 
-SOURCE_NAME="$(apt-cache madison "$PACKAGE_NAME" | grep Sources | head -n1 | awk '{print $1}')"
+SOURCE_NAME="$(apt-cache madison "$PACKAGE_NAME" | grep Sources | head -n1 | awk '{print $1}')" || {
+    echo "ERROR: Cannot find source repos for apt-get; make sure they are enabled in your system"
+    exit 1
+}
 
 apt-get build-dep --yes "$SOURCE_NAME"
 
